@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -6,12 +5,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Instagram, Facebook, Twitter } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 
 export function Footer() {
   const footerBg = PlaceHolderImages.find(img => img.id === 'footer-bg');
 
   return (
-    <footer className="relative min-h-[500px] flex flex-col justify-end pt-24 pb-12 border-t border-white/5 overflow-hidden">
+    <footer className="relative min-h-[800px] flex flex-col justify-end pt-32 pb-12 border-t border-white/5 overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -22,10 +23,31 @@ export function Footer() {
           data-ai-hint="misty forest"
         />
         {/* Dark Overlay for readability */}
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-black/75 backdrop-blur-[2px]" />
       </div>
 
       <div className="container relative z-10 mx-auto px-6 md:px-12 text-white/80">
+        
+        {/* Integrated CTA Section */}
+        <div className="mb-24">
+          <div className="max-w-3xl">
+            <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">
+              READY TO BEGIN?
+            </span>
+            <h2 className="font-headline text-5xl md:text-7xl mb-10 leading-tight text-white">
+              Your Sri Lankan <br className="hidden md:block" /> 
+              <span className="italic text-[#FFDAB9]">story</span> starts here.
+            </h2>
+            <Button 
+              className="rounded-none bg-white text-primary hover:bg-[#FFDAB9] hover:text-primary px-12 h-16 text-sm font-bold tracking-[0.2em] transition-all duration-300"
+            >
+              BOOK YOUR STAY
+            </Button>
+          </div>
+        </div>
+
+        <Separator className="bg-white/10 mb-20" />
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24 mb-20">
           
           {/* Brand */}
@@ -37,9 +59,9 @@ export function Footer() {
               Boutique villas and signature journeys across the pearl of the Indian Ocean. Curating the essence of Sri Lankan luxury.
             </p>
             <div className="flex gap-4">
-              <Link href="#" className="hover:text-accent transition-colors"><Instagram className="w-4 h-4" /></Link>
-              <Link href="#" className="hover:text-accent transition-colors"><Facebook className="w-4 h-4" /></Link>
-              <Link href="#" className="hover:text-accent transition-colors"><Twitter className="w-4 h-4" /></Link>
+              <Link href="#" className="hover:text-[#FFDAB9] transition-colors"><Instagram className="w-4 h-4" /></Link>
+              <Link href="#" className="hover:text-[#FFDAB9] transition-colors"><Facebook className="w-4 h-4" /></Link>
+              <Link href="#" className="hover:text-[#FFDAB9] transition-colors"><Twitter className="w-4 h-4" /></Link>
             </div>
           </div>
 
