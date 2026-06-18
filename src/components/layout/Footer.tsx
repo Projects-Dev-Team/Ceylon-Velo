@@ -9,8 +9,8 @@ import footerImage from '@/assets/footer.png';
 
 export function Footer() {
   return (
-    <footer className="relative min-h-[700px] flex flex-col justify-end overflow-hidden pb-12">
-      {/* Background Image */}
+    <footer className="relative min-h-[700px] flex flex-col justify-end overflow-hidden pb-12 pt-10">
+      {/* Background Image - Clean with no global overlay */}
       <div className="absolute inset-0 z-0">
         <Image
           src={footerImage}
@@ -21,8 +21,8 @@ export function Footer() {
         />
       </div>
 
-      {/* Top CTA Section */}
-      <div className="container relative z-10 mx-auto px-6 md:px-12 pt-10 pb-12">
+      {/* Top CTA Section - Transparent Background */}
+      <div className="container relative z-10 mx-auto px-6 md:px-12 mb-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
           <div className="max-w-3xl">
             <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">
@@ -43,9 +43,9 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Details Section - Transparent with no black overlay */}
+      {/* Middle Content - Black Transparent Section with rounded corners and margins */}
       <div className="container relative z-10 mx-auto px-4 md:px-8">
-        <div className="p-6 md:p-8 overflow-hidden">
+        <div className="bg-black/30 backdrop-blur-md rounded-2xl p-8 md:p-12 overflow-hidden border border-white/10 shadow-2xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 text-white/90">
             
             {/* Brand column */}
@@ -108,8 +108,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-8 px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase text-white/70">
+        {/* Bottom bar - Outside the black container */}
+        <div className="mt-10 px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase text-white/70">
           <span>© 2026 Ceylon Velo Luxe. ALL RIGHTS RESERVED.</span>
           <div className="flex gap-8">
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
