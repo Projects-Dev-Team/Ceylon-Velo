@@ -31,11 +31,11 @@ export function Header() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-4 md:px-12',
-        isScrolled 
-          ? 'bg-white/40 backdrop-blur-xl shadow-sm border-b border-black/5 py-3' 
+        isMobileMenuOpen || isScrolled
+          ? 'bg-white shadow-sm border-b border-black/5 py-3'
           : 'bg-white/10 backdrop-blur-md text-white'
       )}
-    >
+      >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex-shrink-0">
           <Link href="/" className="font-brand text-4xl tracking-wide text-[#FFDAB9]">
@@ -67,7 +67,7 @@ export function Header() {
           </Button>
         </div>
 
-        <div className="md:hidden">
+        <div className="md:hidden relative z-[110]">
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={cn("p-2 transition-colors", isScrolled ? "text-foreground" : "text-white")}
@@ -80,18 +80,12 @@ export function Header() {
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          'fixed inset-0 bg-white z-40 transition-transform duration-500 md:hidden flex flex-col items-center justify-center space-y-8',
+          'fixed inset-y-0 right-0 w-3/4 bg-white z-[100] transition-transform duration-500 md:hidden flex flex-col items-center justify-center space-y-8 shadow-xl',
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >
-        <button 
-          onClick={() => setIsMobileMenuOpen(false)}
-          className="absolute top-6 right-6 p-2 text-black"
-        >
-          <X className="w-8 h-8" />
-        </button>
         <div className="mb-4">
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="font-brand text-6xl text-[#FFDAB9]">
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="font-brand text-4xl text-[#FFDAB9]">
             Ceylon Velo
           </Link>
         </div>
