@@ -14,12 +14,12 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left: Image with Badge */}
           <div className="relative max-w-sm mx-auto lg:mx-0 animate-in fade-in slide-in-from-left-10 duration-1000 fill-mode-both">
-            <div className="relative aspect-[4/5] rounded-sm overflow-hidden">
+            <div className="relative aspect-[4/5] rounded-sm overflow-hidden group">
               <Image
                 src={sriLanka || aboutImage?.imageUrl || ''}
                 alt="About Sri Lanka"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
                 data-ai-hint="coastal landscape"
               />
             </div>
@@ -32,17 +32,17 @@ export function About() {
 
           {/* Right: Content */}
           <div className="flex flex-col justify-center animate-in fade-in slide-in-from-right-10 duration-1000 fill-mode-both">
-            <span className="text-accent font-bold tracking-[0.2em] uppercase text-[10px] mb-4">
+            <span className="text-accent font-bold tracking-[0.2em] uppercase text-[10px] mb-4 animate-in fade-in slide-in-from-bottom-2 duration-700 delay-300 fill-mode-both">
               ABOUT CEYLON VELO
             </span>
-            <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-foreground mb-8 leading-tight">
+            <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-foreground mb-8 leading-tight animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400 fill-mode-both">
               The Home of Sri Lankan Beauty
             </h2>
-            <p className="text-muted-foreground text-lg mb-12 leading-relaxed max-w-xl">
+            <p className="text-muted-foreground text-lg mb-12 leading-relaxed max-w-xl animate-in fade-in slide-in-from-bottom-6 duration-700 delay-500 fill-mode-both">
               Discover paradise where pristine beaches, ancient history, vibrant culture, and wild adventures meet. Our expert curators design every moment of your journey with meticulous attention to detail.
             </p>
 
-            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border animate-in fade-in slide-in-from-bottom-4 duration-700 delay-700 fill-mode-both">
+            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border animate-in fade-in slide-in-from-bottom-8 duration-700 delay-700 fill-mode-both">
               <div className="flex flex-col">
                 <span className="font-headline text-3xl md:text-4xl font-bold text-primary">240+</span>
                 <span className="text-[10px] tracking-wider uppercase text-muted-foreground mt-2 font-semibold">
