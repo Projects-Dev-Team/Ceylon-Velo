@@ -19,8 +19,6 @@ export function Footer() {
           className="object-cover"
           priority
         />
-        {/* Subtle base overlay for the whole footer */}
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
       </div>
 
       {/* Top CTA Section */}
@@ -45,10 +43,10 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Floating Details Section with Reduced Transparency */}
+      {/* Details Section - Transparent with no black overlay */}
       <div className="container relative z-10 mx-auto px-4 md:px-8">
-        <div className="bg-black/30 backdrop-blur-xl border border-white/10 rounded-[24px] p-6 md:p-8 shadow-2xl overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 text-white/80">
+        <div className="p-6 md:p-8 overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 text-white/90">
             
             {/* Brand column */}
             <div className="flex flex-col">
@@ -110,8 +108,8 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom bar outside the black container */}
-        <div className="mt-8 px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase text-white/50">
+        {/* Bottom bar */}
+        <div className="mt-8 px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase text-white/70">
           <span>© 2026 Ceylon Velo Luxe. ALL RIGHTS RESERVED.</span>
           <div className="flex gap-8">
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
