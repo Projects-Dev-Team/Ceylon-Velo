@@ -54,7 +54,7 @@ export function Header() {
               )}
             >
               {link.name}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[2px] bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300" />
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[2px] bg-accent rounded-full opacity-0 group-hover:opacity-100 scale-x-0 group-hover:scale-x-100 transition-all duration-300 origin-center" />
             </Link>
           ))}
         </nav>
