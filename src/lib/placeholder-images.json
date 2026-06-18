@@ -105,7 +105,7 @@
     {
       "id": "footer-bg",
       "description": "Misty mountain forest landscape for footer background",
-      "imageUrl": "https://picsum.photos/seed/sl-footer-mist/1920/1080",
+      "imageUrl": "/assets/footer.png",
       "imageHint": "misty forest"
     }
   ]

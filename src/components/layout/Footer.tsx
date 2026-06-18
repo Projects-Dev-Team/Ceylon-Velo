@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -11,7 +12,7 @@ export function Footer() {
   const footerBg = PlaceHolderImages.find(img => img.id === 'footer-bg');
 
   return (
-    <footer className="relative min-h-[800px] flex flex-col justify-end overflow-hidden pb-12">
+    <footer className="relative min-h-[700px] flex flex-col justify-end overflow-hidden pb-12">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -25,8 +26,8 @@ export function Footer() {
         <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
       </div>
 
-      {/* Top CTA Section */}
-      <div className="container relative z-10 mx-auto px-6 md:px-12 pt-16 pb-16">
+      {/* Top CTA Section - Reduced Padding */}
+      <div className="container relative z-10 mx-auto px-6 md:px-12 pt-10 pb-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
           <div className="max-w-3xl">
             <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">
@@ -48,9 +49,9 @@ export function Footer() {
       </div>
 
       {/* Floating Details Section with Reduced Padding and Margins */}
-      <div className="container relative z-10 mx-auto px-4 md:px-10">
-        <div className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-[30px] p-8 md:p-10 shadow-2xl overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 text-white/80">
+      <div className="container relative z-10 mx-auto px-4 md:px-8">
+        <div className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-[24px] p-6 md:p-8 shadow-2xl overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 text-white/80">
             
             {/* Brand column */}
             <div className="flex flex-col">
@@ -69,8 +70,8 @@ export function Footer() {
 
             {/* Explore column */}
             <div className="flex flex-col">
-              <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-8">EXPLORE</h4>
-              <nav className="flex flex-col space-y-4 text-sm font-medium">
+              <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-6">EXPLORE</h4>
+              <nav className="flex flex-col space-y-3 text-sm font-medium">
                 <Link href="#" className="hover:text-white transition-colors">Home</Link>
                 <Link href="#villas" className="hover:text-white transition-colors">Boutique Villas</Link>
                 <Link href="#tours" className="hover:text-white transition-colors">Signature Tours</Link>
@@ -81,8 +82,8 @@ export function Footer() {
 
             {/* Regions column */}
             <div className="flex flex-col">
-              <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-8">REGIONS</h4>
-              <nav className="flex flex-col space-y-4 text-sm font-medium">
+              <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-6">REGIONS</h4>
+              <nav className="flex flex-col space-y-3 text-sm font-medium">
                 <Link href="#" className="hover:text-white transition-colors">Mirissa Beach</Link>
                 <Link href="#" className="hover:text-white transition-colors">Ella Mountains</Link>
                 <Link href="#" className="hover:text-white transition-colors">Sigiriya Rock</Link>
@@ -93,8 +94,8 @@ export function Footer() {
 
             {/* Contact column */}
             <div className="flex flex-col">
-              <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-8">CONTACT</h4>
-              <div className="space-y-6 text-sm">
+              <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-6">CONTACT</h4>
+              <div className="space-y-4 text-sm">
                 <div className="flex gap-4">
                   <MapPin className="w-4 h-4 text-accent shrink-0" />
                   <span>45 Heritage Row, Galle Fort,<br />Sri Lanka</span>
@@ -113,7 +114,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar outside the black container */}
-        <div className="mt-10 px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase text-white/50">
+        <div className="mt-8 px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase text-white/50">
           <span>© 2026 Ceylon Velo Luxe. ALL RIGHTS RESERVED.</span>
           <div className="flex gap-8">
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
