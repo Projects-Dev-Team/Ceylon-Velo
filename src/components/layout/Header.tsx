@@ -22,7 +22,7 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -31,10 +31,10 @@ export function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 md:px-12',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-4 md:px-12',
         isScrolled 
-          ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' 
-          : 'bg-transparent text-white'
+          ? 'bg-white/70 backdrop-blur-xl shadow-sm border-b border-black/5 py-3' 
+          : 'bg-black/5 backdrop-blur-sm text-white'
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -50,7 +50,7 @@ export function Header() {
               key={link.name}
               href={link.href}
               className={cn(
-                'text-xs font-medium tracking-widest transition-colors hover:text-accent',
+                'text-[10px] font-bold tracking-[0.2em] transition-colors hover:text-accent',
                 isScrolled ? 'text-foreground' : 'text-white'
               )}
             >
@@ -62,7 +62,7 @@ export function Header() {
         <div className="hidden md:block">
           <Button
             className={cn(
-              'rounded-none px-8 font-medium tracking-widest text-xs h-10',
+              'rounded-none px-8 font-bold tracking-[0.2em] text-[10px] h-10 transition-all duration-500',
               isScrolled 
                 ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
                 : 'bg-white text-primary hover:bg-white/90'
@@ -75,7 +75,7 @@ export function Header() {
         <div className="md:hidden">
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2"
+            className={cn("p-2 transition-colors", isScrolled ? "text-foreground" : "text-white")}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
           </button>
@@ -85,7 +85,7 @@ export function Header() {
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          'fixed inset-0 bg-background z-40 transition-transform duration-500 md:hidden flex flex-col items-center justify-center space-y-8',
+          'fixed inset-0 bg-background/95 backdrop-blur-3xl z-40 transition-transform duration-500 md:hidden flex flex-col items-center justify-center space-y-8',
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >
@@ -105,7 +105,7 @@ export function Header() {
             {link.name}
           </Link>
         ))}
-        <Button className="mt-8 rounded-none px-12 py-6 bg-primary text-white font-medium tracking-widest text-sm">
+        <Button className="mt-8 rounded-none px-12 py-6 bg-primary text-white font-bold tracking-[0.2em] text-sm">
           BOOK NOW
         </Button>
       </div>
