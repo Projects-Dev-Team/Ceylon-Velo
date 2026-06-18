@@ -80,13 +80,13 @@ export function Header() {
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          'fixed inset-0 bg-background/95 backdrop-blur-3xl z-40 transition-transform duration-500 md:hidden flex flex-col items-center justify-center space-y-8',
+          'fixed inset-0 bg-white z-40 transition-transform duration-500 md:hidden flex flex-col items-center justify-center space-y-8',
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >
         <button 
           onClick={() => setIsMobileMenuOpen(false)}
-          className="absolute top-6 right-6 p-2"
+          className="absolute top-6 right-6 p-2 text-foreground"
         >
           <X className="w-8 h-8" />
         </button>
@@ -100,7 +100,7 @@ export function Header() {
             key={link.name}
             href={link.href}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="font-headline text-3xl font-medium tracking-tight hover:text-[#FFDAB9] transition-colors"
+            className="font-headline text-3xl font-medium tracking-tight hover:text-[#FFDAB9] transition-colors text-foreground"
           >
             {link.name}
           </Link>
