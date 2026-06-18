@@ -28,9 +28,9 @@ export function Footer() {
             <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">
               READY TO BEGIN?
             </span>
-            <h2 className="font-headline text-5xl md:text-7xl mb-0 leading-tight text-white">
+            <h2 className="font-headline text-5xl md:text-7xl mb-0 leading-tight text-black">
               Your Sri Lankan <br className="hidden md:block" /> 
-              <span className="italic text-[#FFDAB9]">story</span> starts here.
+              <span className="italic">story</span> starts here.
             </h2>
           </div>
           <div className="flex-shrink-0">
