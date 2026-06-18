@@ -26,9 +26,9 @@
     },
     {
       "id": "service-food",
-      "description": "Authentic Sri Lankan rice and curry",
-      "imageUrl": "https://picsum.photos/seed/sl-food/600/800",
-      "imageHint": "sri lankan food"
+      "description": "Authentic Sri Lankan buffet feast",
+      "imageUrl": "https://picsum.photos/seed/sl-buffet/600/800",
+      "imageHint": "sri lankan buffet"
     },
     {
       "id": "dest-mirissa",
