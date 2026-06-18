@@ -107,6 +107,12 @@
       "description": "Misty mountain forest landscape for footer background",
       "imageUrl": "/assets/footer.png",
       "imageHint": "misty forest"
+    },
+    {
+      "id": "services-section-bg",
+      "description": "Background image for the services section",
+      "imageUrl": "/assets/our service bg.png",
+      "imageHint": "lush landscape"
     }
   ]
 }
