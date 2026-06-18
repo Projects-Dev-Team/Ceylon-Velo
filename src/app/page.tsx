@@ -1,10 +1,8 @@
-
 import { Header } from '@/components/layout/Header';
 import { Hero } from '@/components/sections/Hero';
 import { About } from '@/components/sections/About';
 import { Services } from '@/components/sections/Services';
 import { Destinations } from '@/components/sections/Destinations';
-import { ItineraryPlanner } from '@/components/sections/ItineraryPlanner';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { Gallery } from '@/components/sections/Gallery';
 import { CTA } from '@/components/sections/CTA';
@@ -18,7 +16,6 @@ export default function Home() {
       <About />
       <Services />
       <Destinations />
-      <ItineraryPlanner />
       <Testimonials />
       <Gallery />
       <CTA />
