@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -14,7 +13,7 @@ export function Hero() {
     <section className="relative h-screen w-full flex items-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <Image
+        < Image
           src={heroImage?.imageUrl || ''}
           alt={heroImage?.description || 'Hero Image'}
           fill
@@ -45,7 +44,7 @@ export function Hero() {
           </Button>
           <Button 
             variant="outline"
-            className="rounded-none border-white text-white hover:bg-white/10 px-8 h-14 text-sm font-bold tracking-widest"
+            className="rounded-none border-white/40 text-white bg-white/10 backdrop-blur-md hover:bg-white/20 px-8 h-14 text-sm font-bold tracking-widest transition-all duration-300"
           >
             VIEW VILLAS
           </Button>
