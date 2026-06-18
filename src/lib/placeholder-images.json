@@ -14,9 +14,9 @@
     },
     {
       "id": "service-villa",
-      "description": "Boutique colonial villa",
-      "imageUrl": "https://picsum.photos/seed/sl-villa/600/800",
-      "imageHint": "boutique hotel"
+      "description": "Exquisite private luxury villa",
+      "imageUrl": "https://picsum.photos/seed/sl-private-villa-luxe/600/800",
+      "imageHint": "luxury villa"
     },
     {
       "id": "service-tour",
