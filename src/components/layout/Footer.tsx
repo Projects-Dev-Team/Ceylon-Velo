@@ -1,32 +1,29 @@
-
 'use client';
 
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Instagram, Facebook, Twitter } from 'lucide-react';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
+import footerImage from '@/assets/footer.png';
 
 export function Footer() {
-  const footerBg = PlaceHolderImages.find(img => img.id === 'footer-bg');
-
   return (
     <footer className="relative min-h-[700px] flex flex-col justify-end overflow-hidden pb-12">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={footerBg?.imageUrl || ''}
+          src={footerImage}
           alt="Footer Background"
           fill
           className="object-cover"
-          data-ai-hint="misty forest"
+          priority
         />
         {/* Subtle base overlay for the whole footer */}
         <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
       </div>
 
-      {/* Top CTA Section - Reduced Padding */}
+      {/* Top CTA Section */}
       <div className="container relative z-10 mx-auto px-6 md:px-12 pt-10 pb-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
           <div className="max-w-3xl">
@@ -48,9 +45,9 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Floating Details Section with Reduced Padding and Margins */}
+      {/* Floating Details Section with Reduced Transparency */}
       <div className="container relative z-10 mx-auto px-4 md:px-8">
-        <div className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-[24px] p-6 md:p-8 shadow-2xl overflow-hidden">
+        <div className="bg-black/30 backdrop-blur-xl border border-white/10 rounded-[24px] p-6 md:p-8 shadow-2xl overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 text-white/80">
             
             {/* Brand column */}
