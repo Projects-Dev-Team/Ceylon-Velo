@@ -49,11 +49,12 @@ export function Header() {
               key={link.name}
               href={link.href}
               className={cn(
-                'text-[10px] font-bold tracking-[0.2em] transition-colors hover:text-accent',
+                'group relative text-[10px] font-bold tracking-[0.2em] transition-colors hover:text-accent py-2',
                 isScrolled ? 'text-foreground' : 'text-white'
               )}
             >
               {link.name}
+              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[2px] bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300" />
             </Link>
           ))}
         </nav>
