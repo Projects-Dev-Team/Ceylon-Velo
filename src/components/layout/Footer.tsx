@@ -11,7 +11,7 @@ export function Footer() {
   const footerBg = PlaceHolderImages.find(img => img.id === 'footer-bg');
 
   return (
-    <footer className="relative min-h-[900px] flex flex-col justify-end overflow-hidden pb-12">
+    <footer className="relative min-h-[800px] flex flex-col justify-end overflow-hidden pb-12">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -26,7 +26,7 @@ export function Footer() {
       </div>
 
       {/* Top CTA Section */}
-      <div className="container relative z-10 mx-auto px-6 md:px-12 pt-32 pb-20">
+      <div className="container relative z-10 mx-auto px-6 md:px-12 pt-16 pb-16">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
           <div className="max-w-3xl">
             <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">
@@ -34,7 +34,7 @@ export function Footer() {
             </span>
             <h2 className="font-headline text-5xl md:text-7xl mb-0 leading-tight text-white">
               Your Sri Lankan <br className="hidden md:block" /> 
-              <span className="italic text-accent">story</span> starts here.
+              <span className="italic text-[#FFDAB9]">story</span> starts here.
             </h2>
           </div>
           <div className="flex-shrink-0">
@@ -47,23 +47,23 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Floating Details Section with Rounded Corners and Margins */}
-      <div className="container relative z-10 mx-auto px-2 md:px-6">
-        <div className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-[40px] p-6 md:p-12 shadow-2xl overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24 text-white/80">
+      {/* Floating Details Section with Reduced Padding and Margins */}
+      <div className="container relative z-10 mx-auto px-4 md:px-10">
+        <div className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-[30px] p-8 md:p-10 shadow-2xl overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 text-white/80">
             
             {/* Brand column */}
             <div className="flex flex-col">
-              <Link href="/" className="font-brand text-5xl text-accent mb-6 tracking-wide">
+              <Link href="/" className="font-brand text-5xl text-[#FFDAB9] mb-6 tracking-wide">
                 Ceylon Velo
               </Link>
               <p className="text-sm leading-relaxed max-w-xs mb-8">
                 Boutique villas and signature journeys across the pearl of the Indian Ocean. Curating the essence of Sri Lankan luxury.
               </p>
               <div className="flex gap-4">
-                <Link href="#" className="hover:text-accent transition-colors"><Instagram className="w-4 h-4" /></Link>
-                <Link href="#" className="hover:text-accent transition-colors"><Facebook className="w-4 h-4" /></Link>
-                <Link href="#" className="hover:text-accent transition-colors"><Twitter className="w-4 h-4" /></Link>
+                <Link href="#" className="hover:text-[#FFDAB9] transition-colors"><Instagram className="w-4 h-4" /></Link>
+                <Link href="#" className="hover:text-[#FFDAB9] transition-colors"><Facebook className="w-4 h-4" /></Link>
+                <Link href="#" className="hover:text-[#FFDAB9] transition-colors"><Twitter className="w-4 h-4" /></Link>
               </div>
             </div>
 
@@ -113,7 +113,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar outside the black container */}
-        <div className="mt-12 px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase text-white/50">
+        <div className="mt-10 px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase text-white/50">
           <span>© 2026 Ceylon Velo Luxe. ALL RIGHTS RESERVED.</span>
           <div className="flex gap-8">
             <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
