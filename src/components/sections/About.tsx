@@ -12,8 +12,8 @@ export function About() {
     <section id="about" className="py-20 md:py-32 bg-white">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left: Image with Badge - Added max-width and alignment */}
-          <div className="relative max-w-md mx-auto lg:mx-0">
+          {/* Left: Image with Badge - Further reduced max-width */}
+          <div className="relative max-w-sm mx-auto lg:mx-0">
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden">
               <Image
                 src={sriLanka || aboutImage?.imageUrl || ''}
@@ -23,10 +23,10 @@ export function About() {
                 data-ai-hint="coastal landscape"
               />
             </div>
-            {/* Circular Badge */}
-            <div className="absolute -bottom-8 -right-8 w-32 h-32 md:w-40 md:h-40 bg-primary text-white rounded-full flex flex-col items-center justify-center p-6 text-center border-4 border-white">
-              <span className="font-headline text-2xl md:text-3xl font-bold">12+</span>
-              <span className="text-[8px] md:text-[10px] tracking-widest uppercase font-medium">Years Curating</span>
+            {/* Circular Badge - Slightly adjusted for smaller image */}
+            <div className="absolute -bottom-6 -right-6 w-28 h-28 md:w-36 md:h-36 bg-primary text-white rounded-full flex flex-col items-center justify-center p-4 text-center border-4 border-white shadow-lg">
+              <span className="font-headline text-xl md:text-2xl font-bold">12+</span>
+              <span className="text-[7px] md:text-[9px] tracking-widest uppercase font-medium">Years Curating</span>
             </div>
           </div>
 
