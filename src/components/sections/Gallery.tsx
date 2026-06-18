@@ -15,7 +15,7 @@ export function Gallery() {
         <div className="flex flex-col items-center text-center mb-16">
           <div className="flex items-center gap-2 text-primary mb-4">
             <Instagram className="w-5 h-5" />
-            <span className="text-xs font-bold tracking-widest uppercase text-[#FFDAB9]">@ceylonvelo</span>
+            <span className="text-xs font-bold tracking-widest uppercase text-muted-foreground">@ceylonvelo</span>
           </div>
           <h2 className="font-headline text-4xl md:text-5xl text-foreground">Follow our island diary</h2>
         </div>
