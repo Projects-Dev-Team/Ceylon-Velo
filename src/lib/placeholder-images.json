@@ -15,14 +15,14 @@
     {
       "id": "service-villa",
       "description": "Exquisite private luxury villa",
-      "imageUrl": "https://picsum.photos/seed/sl-private-villa-luxe/600/800",
+      "imageUrl": "https://picsum.photos/seed/sl-villa-luxe/600/800",
       "imageHint": "luxury villa"
     },
     {
       "id": "service-tour",
-      "description": "Sri Lanka train ride through mountains",
-      "imageUrl": "https://picsum.photos/seed/sl-tour/600/800",
-      "imageHint": "scenic train"
+      "description": "Sigiriya Rock Fortress heritage tour",
+      "imageUrl": "https://picsum.photos/seed/sl-sigiriya-tour/600/800",
+      "imageHint": "sigiriya rock"
     },
     {
       "id": "service-food",
