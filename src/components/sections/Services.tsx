@@ -39,7 +39,7 @@ export function Services() {
           src={serviceImage}
           alt="Our Services Background"
           fill
-          className="object-cover object-center opacity-40"
+          className="object-cover object-center"
           priority
         />
       </div>
@@ -58,7 +58,8 @@ export function Services() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Constrained width grid to reduce card width */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {services.map((service, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === service.id);
             return (
