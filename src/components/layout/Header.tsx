@@ -38,7 +38,7 @@ export function Header() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex-shrink-0">
-          <Link href="/" className="font-brand text-4xl tracking-wide">
+          <Link href="/" className="font-brand text-4xl tracking-wide text-[#FFDAB9]">
             Ceylon Velo
           </Link>
         </div>
@@ -90,7 +90,7 @@ export function Header() {
           <X className="w-8 h-8" />
         </button>
         <div className="mb-4">
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="font-brand text-6xl">
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="font-brand text-6xl text-[#FFDAB9]">
             Ceylon Velo
           </Link>
         </div>

@@ -12,7 +12,7 @@ export function Footer() {
           
           {/* Brand */}
           <div className="flex flex-col">
-            <Link href="/" className="font-brand text-5xl text-white mb-6 tracking-wide">
+            <Link href="/" className="font-brand text-5xl text-[#FFDAB9] mb-6 tracking-wide">
               Ceylon Velo
             </Link>
             <p className="text-sm leading-relaxed max-w-xs mb-8">

@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -16,7 +15,7 @@ export function Gallery() {
           <h2 className="font-headline text-4xl text-foreground">Follow our island diary</h2>
           <div className="flex items-center gap-2 text-primary">
             <Instagram className="w-5 h-5" />
-            <span className="text-xs font-bold tracking-widest uppercase">@ceyloncozy</span>
+            <span className="text-xs font-bold tracking-widest uppercase text-[#FFDAB9]">@ceylonvelo</span>
           </div>
         </div>
 
