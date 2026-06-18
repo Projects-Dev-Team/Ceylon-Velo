@@ -9,7 +9,7 @@ export function About() {
   const aboutImage = PlaceHolderImages.find(img => img.id === 'about-map');
 
   return (
-    <section id="about" className="py-20 md:py-32 bg-background">
+    <section id="about" className="py-20 md:py-32 bg-white">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left: Image with Badge */}
@@ -24,7 +24,7 @@ export function About() {
               />
             </div>
             {/* Circular Badge */}
-            <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-primary text-white rounded-full flex flex-col items-center justify-center p-6 text-center border-4 border-background">
+            <div className="absolute -bottom-8 -right-8 w-40 h-40 bg-primary text-white rounded-full flex flex-col items-center justify-center p-6 text-center border-4 border-white">
               <span className="font-headline text-3xl font-bold">12+</span>
               <span className="text-[10px] tracking-widest uppercase font-medium">Years Curating</span>
             </div>
