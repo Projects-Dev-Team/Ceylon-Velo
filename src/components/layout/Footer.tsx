@@ -9,9 +9,9 @@ import footerImage from '@/assets/footer.png';
 
 export function Footer() {
   return (
-    <footer className="relative min-h-[500px] flex flex-col justify-end overflow-hidden pb-8 pt-6">
-      {/* Background Image - Clean with no global overlay */}
-      <div className="absolute inset-0 z-0">
+    <footer className="relative min-h-[480px] flex flex-col justify-end overflow-hidden pb-6 pt-6">
+      {/* Background Image - Adjusted width by 1px for perfect edge coverage */}
+      <div className="absolute inset-y-0 -left-[0.5px] w-[calc(100%+1px)] z-0">
         <Image
           src={footerImage}
           alt="Footer Background"
@@ -28,14 +28,14 @@ export function Footer() {
             <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-3 block animate-in fade-in slide-in-from-left-4 duration-1000 delay-200">
               READY TO BEGIN?
             </span>
-            <h2 className="font-headline text-3xl md:text-5xl mb-0 leading-tight text-black">
+            <h2 className="font-headline text-2xl md:text-4xl mb-0 leading-tight text-black">
               Your Sri Lankan <br className="hidden md:block" /> 
-              <span>story</span> starts here.
+              story starts here.
             </h2>
           </div>
           <div className="flex-shrink-0">
             <Button 
-              className="rounded-none bg-accent text-white hover:bg-accent/90 px-12 h-14 text-sm font-bold tracking-[0.2em] transition-all duration-500 hover:scale-105 active:scale-95 shadow-xl"
+              className="rounded-none bg-accent text-white hover:bg-accent/90 px-10 h-12 text-sm font-bold tracking-[0.2em] transition-all duration-500 hover:scale-105 active:scale-95 shadow-xl"
             >
               BOOK YOUR STAY
             </Button>
@@ -109,7 +109,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar - Outside the black container */}
-        <div className="mt-6 pb-6 px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] font-bold tracking-[0.2em] uppercase text-white/70 animate-in fade-in duration-1000 delay-700 fill-mode-both">
+        <div className="mt-4 pb-4 px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] font-bold tracking-[0.2em] uppercase text-white/70 animate-in fade-in duration-1000 delay-700 fill-mode-both">
           <span>© 2026 Ceylon Velo Luxe. ALL RIGHTS RESERVED.</span>
           <div className="flex gap-8">
             <Link href="#" className="hover:text-white hover:underline transition-all underline-offset-4">Privacy Policy</Link>
