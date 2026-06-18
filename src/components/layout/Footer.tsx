@@ -16,7 +16,7 @@ export function Footer() {
           src={footerImage}
           alt="Footer Background"
           fill
-          className="object-cover transition-transform duration-[10s] hover:scale-105"
+          className="object-cover"
           priority
         />
       </div>
