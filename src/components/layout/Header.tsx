@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -33,14 +32,14 @@ export function Header() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-4 md:px-12',
         isScrolled 
-          ? 'bg-white/70 backdrop-blur-xl shadow-sm border-b border-black/5 py-3' 
-          : 'bg-black/5 backdrop-blur-sm text-white'
+          ? 'bg-white/40 backdrop-blur-xl shadow-sm border-b border-black/5 py-3' 
+          : 'bg-white/10 backdrop-blur-md text-white'
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex-shrink-0">
-          <Link href="/" className="font-headline text-2xl font-bold tracking-tight">
-            Ceylon Cozy
+          <Link href="/" className="font-brand text-4xl tracking-wide">
+            Ceylon Velo
           </Link>
         </div>
 
@@ -90,6 +89,11 @@ export function Header() {
         >
           <X className="w-8 h-8" />
         </button>
+        <div className="mb-4">
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="font-brand text-6xl">
+            Ceylon Velo
+          </Link>
+        </div>
         {navLinks.map((link) => (
           <Link
             key={link.name}

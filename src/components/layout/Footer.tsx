@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -13,8 +12,8 @@ export function Footer() {
           
           {/* Brand */}
           <div className="flex flex-col">
-            <Link href="/" className="font-headline text-3xl text-white mb-6 font-bold tracking-tight">
-              Ceylon Cozy
+            <Link href="/" className="font-brand text-5xl text-white mb-6 tracking-wide">
+              Ceylon Velo
             </Link>
             <p className="text-sm leading-relaxed max-w-xs mb-8">
               Boutique villas and signature journeys across the pearl of the Indian Ocean. Curating the essence of Sri Lankan luxury.
@@ -64,7 +63,7 @@ export function Footer() {
               </div>
               <div className="flex gap-4 items-center">
                 <Mail className="w-4 h-4 text-accent shrink-0" />
-                <span>concierge@ceyloncozy.com</span>
+                <span>concierge@ceylonvelo.com</span>
               </div>
             </div>
           </div>

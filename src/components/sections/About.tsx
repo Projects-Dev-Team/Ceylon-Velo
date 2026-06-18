@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -33,7 +32,7 @@ export function About() {
           {/* Right: Content */}
           <div className="flex flex-col justify-center">
             <span className="text-accent font-bold tracking-[0.2em] uppercase text-[10px] mb-4">
-              ABOUT CEYLONCOZY
+              ABOUT CEYLON VELO
             </span>
             <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-foreground mb-8 leading-tight">
               The Home of Sri Lankan Beauty

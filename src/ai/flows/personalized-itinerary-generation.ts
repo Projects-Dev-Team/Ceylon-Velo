@@ -65,14 +65,14 @@ const itineraryPrompt = ai.definePrompt({
   name: 'personalizedItineraryPrompt',
   input: {schema: PersonalizedItineraryInputSchema},
   output: {schema: PersonalizedItineraryOutputSchema},
-  prompt: `You are an expert luxury travel planner for Ceylon Cozy, specializing in bespoke Sri Lankan journeys.
+  prompt: `You are an expert luxury travel planner for Ceylon Velo, specializing in bespoke Sri Lankan journeys.
 Your task is to create a detailed, personalized travel itinerary based on the user's preferences.
 Focus on delivering a premium, unforgettable experience, highlighting the unique beauty and luxury offerings of Sri Lanka.
 Ensure the itinerary is structured, engaging, and covers all aspects mentioned in the preferences.
 
 User Preferences: {{{travelerPreferences}}}
 
-Generate an itinerary that embodies the spirit of Ceylon Cozy, focusing on high-end experiences, unique insights, and seamless luxury.`,
+Generate an itinerary that embodies the spirit of Ceylon Velo, focusing on high-end experiences, unique insights, and seamless luxury.`,
 });
 
 const personalizedItineraryFlow = ai.defineFlow(
