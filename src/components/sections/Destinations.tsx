@@ -38,22 +38,22 @@ export function Destinations() {
                 style={{ animationDelay: `${(index + 1) * 150}ms` }}
               >
                 <Image
-                  src={dest?.img || imgData?.imageUrl}
+                  src={dest?.img || imgData?.imageUrl || ''}
                   alt={dest.location}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
                   data-ai-hint={imgData?.imageHint || 'destination'}
                 />
                 
-                {/* Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="bg-white/90 backdrop-blur-sm text-primary px-3 py-1 text-[9px] font-bold tracking-[0.2em] rounded-full uppercase shadow-sm">
+                {/* Animated Badge */}
+                <div className="absolute top-4 left-4 z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-5rem)] group-hover:translate-x-[-20%] md:group-hover:left-[calc(100%-6rem)]">
+                  <span className="bg-white/90 backdrop-blur-none group-hover:bg-white/30 group-hover:backdrop-blur-md text-primary px-3 py-1.5 text-[9px] font-bold tracking-[0.2em] rounded-full uppercase shadow-sm border border-transparent group-hover:border-white/20 transition-all duration-500 whitespace-nowrap">
                     {dest.tag}
                   </span>
                 </div>
 
                 {/* Info Overlay */}
-                <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/60 to-transparent flex flex-col items-start">
+                <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/60 to-transparent flex flex-col items-start z-10">
                   <h4 className="font-headline text-xl text-white mb-1">{dest.location}</h4>
                   <div className="h-0 group-hover:h-8 transition-all duration-300 overflow-hidden flex items-center">
                     <span className="text-[10px] text-white/90 font-bold tracking-widest uppercase">Explore <span className="ml-1">→</span></span>
