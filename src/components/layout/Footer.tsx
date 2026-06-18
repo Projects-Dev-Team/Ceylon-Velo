@@ -45,7 +45,7 @@ export function Footer() {
 
       {/* Middle Content - Black Transparent Section with rounded corners and margins */}
       <div className="container relative z-10 mx-auto px-4 md:px-8">
-        <div className="bg-black/30 backdrop-blur-md rounded-2xl p-8 md:p-12 overflow-hidden border border-white/10 shadow-2xl">
+        <div className="bg-black/50 backdrop-blur-md rounded-2xl p-8 md:p-12 overflow-hidden border border-white/10 shadow-2xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 text-white/90">
             
             {/* Brand column */}
