@@ -33,29 +33,55 @@ export function Hero() {
         <div className="absolute inset-0 bg-black/30" />
       </div>
 
-      {/* Cloud Parallax Layers */}
+      {/* Realistic Cloud/Mist Parallax Layers */}
       <div 
         className="absolute inset-0 z-10 pointer-events-none overflow-hidden"
         aria-hidden="true"
       >
-        {/* Left Side Cloud */}
+        {/* Left Side Cloud Cluster */}
         <div 
-          className="absolute -left-20 top-1/4 w-[600px] h-[400px] opacity-60 blur-3xl bg-white/40 rounded-full transition-transform duration-100 ease-out"
-          style={{ transform: `translateX(-${scrollY * 0.4}px)` }}
+          className="absolute -left-40 -top-20 w-[1000px] h-[800px] opacity-60 blur-[120px] rounded-full transition-transform duration-150 ease-out"
+          style={{ 
+            background: 'radial-gradient(circle at center, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%)',
+            transform: `translateX(-${scrollY * 0.6}px) rotate(-10deg)` 
+          }}
         />
         <div 
-          className="absolute left-0 bottom-1/4 w-[400px] h-[300px] opacity-40 blur-3xl bg-white/30 rounded-full transition-transform duration-100 ease-out"
-          style={{ transform: `translateX(-${scrollY * 0.2}px)` }}
+          className="absolute -left-20 top-1/4 w-[700px] h-[600px] opacity-40 blur-[90px] rounded-full transition-transform duration-150 ease-out"
+          style={{ 
+            background: 'radial-gradient(circle at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 65%)',
+            transform: `translateX(-${scrollY * 0.4}px) rotate(15deg)` 
+          }}
+        />
+        <div 
+          className="absolute left-0 bottom-0 w-[600px] h-[500px] opacity-30 blur-[150px] rounded-full transition-transform duration-150 ease-out"
+          style={{ 
+            background: 'radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 80%)',
+            transform: `translateX(-${scrollY * 0.25}px)` 
+          }}
         />
 
-        {/* Right Side Cloud */}
+        {/* Right Side Cloud Cluster */}
         <div 
-          className="absolute -right-20 top-1/3 w-[600px] h-[400px] opacity-60 blur-3xl bg-white/40 rounded-full transition-transform duration-100 ease-out"
-          style={{ transform: `translateX(${scrollY * 0.4}px)` }}
+          className="absolute -right-40 -top-10 w-[1000px] h-[800px] opacity-60 blur-[120px] rounded-full transition-transform duration-150 ease-out"
+          style={{ 
+            background: 'radial-gradient(circle at center, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%)',
+            transform: `translateX(${scrollY * 0.6}px) rotate(10deg)` 
+          }}
         />
         <div 
-          className="absolute right-0 bottom-10 w-[400px] h-[300px] opacity-40 blur-3xl bg-white/30 rounded-full transition-transform duration-100 ease-out"
-          style={{ transform: `translateX(${scrollY * 0.2}px)` }}
+          className="absolute -right-20 top-1/3 w-[700px] h-[600px] opacity-40 blur-[90px] rounded-full transition-transform duration-150 ease-out"
+          style={{ 
+            background: 'radial-gradient(circle at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 65%)',
+            transform: `translateX(${scrollY * 0.4}px) rotate(-15deg)` 
+          }}
+        />
+        <div 
+          className="absolute right-0 bottom-10 w-[600px] h-[500px] opacity-30 blur-[150px] rounded-full transition-transform duration-150 ease-out"
+          style={{ 
+            background: 'radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 80%)',
+            transform: `translateX(${scrollY * 0.25}px)` 
+          }}
         />
       </div>
 
