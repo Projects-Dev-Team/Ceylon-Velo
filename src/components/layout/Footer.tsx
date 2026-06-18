@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { Mail, Phone, MapPin, Instagram, Facebook, Twitter } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
 
 export function Footer() {
   const footerBg = PlaceHolderImages.find(img => img.id === 'footer-bg');
@@ -51,9 +50,9 @@ export function Footer() {
       {/* Floating Details Section with Rounded Corners and Margins */}
       <div className="container relative z-10 mx-auto px-4 md:px-12">
         <div className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-[40px] p-8 md:p-16 lg:p-24 shadow-2xl overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24 mb-16 text-white/80">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24 text-white/80">
             
-            {/* Brand */}
+            {/* Brand column */}
             <div className="flex flex-col">
               <Link href="/" className="font-brand text-5xl text-accent mb-6 tracking-wide">
                 Ceylon Velo
@@ -68,7 +67,7 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Explore */}
+            {/* Explore column */}
             <div className="flex flex-col">
               <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-8">EXPLORE</h4>
               <nav className="flex flex-col space-y-4 text-sm font-medium">
@@ -80,7 +79,7 @@ export function Footer() {
               </nav>
             </div>
 
-            {/* Regions */}
+            {/* Regions column */}
             <div className="flex flex-col">
               <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-8">REGIONS</h4>
               <nav className="flex flex-col space-y-4 text-sm font-medium">
@@ -92,7 +91,7 @@ export function Footer() {
               </nav>
             </div>
 
-            {/* Contact */}
+            {/* Contact column */}
             <div className="flex flex-col">
               <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-8">CONTACT</h4>
               <div className="space-y-6 text-sm">
@@ -110,15 +109,15 @@ export function Footer() {
                 </div>
               </div>
             </div>
-
           </div>
+        </div>
 
-          <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase opacity-40 text-white">
-            <span>© 2026 Ceylon Velo Luxe. ALL RIGHTS RESERVED.</span>
-            <div className="flex gap-8">
-              <Link href="#" className="hover:opacity-100 transition-opacity">Privacy Policy</Link>
-              <Link href="#" className="hover:opacity-100 transition-opacity">Terms of Service</Link>
-            </div>
+        {/* Bottom bar outside the black container */}
+        <div className="mt-12 px-4 md:px-0 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase text-white/50">
+          <span>© 2026 Ceylon Velo Luxe. ALL RIGHTS RESERVED.</span>
+          <div className="flex gap-8">
+            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
