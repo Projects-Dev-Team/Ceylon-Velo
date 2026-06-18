@@ -61,12 +61,7 @@ export function Header() {
 
         <div className="hidden md:block">
           <Button
-            className={cn(
-              'rounded-none px-8 font-bold tracking-[0.2em] text-[10px] h-10 transition-all duration-500',
-              isScrolled 
-                ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
-                : 'bg-white text-primary hover:bg-white/90'
-            )}
+            className="rounded-none px-8 font-bold tracking-[0.2em] text-[10px] h-10 transition-all duration-500 bg-accent text-white hover:bg-accent/90"
           >
             BOOK NOW
           </Button>
@@ -105,7 +100,7 @@ export function Header() {
             {link.name}
           </Link>
         ))}
-        <Button className="mt-8 rounded-none px-12 py-6 bg-primary text-white font-bold tracking-[0.2em] text-sm">
+        <Button className="mt-8 rounded-none px-12 py-6 bg-accent text-white hover:bg-accent/90 font-bold tracking-[0.2em] text-sm">
           BOOK NOW
         </Button>
       </div>
