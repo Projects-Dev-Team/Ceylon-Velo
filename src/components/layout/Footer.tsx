@@ -12,7 +12,7 @@ export function Footer() {
   const footerBg = PlaceHolderImages.find(img => img.id === 'footer-bg');
 
   return (
-    <footer className="relative min-h-[900px] flex flex-col justify-end overflow-hidden">
+    <footer className="relative min-h-[900px] flex flex-col justify-end overflow-hidden pb-12">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -48,10 +48,10 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Details Section with Black Transparent Background */}
-      <div className="relative z-10 bg-black/60 backdrop-blur-md border-t border-white/10 py-20">
-        <div className="container mx-auto px-6 md:px-12 text-white/80">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24 mb-20">
+      {/* Floating Details Section with Rounded Corners and Margins */}
+      <div className="container relative z-10 mx-auto px-4 md:px-12">
+        <div className="bg-black/60 backdrop-blur-xl border border-white/10 rounded-[40px] p-8 md:p-16 lg:p-24 shadow-2xl overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24 mb-16 text-white/80">
             
             {/* Brand */}
             <div className="flex flex-col">
@@ -113,7 +113,7 @@ export function Footer() {
 
           </div>
 
-          <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase opacity-40">
+          <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase opacity-40 text-white">
             <span>© 2026 Ceylon Velo Luxe. ALL RIGHTS RESERVED.</span>
             <div className="flex gap-8">
               <Link href="#" className="hover:opacity-100 transition-opacity">Privacy Policy</Link>
