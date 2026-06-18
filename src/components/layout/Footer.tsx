@@ -29,17 +29,19 @@ export function Footer() {
       <div className="container relative z-10 mx-auto px-6 md:px-12 text-white/80">
         
         {/* Integrated CTA Section */}
-        <div className="mb-24">
+        <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-10">
           <div className="max-w-3xl">
             <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">
               READY TO BEGIN?
             </span>
-            <h2 className="font-headline text-5xl md:text-7xl mb-10 leading-tight text-white">
+            <h2 className="font-headline text-5xl md:text-7xl mb-0 leading-tight text-white">
               Your Sri Lankan <br className="hidden md:block" /> 
               <span className="italic text-[#FFDAB9]">story</span> starts here.
             </h2>
+          </div>
+          <div className="flex-shrink-0">
             <Button 
-              className="rounded-none bg-white text-primary hover:bg-[#FFDAB9] hover:text-primary px-12 h-16 text-sm font-bold tracking-[0.2em] transition-all duration-300"
+              className="rounded-none bg-accent text-white hover:bg-accent/90 px-12 h-16 text-sm font-bold tracking-[0.2em] transition-all duration-300 shadow-xl"
             >
               BOOK YOUR STAY
             </Button>
