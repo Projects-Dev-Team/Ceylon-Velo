@@ -1,11 +1,9 @@
-
 'use client';
 
 import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import sectionBg from '@/assets/our service bg.png';
 
 const services = [
   {
@@ -29,29 +27,37 @@ const services = [
 ];
 
 export function Services() {
+  const bgImageData = PlaceHolderImages.find(img => img.id === 'services-section-bg');
+
   return (
-    <section id="villas" className="py-24 md:py-32 relative overflow-hidden group/section">
-      {/* Background Image for the entire section */}
+    <section 
+      id="villas" 
+      className="py-24 md:py-32 relative overflow-hidden"
+    >
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={sectionBg}
+          src={bgImageData?.imageUrl || 'https://picsum.photos/seed/sl-services/1920/1080'}
           alt="Our Services Background"
           fill
           className="object-cover"
           priority
+          data-ai-hint="lush landscape"
         />
-        {/* Subtle overlay to soften the background and ensure content pops */}
-        <div className="absolute inset-0 bg-background/90 backdrop-blur-[2px]" />
+        {/* Softened Overlay */}
+        <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px]" />
       </div>
 
+      {/* Content */}
       <div className="container relative z-10 mx-auto px-6 md:px-12">
-        <div className="text-center max-w-2xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+        <div className="text-center max-w-2xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-8 duration-1000">
           <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
-            PREMIUM OFFERINGS
+            CEYLON VELO EXPERIENCES
           </span>
-          <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-4">OUR SERVICES</h2>
-          <div className="w-12 h-[1px] bg-accent mx-auto mb-6" />
-          <p className="text-muted-foreground tracking-[0.1em] uppercase text-xs font-medium">
+          <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-foreground mb-4">
+            Our Services
+          </h2>
+          <p className="text-muted-foreground tracking-widest uppercase text-[10px] font-bold">
             Three pillars of an unforgettable island journey.
           </p>
         </div>
@@ -62,7 +68,7 @@ export function Services() {
             return (
               <div 
                 key={service.id} 
-                className="group relative h-[600px] overflow-hidden rounded-lg shadow-xl cursor-pointer animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both"
+                className="group relative h-[600px] overflow-hidden rounded-lg shadow-xl cursor-pointer animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
                 style={{ animationDelay: `${index * 200}ms` }}
               >
                 <Image
@@ -72,22 +78,24 @@ export function Services() {
                   className="object-cover transition-transform duration-1000 group-hover:scale-110"
                   data-ai-hint={imgData?.imageHint || 'travel'}
                 />
-                
-                {/* Gradient Overlay for the card */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="absolute bottom-0 left-0 right-0 p-10 flex flex-col items-start transform transition-all duration-500 group-hover:-translate-y-4">
-                  <h3 className="font-headline text-3xl text-white mb-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">{service.title}</h3>
-                  <div className="w-8 h-[1px] bg-accent mb-6 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                  <p className="text-white/80 text-sm mb-8 max-w-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100">
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+
+                <div className="absolute bottom-0 left-0 right-0 p-8 flex flex-col items-start transform transition-all duration-500 group-hover:-translate-y-4">
+                  <h3 className="font-headline text-3xl text-white mb-3">
+                    {service.title}
+                  </h3>
+
+                  <p className="text-white/80 text-sm mb-6 max-w-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500">
                     {service.description}
                   </p>
+
                   <Button 
                     variant="link" 
-                    className="p-0 text-white font-bold tracking-[0.2em] text-[10px] h-auto uppercase hover:no-underline flex items-center gap-2 group/btn"
+                    className="p-0 text-accent font-bold tracking-[0.2em] text-[10px] h-auto uppercase hover:no-underline group/btn"
                   >
                     {service.buttonText} 
-                    <span className="transition-transform duration-300 group-hover/btn:translate-x-2">→</span>
+                    <span className="ml-2 inline-block transition-transform duration-300 group-hover/btn:translate-x-2">→</span>
                   </Button>
                 </div>
               </div>
