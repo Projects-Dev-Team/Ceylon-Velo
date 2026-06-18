@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
@@ -8,15 +8,6 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function Hero() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-image');
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <section className="relative h-screen w-full flex items-center overflow-hidden bg-[#0A1A17]">
@@ -31,58 +22,6 @@ export function Hero() {
           data-ai-hint="luxury villa"
         />
         <div className="absolute inset-0 bg-black/30" />
-      </div>
-
-      {/* Realistic Cloud/Mist Parallax Layers */}
-      <div 
-        className="absolute inset-0 z-10 pointer-events-none overflow-hidden"
-        aria-hidden="true"
-      >
-        {/* Left Side Cloud Cluster */}
-        <div 
-          className="absolute -left-40 -top-20 w-[1000px] h-[800px] opacity-60 blur-[120px] rounded-full transition-transform duration-150 ease-out"
-          style={{ 
-            background: 'radial-gradient(circle at center, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%)',
-            transform: `translateX(-${scrollY * 0.6}px) rotate(-10deg)` 
-          }}
-        />
-        <div 
-          className="absolute -left-20 top-1/4 w-[700px] h-[600px] opacity-40 blur-[90px] rounded-full transition-transform duration-150 ease-out"
-          style={{ 
-            background: 'radial-gradient(circle at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 65%)',
-            transform: `translateX(-${scrollY * 0.4}px) rotate(15deg)` 
-          }}
-        />
-        <div 
-          className="absolute left-0 bottom-0 w-[600px] h-[500px] opacity-30 blur-[150px] rounded-full transition-transform duration-150 ease-out"
-          style={{ 
-            background: 'radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 80%)',
-            transform: `translateX(-${scrollY * 0.25}px)` 
-          }}
-        />
-
-        {/* Right Side Cloud Cluster */}
-        <div 
-          className="absolute -right-40 -top-10 w-[1000px] h-[800px] opacity-60 blur-[120px] rounded-full transition-transform duration-150 ease-out"
-          style={{ 
-            background: 'radial-gradient(circle at center, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%)',
-            transform: `translateX(${scrollY * 0.6}px) rotate(10deg)` 
-          }}
-        />
-        <div 
-          className="absolute -right-20 top-1/3 w-[700px] h-[600px] opacity-40 blur-[90px] rounded-full transition-transform duration-150 ease-out"
-          style={{ 
-            background: 'radial-gradient(circle at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 65%)',
-            transform: `translateX(${scrollY * 0.4}px) rotate(-15deg)` 
-          }}
-        />
-        <div 
-          className="absolute right-0 bottom-10 w-[600px] h-[500px] opacity-30 blur-[150px] rounded-full transition-transform duration-150 ease-out"
-          style={{ 
-            background: 'radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 80%)',
-            transform: `translateX(${scrollY * 0.25}px)` 
-          }}
-        />
       </div>
 
       {/* Content */}
