@@ -1,3 +1,106 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-image",
+      "description": "Luxury boutique villa in Sri Lanka",
+      "imageUrl": "https://picsum.photos/seed/sl-hero/1920/1080",
+      "imageHint": "luxury villa"
+    },
+    {
+      "id": "about-map",
+      "description": "Coastal scenery of Sri Lanka",
+      "imageUrl": "https://picsum.photos/seed/sl-map/800/600",
+      "imageHint": "coastal landscape"
+    },
+    {
+      "id": "service-villa",
+      "description": "Boutique colonial villa",
+      "imageUrl": "https://picsum.photos/seed/sl-villa/600/800",
+      "imageHint": "boutique hotel"
+    },
+    {
+      "id": "service-tour",
+      "description": "Sri Lanka train ride through mountains",
+      "imageUrl": "https://picsum.photos/seed/sl-tour/600/800",
+      "imageHint": "scenic train"
+    },
+    {
+      "id": "service-food",
+      "description": "Authentic Sri Lankan rice and curry",
+      "imageUrl": "https://picsum.photos/seed/sl-food/600/800",
+      "imageHint": "sri lankan food"
+    },
+    {
+      "id": "dest-mirissa",
+      "description": "Mirissa beach palm trees",
+      "imageUrl": "https://picsum.photos/seed/sl-mirissa/600/400",
+      "imageHint": "tropical beach"
+    },
+    {
+      "id": "dest-ella",
+      "description": "Ella Nine Arch Bridge",
+      "imageUrl": "https://picsum.photos/seed/sl-ella/600/400",
+      "imageHint": "mountain bridge"
+    },
+    {
+      "id": "dest-sigiriya",
+      "description": "Sigiriya Rock Fortress",
+      "imageUrl": "https://picsum.photos/seed/sl-sigiriya/600/400",
+      "imageHint": "ancient rock"
+    },
+    {
+      "id": "dest-yala",
+      "description": "Leopard in Yala National Park",
+      "imageUrl": "https://picsum.photos/seed/sl-yala/600/400",
+      "imageHint": "wildlife leopard"
+    },
+    {
+      "id": "review-bg",
+      "description": "Calm sunset over Sri Lankan ocean",
+      "imageUrl": "https://picsum.photos/seed/sl-sunset/1920/600",
+      "imageHint": "sunset ocean"
+    },
+    {
+      "id": "insta-1",
+      "description": "Elephant in the wild",
+      "imageUrl": "https://picsum.photos/seed/sl-i1/400/400",
+      "imageHint": "elephant nature"
+    },
+    {
+      "id": "insta-2",
+      "description": "Tea plantations",
+      "imageUrl": "https://picsum.photos/seed/sl-i2/400/400",
+      "imageHint": "tea estate"
+    },
+    {
+      "id": "insta-3",
+      "description": "Traditional fisherman",
+      "imageUrl": "https://picsum.photos/seed/sl-i3/400/400",
+      "imageHint": "stilt fisherman"
+    },
+    {
+      "id": "insta-4",
+      "description": "Luxury breakfast pool",
+      "imageUrl": "https://picsum.photos/seed/sl-i4/400/400",
+      "imageHint": "luxury pool"
+    },
+    {
+      "id": "insta-5",
+      "description": "Surfing at Weligama",
+      "imageUrl": "https://picsum.photos/seed/sl-i5/400/400",
+      "imageHint": "surfing beach"
+    },
+    {
+      "id": "insta-6",
+      "description": "Galle Fort sunset",
+      "imageUrl": "https://picsum.photos/seed/sl-i6/400/400",
+      "imageHint": "colonial architecture"
+    },
+    {
+      "id": "cta-bg",
+      "description": "Misty mountains of Nuwara Eliya",
+      "imageUrl": "https://picsum.photos/seed/sl-mist/1920/800",
+      "imageHint": "misty mountain"
+    }
+  ]
 }
