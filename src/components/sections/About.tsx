@@ -3,19 +3,20 @@
 import React from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import sriLanka from '@/assets/sri.png';
 
 export function About() {
   const aboutImage = PlaceHolderImages.find(img => img.id === 'about-map');
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-background">
+    <section id="about" className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left: Image with Badge */}
           <div className="relative">
-            <div className="relative aspect-[4/5] rounded-sm overflow-hidden shadow-2xl">
+            <div className="relative aspect-[4/5] rounded-sm overflow-hidden">
               <Image
-                src={aboutImage?.imageUrl || ''}
+                src={sriLanka || aboutImage?.imageUrl || ''}
                 alt="About Sri Lanka"
                 fill
                 className="object-cover"

@@ -13,24 +13,31 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+import villa from '@/assets/villa.jpg';
+import foods from '@/assets/AuthenticCuisine.jpg';
+import tour from '@/assets/signature.jpg';
+
 const services = [
   {
     id: 'service-villa',
     title: 'Boutique Villas',
     description: 'Hand-picked private retreats with colonial charm and modern luxury.',
-    buttonText: 'DISCOVER'
+    buttonText: 'DISCOVER',
+    img: villa,
   },
   {
     id: 'service-tour',
     title: 'Signature Tours',
     description: 'Train rides, highlands, temples and hidden waterfalls of the hill country.',
-    buttonText: 'EXPLORE'
+    buttonText: 'EXPLORE',
+    img: tour,
   },
   {
     id: 'service-food',
     title: 'Authentic Cuisine',
     description: 'Banana-leaf meals, spice tours and private cooking masterclasses.',
-    buttonText: 'TASTE'
+    buttonText: 'TASTE',
+    img: foods,
   }
 ];
 
@@ -82,7 +89,7 @@ export function Services() {
                       className="group relative h-[420px] overflow-hidden rounded-lg shadow-xl cursor-pointer transition-all duration-500 hover:shadow-2xl"
                     >
                       <Image
-                        src={imgData?.imageUrl || ''}
+                        src={service?.img || imgData?.imageUrl}
                         alt={service.title}
                         fill
                         className="object-cover transition-transform duration-1000 group-hover:scale-110"
