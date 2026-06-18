@@ -12,6 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import reviewImage from '@/assets/review.jpg'
 
 const testimonials = [
   {
@@ -50,10 +51,10 @@ export function Testimonials() {
   const bgImage = PlaceHolderImages.find(img => img.id === 'review-bg');
 
   return (
-    <section className="relative py-32 overflow-hidden min-h-[800px] flex items-center">
+    <section className="relative py-24 overflow-hidden min-h-[700px] flex items-center">
       {/* Nature Background Image */}
       <Image
-        src={bgImage?.imageUrl || ''}
+        src={reviewImage || bgImage?.imageUrl || ''}
         alt="Testimonial Background"
         fill
         className="object-cover"
@@ -63,7 +64,7 @@ export function Testimonials() {
       <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
       
       <div className="container relative z-10 mx-auto px-6 md:px-12">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12">
           <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">
             GUEST EXPERIENCES
           </span>
