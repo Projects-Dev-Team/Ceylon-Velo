@@ -101,6 +101,12 @@
       "description": "Misty mountains of Nuwara Eliya",
       "imageUrl": "https://picsum.photos/seed/sl-mist/1920/800",
       "imageHint": "misty mountain"
+    },
+    {
+      "id": "footer-bg",
+      "description": "Misty mountain forest landscape for footer background",
+      "imageUrl": "https://picsum.photos/seed/sl-footer-mist/1920/1080",
+      "imageHint": "misty forest"
     }
   ]
 }

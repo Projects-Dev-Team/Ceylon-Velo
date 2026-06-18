@@ -1,13 +1,31 @@
+
 'use client';
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, Phone, MapPin, Instagram, Facebook, Twitter } from 'lucide-react';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function Footer() {
+  const footerBg = PlaceHolderImages.find(img => img.id === 'footer-bg');
+
   return (
-    <footer className="bg-foreground text-white/80 pt-24 pb-12 border-t border-white/5">
-      <div className="container mx-auto px-6 md:px-12">
+    <footer className="relative min-h-[500px] flex flex-col justify-end pt-24 pb-12 border-t border-white/5 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={footerBg?.imageUrl || ''}
+          alt="Footer Background"
+          fill
+          className="object-cover"
+          data-ai-hint="misty forest"
+        />
+        {/* Dark Overlay for readability */}
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-6 md:px-12 text-white/80">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24 mb-20">
           
           {/* Brand */}
