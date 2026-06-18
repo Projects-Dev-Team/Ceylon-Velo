@@ -5,6 +5,13 @@ import Image from 'next/image';
 import { Quote, Star } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const testimonials = [
   {
@@ -24,6 +31,18 @@ const testimonials = [
     author: "Elena Petrova",
     location: "Milan, Italy",
     rating: 5
+  },
+  {
+    quote: "A truly bespoke journey. The attention to detail and the hidden gems we visited made it unforgettable.",
+    author: "Marcus Chen",
+    location: "Singapore",
+    rating: 5
+  },
+  {
+    quote: "The perfect blend of adventure and relaxation. We felt completely immersed in the Sri Lankan culture.",
+    author: "Sarah Thompson",
+    location: "Sydney, Australia",
+    rating: 5
   }
 ];
 
@@ -31,7 +50,7 @@ export function Testimonials() {
   const bgImage = PlaceHolderImages.find(img => img.id === 'review-bg');
 
   return (
-    <section className="relative py-32 overflow-hidden min-h-[700px] flex items-center">
+    <section className="relative py-32 overflow-hidden min-h-[800px] flex items-center">
       {/* Nature Background Image */}
       <Image
         src={bgImage?.imageUrl || ''}
@@ -53,36 +72,49 @@ export function Testimonials() {
           </h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((t, index) => (
-            <Card 
-              key={index} 
-              className="bg-white/10 backdrop-blur-xl border-white/10 text-white hover:bg-white/20 transition-all duration-500 rounded-none shadow-2xl"
-            >
-              <CardContent className="p-10 flex flex-col items-start h-full">
-                <Quote className="w-10 h-10 text-accent mb-8 opacity-80" />
-                
-                <div className="flex mb-6 gap-1">
-                  {[...Array(t.rating)].map((_, i) => (
-                    <Star key={i} className="w-3 h-3 fill-accent text-accent" />
-                  ))}
-                </div>
+        <div className="px-12">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {testimonials.map((t, index) => (
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <Card 
+                    className="bg-white/10 backdrop-blur-xl border-white/10 text-white hover:bg-white/20 transition-all duration-500 rounded-none shadow-2xl h-full"
+                  >
+                    <CardContent className="p-10 flex flex-col items-start h-full">
+                      <Quote className="w-10 h-10 text-accent mb-8 opacity-80" />
+                      
+                      <div className="flex mb-6 gap-1">
+                        {[...Array(t.rating)].map((_, i) => (
+                          <Star key={i} className="w-3 h-3 fill-accent text-accent" />
+                        ))}
+                      </div>
 
-                <p className="font-headline text-xl md:text-2xl leading-relaxed mb-10 italic flex-grow">
-                  "{t.quote}"
-                </p>
-                
-                <div className="flex flex-col border-t border-white/20 pt-6 w-full">
-                  <span className="font-bold tracking-widest uppercase text-[10px] mb-1 text-[#FFDAB9]">
-                    {t.author}
-                  </span>
-                  <span className="text-white/40 text-[9px] uppercase tracking-[0.2em]">
-                    {t.location}
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                      <p className="font-headline text-xl leading-relaxed mb-10 italic flex-grow">
+                        "{t.quote}"
+                      </p>
+                      
+                      <div className="flex flex-col border-t border-white/20 pt-6 w-full">
+                        <span className="font-bold tracking-widest uppercase text-[10px] mb-1 text-[#FFDAB9]">
+                          {t.author}
+                        </span>
+                        <span className="text-white/40 text-[9px] uppercase tracking-[0.2em]">
+                          {t.location}
+                        </span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex -left-12 bg-white/10 border-white/20 text-white hover:bg-white/20 hover:text-white" />
+            <CarouselNext className="hidden md:flex -right-12 bg-white/10 border-white/20 text-white hover:bg-white/20 hover:text-white" />
+          </Carousel>
         </div>
       </div>
     </section>
