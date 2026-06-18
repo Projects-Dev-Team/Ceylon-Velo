@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import serviceImage from '@/assets/service.png';
 
 const services = [
   {
@@ -27,29 +28,24 @@ const services = [
 ];
 
 export function Services() {
-  const bgImageData = PlaceHolderImages.find(img => img.id === 'services-section-bg');
-
   return (
     <section 
       id="villas" 
-      className="py-24 md:py-32 relative overflow-hidden"
+      className="relative isolate overflow-hidden py-24 md:py-32"
     >
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 -z-10">
         <Image
-          src={bgImageData?.imageUrl || 'https://picsum.photos/seed/sl-services/1920/1080'}
+          src={serviceImage}
           alt="Our Services Background"
           fill
-          className="object-cover"
+          className="object-cover object-center opacity-40"
           priority
-          data-ai-hint="lush landscape"
         />
-        {/* Softened Overlay */}
-        <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px]" />
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 mx-auto px-6 md:px-12">
+       <div className="container relative z-10 mx-auto px-6 md:px-12">
         <div className="text-center max-w-2xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-8 duration-1000">
           <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
             CEYLON VELO EXPERIENCES
@@ -68,7 +64,7 @@ export function Services() {
             return (
               <div 
                 key={service.id} 
-                className="group relative h-[600px] overflow-hidden rounded-lg shadow-xl cursor-pointer animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
+                className="group relative h-[450px] overflow-hidden rounded-lg shadow-xl cursor-pointer animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
                 style={{ animationDelay: `${index * 200}ms` }}
               >
                 <Image
