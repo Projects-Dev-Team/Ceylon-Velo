@@ -64,7 +64,7 @@ export function Testimonials() {
       <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
       
       <div className="container relative z-10 mx-auto px-6 md:px-12">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
           <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">
             GUEST EXPERIENCES
           </span>
@@ -73,7 +73,7 @@ export function Testimonials() {
           </h2>
         </div>
         
-        <div className="px-12">
+        <div className="px-12 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 fill-mode-both">
           <Carousel
             opts={{
               align: "start",

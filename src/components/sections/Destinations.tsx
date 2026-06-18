@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -20,7 +19,7 @@ export function Destinations() {
   return (
     <section className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-4">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
           <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-foreground">
             Four corners <br /> of paradise
           </h2>
@@ -30,18 +29,19 @@ export function Destinations() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-          {destinations.map((dest) => {
+          {destinations.map((dest, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === dest.id);
             return (
               <div 
                 key={dest.id}
-                className="group relative aspect-[3/4] overflow-hidden rounded-md cursor-pointer"
+                className="group relative aspect-[3/4] overflow-hidden rounded-md cursor-pointer animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
+                style={{ animationDelay: `${(index + 1) * 150}ms` }}
               >
                 <Image
                   src={dest?.img || imgData?.imageUrl}
                   alt={dest.location}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                   data-ai-hint={imgData?.imageHint || 'destination'}
                 />
                 
