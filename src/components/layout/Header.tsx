@@ -72,7 +72,7 @@ export function Header() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={cn("p-2 transition-colors", isScrolled ? "text-foreground" : "text-white")}
           >
-            {isMobileMenuOpen ? <X /> : <Menu />}
+            {isMobileMenuOpen ? <X className="text-black" /> : <Menu />}
           </button>
         </div>
       </div>
@@ -86,7 +86,7 @@ export function Header() {
       >
         <button 
           onClick={() => setIsMobileMenuOpen(false)}
-          className="absolute top-6 right-6 p-2 text-foreground"
+          className="absolute top-6 right-6 p-2 text-black"
         >
           <X className="w-8 h-8" />
         </button>
@@ -100,7 +100,7 @@ export function Header() {
             key={link.name}
             href={link.href}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="font-headline text-3xl font-medium tracking-tight hover:text-[#FFDAB9] transition-colors text-foreground"
+            className="font-headline text-xl font-medium tracking-tight hover:text-accent transition-colors text-black"
           >
             {link.name}
           </Link>
