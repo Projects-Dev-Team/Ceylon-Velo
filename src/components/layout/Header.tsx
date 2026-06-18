@@ -100,7 +100,7 @@ export function Header() {
             key={link.name}
             href={link.href}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="font-headline text-xl font-medium tracking-tight hover:text-accent transition-colors text-black"
+            className="font-headline text-lg font-medium tracking-tight hover:text-accent transition-colors text-black"
           >
             {link.name}
           </Link>
