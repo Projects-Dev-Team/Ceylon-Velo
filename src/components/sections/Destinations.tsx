@@ -47,7 +47,7 @@ export function Destinations() {
                 
                 {/* Animated Badge */}
                 <div className="absolute top-4 left-4 z-20 transition-all duration-700 ease-in-out group-hover:left-[calc(100%-5rem)] group-hover:translate-x-[-20%] md:group-hover:left-[calc(100%-6rem)]">
-                  <span className="bg-white/90 backdrop-blur-none group-hover:bg-white/30 group-hover:backdrop-blur-md text-primary px-3 py-1.5 text-[9px] font-bold tracking-[0.2em] rounded-full uppercase shadow-sm border border-transparent group-hover:border-white/20 transition-all duration-500 whitespace-nowrap">
+                  <span className="bg-white/90 backdrop-blur-none group-hover:bg-white/30 group-hover:backdrop-blur-md text-primary group-hover:text-white px-3 py-1.5 text-[9px] font-bold tracking-[0.2em] rounded-full uppercase shadow-sm border border-transparent group-hover:border-white/20 transition-all duration-500 whitespace-nowrap">
                     {dest.tag}
                   </span>
                 </div>
