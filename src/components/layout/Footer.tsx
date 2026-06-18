@@ -9,7 +9,7 @@ import footerImage from '@/assets/footer.png';
 
 export function Footer() {
   return (
-    <footer className="relative min-h-[700px] flex flex-col justify-end overflow-hidden pb-12 pt-10">
+    <footer className="relative min-h-[600px] flex flex-col justify-end overflow-hidden pb-10 pt-8">
       {/* Background Image - Clean with no global overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -22,10 +22,10 @@ export function Footer() {
       </div>
 
       {/* Top CTA Section - Transparent Background */}
-      <div className="container relative z-10 mx-auto px-6 md:px-12 mb-8 animate-in fade-in slide-in-from-bottom-10 duration-1000 fill-mode-both">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
+      <div className="container relative z-10 mx-auto px-6 md:px-12 mb-6 animate-in fade-in slide-in-from-bottom-10 duration-1000 fill-mode-both">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-3xl">
-            <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block animate-in fade-in slide-in-from-left-4 duration-1000 delay-200">
+            <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block animate-in fade-in slide-in-from-left-4 duration-1000 delay-200">
               READY TO BEGIN?
             </span>
             <h2 className="font-headline text-5xl md:text-7xl mb-0 leading-tight text-black">
@@ -45,15 +45,15 @@ export function Footer() {
 
       {/* Middle Content - Black Transparent Section with rounded corners and margins */}
       <div className="container relative z-10 mx-auto px-4 md:px-8 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 fill-mode-both">
-        <div className="bg-black/50 backdrop-blur-md rounded-2xl p-8 md:p-12 overflow-hidden border border-white/10 shadow-2xl transition-all duration-500 hover:bg-black/60 group">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 text-white/90">
+        <div className="bg-black/50 backdrop-blur-md rounded-2xl p-8 md:p-10 overflow-hidden border border-white/10 shadow-2xl transition-all duration-500 hover:bg-black/60 group">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 text-white/90">
             
             {/* Brand column */}
             <div className="flex flex-col">
-              <Link href="/" className="font-brand text-5xl text-[#FFDAB9] mb-6 tracking-wide transition-transform duration-300 hover:scale-105 inline-block">
+              <Link href="/" className="font-brand text-5xl text-[#FFDAB9] mb-4 tracking-wide transition-transform duration-300 hover:scale-105 inline-block">
                 Ceylon Velo
               </Link>
-              <p className="text-sm leading-relaxed max-w-xs mb-8 text-white/70">
+              <p className="text-sm leading-relaxed max-w-xs mb-6 text-white/70">
                 Boutique villas and signature journeys across the pearl of the Indian Ocean. Curating the essence of Sri Lankan luxury.
               </p>
               <div className="flex gap-4">
@@ -65,8 +65,8 @@ export function Footer() {
 
             {/* Explore column */}
             <div className="flex flex-col">
-              <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-6 border-b border-white/10 pb-2">EXPLORE</h4>
-              <nav className="flex flex-col space-y-3 text-sm font-medium">
+              <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-4 border-b border-white/10 pb-2">EXPLORE</h4>
+              <nav className="flex flex-col space-y-2 text-sm font-medium">
                 <Link href="#" className="hover:text-accent hover:translate-x-1 transition-all duration-300">Home</Link>
                 <Link href="#villas" className="hover:text-accent hover:translate-x-1 transition-all duration-300">Boutique Villas</Link>
                 <Link href="#tours" className="hover:text-accent hover:translate-x-1 transition-all duration-300">Signature Tours</Link>
@@ -77,8 +77,8 @@ export function Footer() {
 
             {/* Regions column */}
             <div className="flex flex-col">
-              <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-6 border-b border-white/10 pb-2">REGIONS</h4>
-              <nav className="flex flex-col space-y-3 text-sm font-medium">
+              <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-4 border-b border-white/10 pb-2">REGIONS</h4>
+              <nav className="flex flex-col space-y-2 text-sm font-medium">
                 <Link href="#" className="hover:text-accent hover:translate-x-1 transition-all duration-300">Mirissa Beach</Link>
                 <Link href="#" className="hover:text-accent hover:translate-x-1 transition-all duration-300">Ella Mountains</Link>
                 <Link href="#" className="hover:text-accent hover:translate-x-1 transition-all duration-300">Sigiriya Rock</Link>
@@ -89,8 +89,8 @@ export function Footer() {
 
             {/* Contact column */}
             <div className="flex flex-col">
-              <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-6 border-b border-white/10 pb-2">CONTACT</h4>
-              <div className="space-y-4 text-sm">
+              <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white mb-4 border-b border-white/10 pb-2">CONTACT</h4>
+              <div className="space-y-3 text-sm">
                 <div className="flex gap-4 group/item cursor-pointer">
                   <MapPin className="w-4 h-4 text-accent shrink-0 group-hover/item:scale-110 transition-transform" />
                   <span className="group-hover/item:text-white transition-colors">45 Heritage Row, Galle Fort,<br />Sri Lanka</span>
@@ -109,7 +109,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar - Outside the black container */}
-        <div className="mt-10 px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase text-white/70 animate-in fade-in duration-1000 delay-700 fill-mode-both">
+        <div className="mt-8 px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-bold tracking-[0.2em] uppercase text-white/70 animate-in fade-in duration-1000 delay-700 fill-mode-both">
           <span>© 2026 Ceylon Velo Luxe. ALL RIGHTS RESERVED.</span>
           <div className="flex gap-8">
             <Link href="#" className="hover:text-white hover:underline transition-all underline-offset-4">Privacy Policy</Link>

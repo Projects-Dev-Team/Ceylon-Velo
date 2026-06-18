@@ -4,12 +4,16 @@
 import React from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import ella from '@/assets/ella.jpg';
+import sigiriya from '@/assets/Sigiriya.jpg';
+import yala from '@/assets/yala.jpg';
+import beach from '@/assets/mirissa.jpg';
 
 const destinations = [
-  { id: 'dest-mirissa', tag: 'BEACH', location: 'Mirissa Beach' },
-  { id: 'dest-ella', tag: 'HIGHLANDS', location: 'Ella Mountains' },
-  { id: 'dest-sigiriya', tag: 'HERITAGE', location: 'Sigiriya Rock' },
-  { id: 'dest-yala', tag: 'WILDLIFE', location: 'Yala Safari' },
+  { id: 'dest-mirissa', tag: 'BEACH', location: 'Mirissa Beach', img: beach },
+  { id: 'dest-ella', tag: 'HIGHLANDS', location: 'Ella Mountains', img: ella },
+  { id: 'dest-sigiriya', tag: 'HERITAGE', location: 'Sigiriya Rock', img: sigiriya },
+  { id: 'dest-yala', tag: 'WILDLIFE', location: 'Yala Safari', img: yala },
 ];
 
 export function Destinations() {
@@ -34,7 +38,7 @@ export function Destinations() {
                 className="group relative aspect-[3/4] overflow-hidden rounded-md cursor-pointer"
               >
                 <Image
-                  src={imgData?.imageUrl || ''}
+                  src={dest?.img || imgData?.imageUrl}
                   alt={dest.location}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"

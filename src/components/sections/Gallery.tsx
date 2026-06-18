@@ -4,8 +4,14 @@ import React from 'react';
 import Image from 'next/image';
 import { Instagram } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import diary1 from '@/assets/d1.jpg'
+import diary2 from '@/assets/d2.jpg'
+import diary3 from '@/assets/d3.jpg'
+import diary4 from '@/assets/d4.jpg'
+import diary5 from '@/assets/d5.jpg'
+import diary6 from '@/assets/d6.jpg'
 
-const galleryItems = ['insta-1', 'insta-2', 'insta-3', 'insta-4', 'insta-5', 'insta-6'];
+const galleryItems = [diary1, diary2, diary3, diary4, diary5, diary6];
 
 export function Gallery() {
   return (
@@ -21,19 +27,18 @@ export function Gallery() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
-          {galleryItems.map((id) => {
-            const imgData = PlaceHolderImages.find(img => img.id === id);
+        {galleryItems.map((img, index) => {
             return (
               <div 
-                key={id} 
+                key={index} 
                 className="group relative aspect-square overflow-hidden bg-muted"
               >
                 <Image
-                  src={imgData?.imageUrl || ''}
+                  src={img || ''}
                   alt="Gallery image"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  data-ai-hint={imgData?.imageHint || 'lifestyle'}
+                  data-ai-hint={img || 'lifestyle'}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                    <Instagram className="text-white w-6 h-6" />
