@@ -11,12 +11,13 @@ export function Gallery() {
   return (
     <section className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="flex items-center justify-between mb-12">
-          <h2 className="font-headline text-4xl text-foreground">Follow our island diary</h2>
-          <div className="flex items-center gap-2 text-primary">
+        {/* Centered Header with Instagram Info on top */}
+        <div className="flex flex-col items-center text-center mb-16">
+          <div className="flex items-center gap-2 text-primary mb-4">
             <Instagram className="w-5 h-5" />
             <span className="text-xs font-bold tracking-widest uppercase text-[#FFDAB9]">@ceylonvelo</span>
           </div>
+          <h2 className="font-headline text-4xl md:text-5xl text-foreground">Follow our island diary</h2>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
