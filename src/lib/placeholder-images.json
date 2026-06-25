@@ -287,6 +287,30 @@
       "description": "Traditional temple architecture",
       "imageUrl": "https://picsum.photos/seed/sl-g4/800/800",
       "imageHint": "temple architecture"
+    },
+    {
+      "id": "villas-hero",
+      "description": "Villa rooftop bar at sunset",
+      "imageUrl": "https://picsum.photos/seed/sl-villas-rooftop/1920/1080",
+      "imageHint": "rooftop bar sunset"
+    },
+    {
+      "id": "villa-broomfield",
+      "description": "Broomfield villa courtyard",
+      "imageUrl": "https://picsum.photos/seed/sl-broomfield/800/600",
+      "imageHint": "villa courtyard"
+    },
+    {
+      "id": "villa-ayurveda",
+      "description": "Ayurveda Pavilions pool",
+      "imageUrl": "https://picsum.photos/seed/sl-ayurveda/800/600",
+      "imageHint": "resort pool"
+    },
+    {
+      "id": "villa-beach",
+      "description": "Coastal villa terrace",
+      "imageUrl": "https://picsum.photos/seed/sl-beach-villa/800/600",
+      "imageHint": "coastal villa"
     }
   ]
 }
