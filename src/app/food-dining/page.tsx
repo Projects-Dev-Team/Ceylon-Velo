@@ -82,14 +82,14 @@ export default function FoodDiningPage() {
       </section>
 
       {/* Breadcrumbs & Title Section */}
-      <section className="py-16 md:py-24 container mx-auto px-6 md:px-12">
+      <section className="py-16 md:py-16 container mx-auto px-6 md:px-12">
         <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-8">
           <Link href="/" className="hover:text-accent">HOME</Link>
           <span>/</span>
-          <span className="text-foreground">FOOD & DINING</span>
+          <span className="text-foreground hover:text-accent cursor-pointer">FOOD & DINING</span>
         </div>
 
-        <div className="max-w-4xl mb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+        <div className="max-w-8xl mb-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
           <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl mb-8 leading-tight">
             Where to <span className="text-accent italic font-brand text-6xl md:text-7xl normal-case">Eat & Drink</span>
           </h1>
@@ -99,7 +99,7 @@ export default function FoodDiningPage() {
         </div>
 
         {/* Filters */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-2xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 max-w-2xl">
           <div className="space-y-2">
             <label className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">Select A Location</label>
             <Select>

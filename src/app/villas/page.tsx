@@ -101,45 +101,54 @@ export default function VillasPage() {
         />
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-5xl md:text-8xl mb-4 tracking-tight">Your Haven Away</h1>
+          <h1 className="font-headline text-4xl md:text-7xl mb-4 tracking-tight">Your Haven Away</h1>
           <p className="text-lg md:text-2xl font-light opacity-90 tracking-wide">Stay. Belong. Feel the cozzy Vibe</p>
         </div>
       </section>
 
       {/* Story & Concept Section */}
-      <section className="py-24 md:py-32 container mx-auto px-6 text-center max-w-5xl animate-in fade-in slide-in-from-bottom-8 duration-1000">
-        <h2 className="font-headline text-4xl md:text-5xl text-accent mb-4">Our Story & Concept</h2>
-        <h3 className="font-headline text-2xl md:text-3xl text-foreground mb-12">Discover the Art of Coziness</h3>
-        <p className="text-muted-foreground text-lg leading-relaxed max-w-4xl mx-auto font-light mb-16">
+      <section className="pb-32 container mx-auto px-6 md:px-12">
+        <div className="flex mt-16 items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-14 justify-start">
+          <Link href="/" className="hover:text-accent">HOME</Link>
+          <span>/</span>
+          <Link href="/villas" className="text-foreground hover:text-accent cursor-pointer">VILLAS</Link>
+        </div>
+
+        <h2 className="font-headline text-center text-4xl md:text-5xl text-accent mb-4">Our Story & Concept</h2>
+        <h3 className="font-headline text-2xl text-center md:text-3xl text-foreground mb-8">Discover the Art of Coziness</h3>
+        <p className="text-muted-foreground text-lg leading-relaxed max-w-6xl mx-auto font-light mb-10">
           Experience curated getaways designed to soothe your soul, connect with nature, and elevate your island escape in our handpicked luxurious villas.
         </p>
 
         {/* Filters */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 max-w-xl mx-auto text-left">
-          <div className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 max-w-2xl">
+          <div className="space-y-2">
             <label className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">Select A Location</label>
             <Select>
-              <SelectTrigger className="bg-secondary/30 border-none h-10 rounded-sm focus:ring-accent">
+              <SelectTrigger className="bg-secondary/30 border-none h-12 rounded-sm focus:ring-accent">
                 <SelectValue placeholder="All" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Locations</SelectItem>
+                <SelectItem value="colombo">Colombo</SelectItem>
                 <SelectItem value="galle">Galle</SelectItem>
-                <SelectItem value="bentota">Bentota</SelectItem>
-                <SelectItem value="sigiriya">Sigiriya</SelectItem>
+                <SelectItem value="kandy">Kandy</SelectItem>
+                <SelectItem value="mirissa">Mirissa</SelectItem>
               </SelectContent>
             </Select>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-2">
             <label className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">Select A Category</label>
             <Select>
-              <SelectTrigger className="bg-secondary/30 border-none h-10 rounded-sm focus:ring-accent">
+              <SelectTrigger className="bg-secondary/30 border-none h-12 rounded-sm focus:ring-accent">
                 <SelectValue placeholder="All" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Categories</SelectItem>
                 <SelectItem value="boutique">Boutique</SelectItem>
                 <SelectItem value="luxury">Luxury</SelectItem>
+                <SelectItem value="cafe">Cafe</SelectItem>
+                <SelectItem value="traditional">Traditional</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -152,11 +161,11 @@ export default function VillasPage() {
             return (
               <Link
                 href={villa.slug === 'ayurveda-pavilions' ? `/villas/${villa.slug}` : '#'}
-                key={index} 
-                className="group flex flex-col animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
+                key={index}
+                className="group flex flex-col bg-white rounded-2xl shadow-sm border border-black/5 overflow-hidden transition-all duration-500 hover:shadow-xl animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
                 style={{ animationDelay: `${(index % 3) * 150}ms` }}
               >
-                <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-6 shadow-md transition-shadow hover:shadow-xl">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={imgData?.imageUrl || ''}
                     alt={villa.title}
@@ -164,14 +173,14 @@ export default function VillasPage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
-                <div className="px-2">
-                  <h4 className="font-headline text-2xl text-foreground mb-3 group-hover:text-accent transition-colors">
+                <div className="p-8 flex flex-col items-start flex-grow">
+                  <h4 className="font-headline text-2xl text-foreground mb-4 tracking-wide group-hover:text-accent transition-colors">
                     {villa.title}
                   </h4>
-                  <span className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground uppercase mb-4 block">
+                  <span className="text-[10px] font-bold tracking-[0.2em] text-accent uppercase mb-4 py-1 px-3 bg-accent/5 rounded-full">
                     {villa.category}
                   </span>
-                  <p className="text-muted-foreground text-sm leading-relaxed font-light line-clamp-3">
+                  <p className="text-muted-foreground text-xs leading-relaxed font-light mb-0">
                     {villa.desc}
                   </p>
                 </div>
@@ -182,13 +191,13 @@ export default function VillasPage() {
 
         {/* Pagination */}
         <div className="flex justify-center items-center gap-4 pt-24">
-          <Button variant="outline" className="w-10 h-10 p-0 rounded-md border-none bg-accent text-white hover:bg-accent/90">
+          <Button variant="outline" className="w-10 h-10 bg-[#B68D40] p-0 rounded-md border-none text-white hover:bg-accent/90">
             <ChevronLeft className="w-4 h-4" />
           </Button>
-          <Button className="w-10 h-10 p-0 rounded-md bg-accent text-white hover:bg-accent/90 font-bold">1</Button>
+          <Button className="w-10 h-10 p-0 rounded-md bg-[#B68D40] text-white hover:bg-[#B68D40]/90 font-bold">1</Button>
           <Button variant="ghost" className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary font-bold">2</Button>
           <Button variant="ghost" className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary font-bold">3</Button>
-          <Button variant="outline" className="w-10 h-10 p-0 rounded-md border-none bg-accent text-white hover:bg-accent/90">
+          <Button variant="outline" className="w-10 h-10 p-0 rounded-md border-none bg-[#B68D40] text-white hover:bg-[#B68D40]/90">
             <ChevronRight className="w-4 h-4" />
           </Button>
         </div>
