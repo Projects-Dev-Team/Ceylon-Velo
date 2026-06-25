@@ -11,6 +11,7 @@ const navLinks = [
   { name: 'HOME', href: '/' },
   { name: 'VILLAS', href: '/#villas' },
   { name: 'TOURS', href: '/tours' },
+  { name: 'FOOD & DINING', href: '/food-dining' },
   { name: 'ABOUT', href: '/about' },
   { name: 'CONTACT', href: '/contact' },
 ];
@@ -43,7 +44,7 @@ export function Header() {
           </Link>
         </div>
 
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden xl:flex items-center space-x-8">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -67,10 +68,10 @@ export function Header() {
           </Button>
         </div>
 
-        <div className="md:hidden relative z-[110]">
+        <div className="xl:hidden relative z-[110]">
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={cn("p-2 transition-colors", isScrolled ? "text-foreground" : "text-white")}
+            className={cn("p-2 transition-colors", (isScrolled || isMobileMenuOpen) ? "text-foreground" : "text-white")}
           >
             {isMobileMenuOpen ? <X className="text-black" /> : <Menu />}
           </button>
@@ -80,12 +81,12 @@ export function Header() {
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          'fixed inset-y-0 right-0 w-3/4 bg-white z-[100] transition-transform duration-500 md:hidden flex flex-col items-center justify-center space-y-8 shadow-xl',
+          'fixed inset-y-0 right-0 w-3/4 bg-white z-[100] transition-transform duration-500 xl:hidden flex flex-col items-center justify-center space-y-6 shadow-xl',
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >
         <div className="mb-4">
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="font-brand text-3xl text-[#FFDAB9]">
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="font-brand text-2xl text-[#FFDAB9]">
             Ceylon Velo
           </Link>
         </div>
@@ -99,7 +100,7 @@ export function Header() {
             {link.name}
           </Link>
         ))}
-        <Button className="mt-8 rounded-none px-12 py-6 bg-accent text-white hover:bg-accent/90 font-bold tracking-[0.2em] text-sm">
+        <Button className="mt-4 rounded-none px-12 py-6 bg-accent text-white hover:bg-accent/90 font-bold tracking-[0.2em] text-sm">
           BOOK NOW
         </Button>
       </div>

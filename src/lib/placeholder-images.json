@@ -185,6 +185,30 @@
       "description": "Elephants at sunset with a tree",
       "imageUrl": "https://picsum.photos/seed/sl-contact-form/1920/1080",
       "imageHint": "elephants sunset tree"
+    },
+    {
+      "id": "food-hero",
+      "description": "Breakfast spread by a tropical pool overlooking the sea",
+      "imageUrl": "https://picsum.photos/seed/sl-food-hero/1920/1080",
+      "imageHint": "breakfast sea"
+    },
+    {
+      "id": "res-cinnamon",
+      "description": "Elegant outdoor dining area by the coast",
+      "imageUrl": "https://picsum.photos/seed/sl-cinnamon-dining/800/600",
+      "imageHint": "resort dining"
+    },
+    {
+      "id": "res-villey",
+      "description": "Cozy rustic restaurant with warm lighting",
+      "imageUrl": "https://picsum.photos/seed/sl-villey-res/800/600",
+      "imageHint": "rustic restaurant"
+    },
+    {
+      "id": "res-hilton",
+      "description": "Modern glass architecture of a luxury hotel",
+      "imageUrl": "https://picsum.photos/seed/sl-hilton-ext/800/600",
+      "imageHint": "modern hotel"
     }
   ]
 }
