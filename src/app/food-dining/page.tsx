@@ -20,54 +20,42 @@ import {
 const diningList = [
   {
     id: 'res-cinnamon',
+    slug: 'cinnamon-bey',
     title: 'Cinnamon Bey',
     category: 'Boutique',
     desc: 'Enjoy a delightful dining experience with expertly prepared dishes, welcoming service, and a comfortable atmosphere perfect for family meals, gatherings, and special occasions.',
   },
   {
     id: 'res-villey',
+    slug: '#',
     title: 'Villey Restaurant',
     category: 'Luxury',
     desc: 'Relax in a stylish, breezy setting reflecting sea surges and warm sand motifs, creating a serene environment while adding vibrancy for a casual and fun vibe.',
   },
   {
     id: 'res-hilton',
+    slug: '#',
     title: 'Hilton Hotel',
     category: 'Luxury',
     desc: 'Discover authentic local flavors and traditional recipes that showcase the unique culinary heritage and culture of the destination.',
   },
   {
     id: 'res-cinnamon',
+    slug: 'cinnamon-bey',
     title: 'Cinnamon Bey',
     category: 'Boutique',
     desc: 'Enjoy a delightful dining experience with expertly prepared dishes, welcoming service, and a comfortable atmosphere perfect for family meals, gatherings, and special occasions.',
   },
   {
     id: 'res-villey',
+    slug: '#',
     title: 'Villey Restaurant',
     category: 'Luxury',
     desc: 'Relax in a stylish, breezy setting reflecting sea surges and warm sand motifs, creating a serene environment while adding vibrancy for a casual and fun vibe.',
   },
   {
     id: 'res-hilton',
-    title: 'Hilton Hotel',
-    category: 'Luxury',
-    desc: 'Discover authentic local flavors and traditional recipes that showcase the unique culinary heritage and culture of the destination.',
-  },
-  {
-    id: 'res-cinnamon',
-    title: 'Cinnamon Bey',
-    category: 'Boutique',
-    desc: 'Enjoy a delightful dining experience with expertly prepared dishes, welcoming service, and a comfortable atmosphere perfect for family meals, gatherings, and special occasions.',
-  },
-  {
-    id: 'res-villey',
-    title: 'Villey Restaurant',
-    category: 'Luxury',
-    desc: 'Relax in a stylish, breezy setting reflecting sea surges and warm sand motifs, creating a serene environment while adding vibrancy for a casual and fun vibe.',
-  },
-  {
-    id: 'res-hilton',
+    slug: '#',
     title: 'Hilton Hotel',
     category: 'Luxury',
     desc: 'Discover authentic local flavors and traditional recipes that showcase the unique culinary heritage and culture of the destination.',
@@ -149,7 +137,8 @@ export default function FoodDiningPage() {
           {diningList.map((item, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === item.id);
             return (
-              <div 
+              <Link 
+                href={item.slug === 'cinnamon-bey' ? `/food-dining/${item.slug}` : '#'}
                 key={index} 
                 className="group flex flex-col bg-white rounded-2xl shadow-sm border border-black/5 overflow-hidden transition-all duration-500 hover:shadow-xl animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
                 style={{ animationDelay: `${(index % 3) * 200}ms` }}
@@ -173,7 +162,7 @@ export default function FoodDiningPage() {
                     {item.desc}
                   </p>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
