@@ -251,6 +251,42 @@
       "description": "Map view of Beruwala",
       "imageUrl": "https://picsum.photos/seed/sl-map-view/800/600",
       "imageHint": "map view"
+    },
+    {
+      "id": "tour-one-hero",
+      "description": "Bawa architecture in sunset",
+      "imageUrl": "https://picsum.photos/seed/sl-bawa-hero/1920/1080",
+      "imageHint": "heritage architecture sunset"
+    },
+    {
+      "id": "tour-one-map",
+      "description": "Bawa tour route map",
+      "imageUrl": "https://picsum.photos/seed/sl-bawa-map/800/1000",
+      "imageHint": "tour map route"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Ancient Buddha statue",
+      "imageUrl": "https://picsum.photos/seed/sl-g1/800/800",
+      "imageHint": "ancient buddha statue"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Sigiriya distant view",
+      "imageUrl": "https://picsum.photos/seed/sl-g2/800/800",
+      "imageHint": "sigiriya rock view"
+    },
+    {
+      "id": "gallery-3",
+      "description": "White stupa at dusk",
+      "imageUrl": "https://picsum.photos/seed/sl-g3/800/800",
+      "imageHint": "white stupa temple"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Traditional temple architecture",
+      "imageUrl": "https://picsum.photos/seed/sl-g4/800/800",
+      "imageHint": "temple architecture"
     }
   ]
 }

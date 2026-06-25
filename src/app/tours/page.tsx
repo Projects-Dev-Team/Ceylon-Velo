@@ -11,18 +11,18 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const tourItems = [
-  { id: 'tour-1', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-2', title: 'TOUR TWO', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-3', title: 'TOUR THREE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-1', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-2', title: 'TOUR TWO', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-3', title: 'TOUR THREE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-1', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-2', title: 'TOUR TWO', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-3', title: 'TOUR THREE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-1', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-2', title: 'TOUR TWO', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-3', title: 'TOUR THREE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-1', slug: 'tour-one', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-2', slug: '#', title: 'TOUR TWO', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-3', slug: '#', title: 'TOUR THREE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-1', slug: 'tour-one', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-2', slug: '#', title: 'TOUR TWO', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-3', slug: '#', title: 'TOUR THREE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-1', slug: 'tour-one', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-2', slug: '#', title: 'TOUR TWO', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-3', slug: '#', title: 'TOUR THREE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-1', slug: 'tour-one', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-2', slug: '#', title: 'TOUR TWO', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-3', slug: '#', title: 'TOUR THREE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
 ];
 
 export default function ToursPage() {
@@ -71,7 +71,8 @@ export default function ToursPage() {
           {tourItems.map((tour, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === tour.id);
             return (
-              <div 
+              <Link 
+                href={tour.slug === 'tour-one' ? `/tours/${tour.slug}` : '#'}
                 key={index} 
                 className="group flex flex-col bg-white rounded-lg shadow-sm border border-border/50 overflow-hidden transition-all duration-500 hover:shadow-xl animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
                 style={{ animationDelay: `${(index % 3) * 200}ms` }}
@@ -89,14 +90,13 @@ export default function ToursPage() {
                   <p className="text-muted-foreground text-xs leading-relaxed mb-6 font-medium">
                     {tour.desc}
                   </p>
-                  <Link 
-                    href="#" 
+                  <span 
                     className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground hover:text-accent transition-colors flex items-center gap-1 group/link"
                   >
                     LEARN MORE...
-                  </Link>
+                  </span>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
