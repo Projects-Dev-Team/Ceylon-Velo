@@ -167,6 +167,24 @@
       "description": "Misty mountains of Nuwara Eliya",
       "imageUrl": "https://picsum.photos/seed/sl-mist/1920/800",
       "imageHint": "misty mountain"
+    },
+    {
+      "id": "contact-hero",
+      "description": "Connect with Heartfelt Hospitality",
+      "imageUrl": "https://picsum.photos/seed/sl-contact-hero/1920/600",
+      "imageHint": "mountain landscape mist"
+    },
+    {
+      "id": "contact-intro",
+      "description": "Couple sitting on a mountain edge",
+      "imageUrl": "https://picsum.photos/seed/sl-contact-intro/800/1000",
+      "imageHint": "couple mountain view"
+    },
+    {
+      "id": "contact-form-bg",
+      "description": "Elephants at sunset with a tree",
+      "imageUrl": "https://picsum.photos/seed/sl-contact-form/1920/1080",
+      "imageHint": "elephants sunset tree"
     }
   ]
 }

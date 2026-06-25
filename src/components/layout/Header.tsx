@@ -12,7 +12,7 @@ const navLinks = [
   { name: 'VILLAS', href: '/#villas' },
   { name: 'TOURS', href: '/tours' },
   { name: 'ABOUT', href: '/about' },
-  { name: 'CONTACT', href: '/#contact' },
+  { name: 'CONTACT', href: '/contact' },
 ];
 
 export function Header() {
