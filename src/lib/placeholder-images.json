@@ -7,6 +7,30 @@
       "imageHint": "luxury villa"
     },
     {
+      "id": "tours-hero",
+      "description": "Tropical sunset over a pool and villa",
+      "imageUrl": "https://picsum.photos/seed/sl-tours-hero/1920/800",
+      "imageHint": "tropical sunset"
+    },
+    {
+      "id": "tour-1",
+      "description": "Sunset at a beach with hammocks",
+      "imageUrl": "https://picsum.photos/seed/sl-t1/600/400",
+      "imageHint": "beach sunset"
+    },
+    {
+      "id": "tour-2",
+      "description": "Crystal clear tropical lagoon",
+      "imageUrl": "https://picsum.photos/seed/sl-t2/600/400",
+      "imageHint": "tropical lagoon"
+    },
+    {
+      "id": "tour-3",
+      "description": "Palm trees at sunset on a beach",
+      "imageUrl": "https://picsum.photos/seed/sl-t3/600/400",
+      "imageHint": "palm sunset"
+    },
+    {
       "id": "about-map",
       "description": "Coastal scenery of Sri Lanka",
       "imageUrl": "https://picsum.photos/seed/sl-map/800/600",

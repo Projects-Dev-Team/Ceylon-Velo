@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -7,12 +8,12 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { name: 'HOME', href: '#' },
-  { name: 'VILLAS', href: '#villas' },
-  { name: 'TOURS', href: '#tours' },
-  { name: 'FOOD & DINING', href: '#dining' },
-  { name: 'ABOUT', href: '#about' },
-  { name: 'CONTACT', href: '#contact' },
+  { name: 'HOME', href: '/' },
+  { name: 'VILLAS', href: '/#villas' },
+  { name: 'TOURS', href: '/tours' },
+  { name: 'FOOD & DINING', href: '/#dining' },
+  { name: 'ABOUT', href: '/#about' },
+  { name: 'CONTACT', href: '/#contact' },
 ];
 
 export function Header() {
@@ -85,7 +86,7 @@ export function Header() {
         )}
       >
         <div className="mb-4">
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="font-brand text-4xl text-[#FFDAB9]">
+          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="font-brand text-3xl text-[#FFDAB9]">
             Ceylon Velo
           </Link>
         </div>
