@@ -20,54 +20,63 @@ import {
 const villaList = [
   {
     id: 'villa-broomfield',
+    slug: '#',
     title: 'Broomfield by CeylonVelo',
     category: 'Boutique',
     desc: 'Broomfield is a luxury, charming six bedroom villa located in a 100-acre fruit farm...',
   },
   {
     id: 'villa-ayurveda',
+    slug: 'ayurveda-pavilions',
     title: 'Ayurveda Pavilions',
     category: 'Luxury',
     desc: "Ceylon Cozy's first ever healing space, which is more than just an escape...",
   },
   {
     id: 'villa-beach',
+    slug: '#',
     title: 'Beach',
     category: 'Luxury',
     desc: 'Destinations name of the exquisite architecture that front and house at the...',
   },
   {
     id: 'villa-broomfield',
+    slug: '#',
     title: 'Broomfield by CeylonVelo',
     category: 'Boutique',
     desc: 'Broomfield is a luxury, charming six bedroom villa located in a 100-acre fruit farm...',
   },
   {
     id: 'villa-ayurveda',
+    slug: 'ayurveda-pavilions',
     title: 'Ayurveda Pavilions',
     category: 'Luxury',
     desc: "Ceylon Cozy's first ever healing space, which is more than just an escape...",
   },
   {
     id: 'villa-beach',
+    slug: '#',
     title: 'Beach',
     category: 'Luxury',
     desc: 'Destinations name of the exquisite architecture that front and house at the...',
   },
   {
     id: 'villa-broomfield',
+    slug: '#',
     title: 'Broomfield by CeylonVelo',
     category: 'Boutique',
     desc: 'Broomfield is a luxury, charming six bedroom villa located in a 100-acre fruit farm...',
   },
   {
     id: 'villa-ayurveda',
+    slug: 'ayurveda-pavilions',
     title: 'Ayurveda Pavilions',
     category: 'Luxury',
     desc: "Ceylon Cozy's first ever healing space, which is more than just an escape...",
   },
   {
     id: 'villa-beach',
+    slug: '#',
     title: 'Beach',
     category: 'Luxury',
     desc: 'Destinations name of the exquisite architecture that front and house at the...',
@@ -141,7 +150,8 @@ export default function VillasPage() {
           {villaList.map((villa, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === villa.id);
             return (
-              <div 
+              <Link
+                href={villa.slug === 'ayurveda-pavilions' ? `/villas/${villa.slug}` : '#'}
                 key={index} 
                 className="group flex flex-col animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
                 style={{ animationDelay: `${(index % 3) * 150}ms` }}
@@ -165,7 +175,7 @@ export default function VillasPage() {
                     {villa.desc}
                   </p>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

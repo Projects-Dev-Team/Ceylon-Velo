@@ -311,6 +311,48 @@
       "description": "Coastal villa terrace",
       "imageUrl": "https://picsum.photos/seed/sl-beach-villa/800/600",
       "imageHint": "coastal villa"
+    },
+    {
+      "id": "villa-ayurveda-hero",
+      "description": "Ayurveda Pavilions aerial sunset",
+      "imageUrl": "https://picsum.photos/seed/ayurveda-hero/1920/800",
+      "imageHint": "resort pool sunset"
+    },
+    {
+      "id": "villa-g1",
+      "description": "Villa exterior",
+      "imageUrl": "https://picsum.photos/seed/vg1/800/1000",
+      "imageHint": "villa architecture"
+    },
+    {
+      "id": "villa-g2",
+      "description": "Luxury bedroom",
+      "imageUrl": "https://picsum.photos/seed/vg2/600/400",
+      "imageHint": "luxury bedroom"
+    },
+    {
+      "id": "villa-g3",
+      "description": "Garden seating",
+      "imageUrl": "https://picsum.photos/seed/vg3/600/400",
+      "imageHint": "garden lounge"
+    },
+    {
+      "id": "villa-g4",
+      "description": "Pool view",
+      "imageUrl": "https://picsum.photos/seed/vg4/600/400",
+      "imageHint": "infinity pool"
+    },
+    {
+      "id": "villa-g5",
+      "description": "Spa session",
+      "imageUrl": "https://picsum.photos/seed/vg5/600/400",
+      "imageHint": "ayurveda spa"
+    },
+    {
+      "id": "villa-g6",
+      "description": "Dining experience",
+      "imageUrl": "https://picsum.photos/seed/vg6/600/400",
+      "imageHint": "candlelight dinner"
     }
   ]
 }
