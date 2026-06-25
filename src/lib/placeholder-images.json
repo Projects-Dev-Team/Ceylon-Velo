@@ -13,6 +13,48 @@
       "imageHint": "tropical sunset"
     },
     {
+      "id": "about-hero",
+      "description": "Sigiriya Rock Fortress from above",
+      "imageUrl": "https://picsum.photos/seed/sl-sigiriya-top/1920/1080",
+      "imageHint": "sigiriya aerial"
+    },
+    {
+      "id": "about-intro-image",
+      "description": "Ancient temple with brush stroke effect",
+      "imageUrl": "https://picsum.photos/seed/sl-temple-brush/800/1000",
+      "imageHint": "ancient temple"
+    },
+    {
+      "id": "offer-tours",
+      "description": "Train on Nine Arch Bridge",
+      "imageUrl": "https://picsum.photos/seed/sl-train/600/900",
+      "imageHint": "mountain train"
+    },
+    {
+      "id": "offer-accommodation",
+      "description": "Luxury villa bedroom",
+      "imageUrl": "https://picsum.photos/seed/sl-room/600/900",
+      "imageHint": "luxury room"
+    },
+    {
+      "id": "offer-transport",
+      "description": "Luxury travel car in Sri Lanka",
+      "imageUrl": "https://picsum.photos/seed/sl-car/600/900",
+      "imageHint": "travel car"
+    },
+    {
+      "id": "offer-expertise",
+      "description": "Leopard in the wild",
+      "imageUrl": "https://picsum.photos/seed/sl-tiger/600/900",
+      "imageHint": "wildlife leopard"
+    },
+    {
+      "id": "vision-mission-bg",
+      "description": "Panoramic mountain sunset",
+      "imageUrl": "https://picsum.photos/seed/sl-panorama/1920/800",
+      "imageHint": "mountain sunset"
+    },
+    {
       "id": "tour-1",
       "description": "Sunset at a beach with hammocks",
       "imageUrl": "https://picsum.photos/seed/sl-t1/600/400",
@@ -125,18 +167,6 @@
       "description": "Misty mountains of Nuwara Eliya",
       "imageUrl": "https://picsum.photos/seed/sl-mist/1920/800",
       "imageHint": "misty mountain"
-    },
-    {
-      "id": "footer-bg",
-      "description": "Misty mountain forest landscape for footer background",
-      "imageUrl": "/assets/footer.png",
-      "imageHint": "misty forest"
-    },
-    {
-      "id": "services-section-bg",
-      "description": "Background image for the services section",
-      "imageUrl": "/assets/our service bg.png",
-      "imageHint": "lush landscape"
     }
   ]
 }

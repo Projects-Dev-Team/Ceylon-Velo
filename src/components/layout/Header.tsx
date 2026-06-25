@@ -11,8 +11,7 @@ const navLinks = [
   { name: 'HOME', href: '/' },
   { name: 'VILLAS', href: '/#villas' },
   { name: 'TOURS', href: '/tours' },
-  { name: 'FOOD & DINING', href: '/#dining' },
-  { name: 'ABOUT', href: '/#about' },
+  { name: 'ABOUT', href: '/about' },
   { name: 'CONTACT', href: '/#contact' },
 ];
 
@@ -95,7 +94,7 @@ export function Header() {
             key={link.name}
             href={link.href}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="font-headline text-lg font-medium tracking-tight hover:text-accent transition-colors text-black"
+            className="text-lg font-medium tracking-tight hover:text-accent transition-colors text-black"
           >
             {link.name}
           </Link>
