@@ -41,7 +41,7 @@ export default function VillaDetailPage() {
       {/* Content Section */}
       <section className="py-16 md:py-24 container mx-auto px-6 md:px-12">
         {/* Breadcrumbs */}
-        <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-16 justify-center">
+        <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-16 justify-start">
           <Link href="/" className="hover:text-accent">HOME</Link>
           <span>/</span>
           <Link href="/villas" className="hover:text-accent">VILLAS</Link>
