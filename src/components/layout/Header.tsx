@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -19,6 +20,7 @@ const navLinks = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,19 +47,30 @@ export function Header() {
         </div>
 
         <nav className="hidden xl:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={cn(
-                'group relative text-[10px] font-bold tracking-[0.2em] transition-colors hover:text-[#FFDAB9] py-2',
-                isScrolled ? 'text-foreground' : 'text-white'
-              )}
-            >
-              {link.name}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[2px] bg-[#FFDAB9] rounded-full opacity-0 group-hover:opacity-100 scale-x-0 group-hover:scale-x-100 transition-all duration-300 origin-center" />
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={cn(
+                  'group relative text-[10px] font-bold tracking-[0.2em] transition-colors py-2',
+                  isScrolled ? 'text-foreground' : 'text-white',
+                  isActive ? 'text-[#FFDAB9]' : 'hover:text-[#FFDAB9]'
+                )}
+              >
+                {link.name}
+                <span 
+                  className={cn(
+                    "absolute bottom-0 left-1/2 -translate-x-1/2 w-[40px] h-[2px] bg-[#FFDAB9] rounded-full transition-all duration-300 origin-center",
+                    isActive 
+                      ? "opacity-100 scale-x-100" 
+                      : "opacity-0 group-hover:opacity-100 scale-x-0 group-hover:scale-x-100"
+                  )} 
+                />
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden md:block">
@@ -90,16 +103,22 @@ export function Header() {
             Ceylon Velo
           </Link>
         </div>
-        {navLinks.map((link) => (
-          <Link
-            key={link.name}
-            href={link.href}
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="text-lg font-medium tracking-tight hover:text-accent transition-colors text-black"
-          >
-            {link.name}
-          </Link>
-        ))}
+        {navLinks.map((link) => {
+          const isActive = pathname === link.href;
+          return (
+            <Link
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={cn(
+                "text-lg font-medium tracking-tight transition-colors",
+                isActive ? "text-accent" : "text-black hover:text-accent"
+              )}
+            >
+              {link.name}
+            </Link>
+          );
+        })}
         <Button className="mt-4 rounded-none px-12 py-6 bg-accent text-white hover:bg-accent/90 font-bold tracking-[0.2em] text-sm">
           BOOK NOW
         </Button>
