@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
@@ -80,10 +80,50 @@ const villaList = [
     category: 'Luxury',
     desc: 'Destinations name of the exquisite architecture that front and house at the...',
   },
+  {
+    id: 'villa-ayurveda',
+    slug: 'ayurveda-pavilions',
+    title: 'Serene Sanctuary',
+    category: 'Boutique',
+    desc: 'A peaceful retreat tucked away in the hills, offering panoramic views of the valley.',
+  },
+  {
+    id: 'villa-broomfield',
+    slug: '#',
+    title: 'Heritage Haven',
+    category: 'Traditional',
+    desc: 'Experience colonial elegance in this beautifully restored heritage property.',
+  },
+  {
+    id: 'villa-beach',
+    slug: '#',
+    title: 'Ocean Breeze Villa',
+    category: 'Luxury',
+    desc: 'Step directly onto the sand from this stunning contemporary beachfront estate.',
+  },
 ];
 
 export default function VillasPage() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'villas-hero');
+  
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+  const totalPages = Math.ceil(villaList.length / itemsPerPage);
+  
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const displayedVillas = villaList.slice(startIndex, startIndex + itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      // Scroll to the top of the villa section
+      const section = document.getElementById('villa-listings');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <main className="min-h-screen bg-white">
@@ -110,7 +150,7 @@ export default function VillasPage() {
       </section>
 
       {/* Story & Concept Section */}
-      <section className="pb-32 container mx-auto px-6 md:px-12">
+      <section className="pb-32 container mx-auto px-6 md:px-12" id="villa-listings">
         {/* Breadcrumbs */}
         <div className="flex mt-16 items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-14 justify-start animate-in fade-in duration-700">
           <Link href="/" className="hover:text-accent">HOME</Link>
@@ -161,15 +201,15 @@ export default function VillasPage() {
         </div>
 
         {/* Villa Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 text-left">
-          {villaList.map((villa, index) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 text-left min-h-[800px]">
+          {displayedVillas.map((villa, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === villa.id);
             return (
               <Link
                 href={villa.slug === 'ayurveda-pavilions' ? `/villas/${villa.slug}` : '#'}
-                key={index}
+                key={`${villa.title}-${index}`}
                 className="group flex flex-col bg-white rounded-2xl shadow-sm border border-black/5 overflow-hidden transition-all duration-500 hover:shadow-xl animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
-                style={{ animationDelay: `${(index % 3) * 150 + 400}ms` }}
+                style={{ animationDelay: `${(index % 3) * 150}ms` }}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -196,37 +236,35 @@ export default function VillasPage() {
         </div>
 
         {/* Pagination Section */}
-        <div className="flex justify-center items-center gap-4 pt-24 animate-in fade-in duration-700 delay-1000">
+        <div className="flex justify-center items-center gap-4 pt-24 animate-in fade-in duration-700">
           <Button 
             variant="outline" 
-            className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90 transition-all hover:scale-105"
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90 transition-all hover:scale-105 disabled:opacity-50 disabled:scale-100"
           >
             <ChevronLeft className="w-4 h-4" />
           </Button>
           
-          <Button 
-            className="w-10 h-10 p-0 rounded-md bg-[#B68D40] text-white hover:bg-[#B68D40]/90 font-bold transition-all hover:scale-105"
-          >
-            1
-          </Button>
-          
-          <Button 
-            variant="ghost" 
-            className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary font-bold transition-all hover:scale-105"
-          >
-            2
-          </Button>
-          
-          <Button 
-            variant="ghost" 
-            className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary font-bold transition-all hover:scale-105"
-          >
-            3
-          </Button>
+          {[...Array(totalPages)].map((_, i) => (
+            <Button 
+              key={i + 1}
+              onClick={() => handlePageChange(i + 1)}
+              className={`w-10 h-10 p-0 rounded-md transition-all hover:scale-105 font-bold ${
+                currentPage === i + 1 
+                ? 'bg-[#B68D40] text-white hover:bg-[#B68D40]/90 shadow-md' 
+                : 'bg-transparent text-foreground hover:bg-secondary'
+              }`}
+            >
+              {i + 1}
+            </Button>
+          ))}
           
           <Button 
             variant="outline" 
-            className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90 transition-all hover:scale-105"
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90 transition-all hover:scale-105 disabled:opacity-50 disabled:scale-100"
           >
             <ChevronRight className="w-4 h-4" />
           </Button>
