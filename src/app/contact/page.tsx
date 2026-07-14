@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -41,7 +40,7 @@ export default function ContactPage() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl mb-4 tracking-wider animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <h1 className="font-headline text-4xl mb-4 tracking-wider animate-in fade-in slide-in-from-bottom-8 duration-1000">
             Connect with Heartfelt Hospitality
           </h1>
         </div>

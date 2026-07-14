@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -43,7 +42,7 @@ export default function ToursPage() {
         />
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-4xl md:text-7xl mb-4 tracking-wider animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
+          <h1 className="font-headline text-4xl mb-4 tracking-wider animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
             DISCOVER YOUR NEXT ADVENTURE
           </h1>
           <p className="text-sm md:text-lg tracking-[0.4em] uppercase font-bold animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 fill-mode-both">

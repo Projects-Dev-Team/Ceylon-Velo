@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -101,7 +100,7 @@ export default function VillasPage() {
         />
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-4xl md:text-7xl mb-4 tracking-tight">Your Haven Away</h1>
+          <h1 className="font-headline text-4xl mb-4 tracking-tight">Your Haven Away</h1>
           <p className="text-lg md:text-2xl font-light opacity-90 tracking-wide">Stay. Belong. Feel the cozzy Vibe</p>
         </div>
       </section>
