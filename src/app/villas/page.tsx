@@ -104,13 +104,14 @@ export default function VillasPage() {
             Your Haven Away
           </h1>
           <p className="text-lg md:text-2xl font-light opacity-90 tracking-wide animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200 fill-mode-both">
-            Stay. Belong. Feel the cozzy Vibe
+            Stay. Belong. Feel the cozy Vibe
           </p>
         </div>
       </section>
 
       {/* Story & Concept Section */}
       <section className="pb-32 container mx-auto px-6 md:px-12">
+        {/* Breadcrumbs */}
         <div className="flex mt-16 items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-14 justify-start animate-in fade-in duration-700">
           <Link href="/" className="hover:text-accent">HOME</Link>
           <span>/</span>
@@ -194,15 +195,39 @@ export default function VillasPage() {
           })}
         </div>
 
-        {/* Pagination */}
+        {/* Pagination Section */}
         <div className="flex justify-center items-center gap-4 pt-24 animate-in fade-in duration-700 delay-1000">
-          <Button variant="outline" className="w-10 h-10 bg-[#B68D40] p-0 rounded-md border-none text-white hover:bg-accent/90">
+          <Button 
+            variant="outline" 
+            className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90 transition-all hover:scale-105"
+          >
             <ChevronLeft className="w-4 h-4" />
           </Button>
-          <Button className="w-10 h-10 p-0 rounded-md bg-[#B68D40] text-white hover:bg-[#B68D40]/90 font-bold">1</Button>
-          <Button variant="ghost" className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary font-bold">2</Button>
-          <Button variant="ghost" className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary font-bold">3</Button>
-          <Button variant="outline" className="w-10 h-10 p-0 rounded-md border-none bg-[#B68D40] text-white hover:bg-[#B68D40]/90">
+          
+          <Button 
+            className="w-10 h-10 p-0 rounded-md bg-[#B68D40] text-white hover:bg-[#B68D40]/90 font-bold transition-all hover:scale-105"
+          >
+            1
+          </Button>
+          
+          <Button 
+            variant="ghost" 
+            className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary font-bold transition-all hover:scale-105"
+          >
+            2
+          </Button>
+          
+          <Button 
+            variant="ghost" 
+            className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary font-bold transition-all hover:scale-105"
+          >
+            3
+          </Button>
+          
+          <Button 
+            variant="outline" 
+            className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90 transition-all hover:scale-105"
+          >
             <ChevronRight className="w-4 h-4" />
           </Button>
         </div>
