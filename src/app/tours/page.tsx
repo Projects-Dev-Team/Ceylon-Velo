@@ -33,7 +33,7 @@ export default function ToursPage() {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[80vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[60vh] md:h-[70vh] w-full flex items-center justify-center overflow-hidden">
         <Image
           src={heroImage?.imageUrl || ''}
           alt="Tours Hero"
@@ -52,17 +52,22 @@ export default function ToursPage() {
         </div>
       </section>
 
-      {/* Intro Section */}
-      <section className="py-20 md:py-32 container mx-auto px-6 text-center max-w-5xl">
-        <h2 className="font-headline text-3xl md:text-4xl mb-4 text-foreground uppercase tracking-widest animate-in fade-in slide-in-from-bottom-4 duration-700">
-          FIND YOUR JOURNEY
-        </h2>
-        <p className="text-xs md:text-sm font-bold tracking-[0.3em] uppercase text-accent mb-12 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-200">
-          ADVENTURE MEETS LUXURY IN EVERY DESTINATION
-        </p>
-        <p className="text-muted-foreground text-xs md:text-sm leading-relaxed max-w-4xl mx-auto uppercase tracking-wider animate-in fade-in slide-in-from-bottom-8 duration-700 delay-400">
-          Exotic locations, wild adventures, romantic escapes, or off the beaten track: which path will you choose to explore our paradise isle? We offer you many to pick from, and, as there is much to see and do in Sri Lanka, tours to suit your specific interests and duration of stay can be tailor-made too.
-        </p>
+      {/* Breadcrumbs & Title Section */}
+      <section className="py-16 md:py-16 container mx-auto px-6 md:px-12">
+        <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-8">
+          <Link href="/" className="hover:text-accent">HOME</Link>
+          <span>/</span>
+          <span className="text-foreground">TOURS</span>
+        </div>
+
+        <div className="max-w-8xl mb-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl mb-8 leading-tight">
+            Explore Our <span className="text-accent italic font-brand text-6xl md:text-7xl normal-case">Signature Journeys</span>
+          </h1>
+          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-light">
+            Exotic locations, wild adventures, romantic escapes, or off the beaten track: which path will you choose to explore our paradise isle? We offer you many to pick from, and, as there is much to see and do in Sri Lanka, tours to suit your specific interests and duration of stay can be tailor-made too.
+          </p>
+        </div>
       </section>
 
       {/* Tours Grid */}
@@ -86,7 +91,7 @@ export default function ToursPage() {
                   />
                 </div>
                 <div className="p-8 flex flex-col items-start">
-                  <h3 className="font-headline text-xl text-foreground mb-4 tracking-wide">{tour.title}</h3>
+                  <h3 className="font-headline text-xl text-foreground mb-4 tracking-wide group-hover:text-accent transition-colors">{tour.title}</h3>
                   <p className="text-muted-foreground text-xs leading-relaxed mb-6 font-medium">
                     {tour.desc}
                   </p>
@@ -106,9 +111,9 @@ export default function ToursPage() {
           <Button variant="outline" className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90">
             <ChevronLeft className="w-4 h-4" />
           </Button>
-          <Button className="w-10 h-10 p-0 rounded-md bg-[#B68D40] text-white hover:bg-[#B68D40]/90">1</Button>
-          <Button variant="ghost" className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary">2</Button>
-          <Button variant="ghost" className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary">3</Button>
+          <Button className="w-10 h-10 p-0 rounded-md bg-[#B68D40] text-white hover:bg-[#B68D40]/90 font-bold">1</Button>
+          <Button variant="ghost" className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary font-bold">2</Button>
+          <Button variant="ghost" className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary font-bold">3</Button>
           <Button variant="outline" className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90">
             <ChevronRight className="w-4 h-4" />
           </Button>
