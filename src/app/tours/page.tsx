@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
@@ -13,19 +13,37 @@ const tourItems = [
   { id: 'tour-1', slug: 'tour-one', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
   { id: 'tour-2', slug: '#', title: 'TOUR TWO', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
   { id: 'tour-3', slug: '#', title: 'TOUR THREE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-1', slug: 'tour-one', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-2', slug: '#', title: 'TOUR TWO', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-3', slug: '#', title: 'TOUR THREE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-1', slug: 'tour-one', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-2', slug: '#', title: 'TOUR TWO', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-3', slug: '#', title: 'TOUR THREE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-1', slug: 'tour-one', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-2', slug: '#', title: 'TOUR TWO', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-3', slug: '#', title: 'TOUR THREE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-1', slug: 'tour-one', title: 'TOUR FOUR', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-2', slug: '#', title: 'TOUR FIVE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-3', slug: '#', title: 'TOUR SIX', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-1', slug: 'tour-one', title: 'TOUR SEVEN', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-2', slug: '#', title: 'TOUR EIGHT', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-3', slug: '#', title: 'TOUR NINE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-1', slug: 'tour-one', title: 'TOUR TEN', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-2', slug: '#', title: 'TOUR ELEVEN', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
+  { id: 'tour-3', slug: '#', title: 'TOUR TWELVE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
 ];
 
 export default function ToursPage() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'tours-hero');
+  
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+  const totalPages = Math.ceil(tourItems.length / itemsPerPage);
+  
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const displayedTours = tourItems.slice(startIndex, startIndex + itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      const section = document.getElementById('tour-listings');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <main className="min-h-screen bg-white">
@@ -42,7 +60,7 @@ export default function ToursPage() {
         />
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-4xl md:text-6xl mb-4 tracking-wider animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
+          <h1 className="font-headline text-4xl md:text-7xl mb-4 tracking-wider animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
             DISCOVER YOUR NEXT ADVENTURE
           </h1>
           <p className="text-sm md:text-lg tracking-[0.4em] uppercase font-bold animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 fill-mode-both">
@@ -52,7 +70,7 @@ export default function ToursPage() {
       </section>
 
       {/* Breadcrumbs & Title Section */}
-      <section className="py-16 md:py-16 container mx-auto px-6 md:px-12">
+      <section className="py-16 md:py-16 container mx-auto px-6 md:px-12" id="tour-listings">
         <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-8">
           <Link href="/" className="hover:text-accent">HOME</Link>
           <span>/</span>
@@ -71,13 +89,13 @@ export default function ToursPage() {
 
       {/* Tours Grid */}
       <section className="pb-32 container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {tourItems.map((tour, index) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 min-h-[600px]">
+          {displayedTours.map((tour, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === tour.id);
             return (
               <Link 
                 href={tour.slug === 'tour-one' ? `/tours/${tour.slug}` : '#'}
-                key={index} 
+                key={`${tour.title}-${index}`} 
                 className="group flex flex-col bg-white rounded-lg shadow-sm border border-border/50 overflow-hidden transition-all duration-500 hover:shadow-xl animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
                 style={{ animationDelay: `${(index % 3) * 200}ms` }}
               >
@@ -106,14 +124,36 @@ export default function ToursPage() {
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-center items-center gap-4">
-          <Button variant="outline" className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90">
+        <div className="flex justify-center items-center gap-4 animate-in fade-in duration-700">
+          <Button 
+            variant="outline" 
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90 disabled:opacity-50"
+          >
             <ChevronLeft className="w-4 h-4" />
           </Button>
-          <Button className="w-10 h-10 p-0 rounded-md bg-[#B68D40] text-white hover:bg-[#B68D40]/90 font-bold">1</Button>
-          <Button variant="ghost" className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary font-bold">2</Button>
-          <Button variant="ghost" className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary font-bold">3</Button>
-          <Button variant="outline" className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90">
+          
+          {[...Array(totalPages)].map((_, i) => (
+            <Button 
+              key={i + 1}
+              onClick={() => handlePageChange(i + 1)}
+              className={`w-10 h-10 p-0 rounded-md font-bold transition-all ${
+                currentPage === i + 1 
+                ? 'bg-[#B68D40] text-white hover:bg-[#B68D40]/90' 
+                : 'bg-transparent text-foreground hover:bg-secondary'
+              }`}
+            >
+              {i + 1}
+            </Button>
+          ))}
+          
+          <Button 
+            variant="outline" 
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90 disabled:opacity-50"
+          >
             <ChevronRight className="w-4 h-4" />
           </Button>
         </div>

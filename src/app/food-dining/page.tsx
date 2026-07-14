@@ -1,7 +1,6 @@
-
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
@@ -42,28 +41,53 @@ const diningList = [
   {
     id: 'res-cinnamon',
     slug: 'cinnamon-bey',
-    title: 'Cinnamon Bey',
+    title: 'Amber Room',
     category: 'Boutique',
-    desc: 'Enjoy a delightful dining experience with expertly prepared dishes, welcoming service, and a comfortable atmosphere perfect for family meals, gatherings, and special occasions.',
+    desc: 'An intimate dining experience focusing on the spice routes of old Ceylon.',
   },
   {
     id: 'res-villey',
     slug: '#',
-    title: 'Villey Restaurant',
-    category: 'Luxury',
-    desc: 'Relax in a stylish, breezy setting reflecting sea surges and warm sand motifs, creating a serene environment while adding vibrancy for a casual and fun vibe.',
+    title: 'Azure Terrace',
+    category: 'Cafe',
+    desc: 'Fresh sea breezes and lighter fare make this the perfect afternoon retreat.',
   },
   {
     id: 'res-hilton',
     slug: '#',
-    title: 'Hilton Hotel',
-    category: 'Luxury',
-    desc: 'Discover authentic local flavors and traditional recipes that showcase the unique culinary heritage and culture of the destination.',
+    title: 'The Spice Cellar',
+    category: 'Traditional',
+    desc: 'Dive deep into the roots of Sri Lankan curry and rice in a heritage setting.',
+  },
+  {
+    id: 'res-cinnamon',
+    slug: 'cinnamon-bey',
+    title: 'Golden Sands',
+    category: 'Boutique',
+    desc: 'Beachfront luxury dining with a focus on sustainable seafood.',
   },
 ];
 
 export default function FoodDiningPage() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'food-hero');
+
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+  const totalPages = Math.ceil(diningList.length / itemsPerPage);
+  
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const displayedDining = diningList.slice(startIndex, startIndex + itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      const section = document.getElementById('dining-listings');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <main className="min-h-screen bg-white">
@@ -82,11 +106,11 @@ export default function FoodDiningPage() {
       </section>
 
       {/* Breadcrumbs & Title Section */}
-      <section className="py-16 md:py-16 container mx-auto px-6 md:px-12">
+      <section className="py-16 md:py-16 container mx-auto px-6 md:px-12" id="dining-listings">
         <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-8">
           <Link href="/" className="hover:text-accent">HOME</Link>
           <span>/</span>
-          <span className="text-foreground hover:text-accent cursor-pointer">FOOD & DINING</span>
+          <span className="text-foreground">FOOD & DINING</span>
         </div>
 
         <div className="max-w-8xl mb-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
@@ -133,13 +157,13 @@ export default function FoodDiningPage() {
         </div>
 
         {/* Listings Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 mb-20">
-          {diningList.map((item, index) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 mb-20 min-h-[600px]">
+          {displayedDining.map((item, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === item.id);
             return (
               <Link 
                 href={item.slug === 'cinnamon-bey' ? `/food-dining/${item.slug}` : '#'}
-                key={index} 
+                key={`${item.title}-${index}`} 
                 className="group flex flex-col bg-white rounded-2xl shadow-sm border border-black/5 overflow-hidden transition-all duration-500 hover:shadow-xl animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
                 style={{ animationDelay: `${(index % 3) * 200}ms` }}
               >
@@ -168,14 +192,36 @@ export default function FoodDiningPage() {
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-center items-center gap-4 py-12">
-          <Button variant="outline" className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90">
+        <div className="flex justify-center items-center gap-4 py-12 animate-in fade-in duration-700">
+          <Button 
+            variant="outline" 
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90 disabled:opacity-50"
+          >
             <ChevronLeft className="w-4 h-4" />
           </Button>
-          <Button className="w-10 h-10 p-0 rounded-md bg-[#B68D40] text-white hover:bg-[#B68D40]/90 font-bold">1</Button>
-          <Button variant="ghost" className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary font-bold">2</Button>
-          <Button variant="ghost" className="w-10 h-10 p-0 rounded-md text-foreground hover:bg-secondary font-bold">3</Button>
-          <Button variant="outline" className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90">
+          
+          {[...Array(totalPages)].map((_, i) => (
+            <Button 
+              key={i + 1}
+              onClick={() => handlePageChange(i + 1)}
+              className={`w-10 h-10 p-0 rounded-md font-bold transition-all ${
+                currentPage === i + 1 
+                ? 'bg-[#B68D40] text-white hover:bg-[#B68D40]/90' 
+                : 'bg-transparent text-foreground hover:bg-secondary'
+              }`}
+            >
+              {i + 1}
+            </Button>
+          ))}
+          
+          <Button 
+            variant="outline" 
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90 disabled:opacity-50"
+          >
             <ChevronRight className="w-4 h-4" />
           </Button>
         </div>
