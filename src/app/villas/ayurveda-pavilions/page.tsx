@@ -33,7 +33,7 @@ export default function VillaDetailPage() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-4xl mb-4 tracking-tight">An island of wonder</h1>
+          <h1 className="font-headline text-4xl md:text-7xl mb-4 tracking-tight">An island of wonder</h1>
           <p className="text-sm md:text-lg font-light opacity-90 tracking-[0.2em] uppercase">Come explore with us</p>
         </div>
       </section>

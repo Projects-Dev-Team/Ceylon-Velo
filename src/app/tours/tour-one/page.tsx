@@ -38,7 +38,7 @@ export default function TourOnePage() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-4xl mb-4 tracking-widest uppercase">TOUR ONE</h1>
+          <h1 className="font-headline text-4xl md:text-7xl mb-4 tracking-widest uppercase">TOUR ONE</h1>
           <p className="text-xs md:text-sm tracking-[0.5em] uppercase font-bold opacity-80">Plan Your Tour One</p>
         </div>
       </section>

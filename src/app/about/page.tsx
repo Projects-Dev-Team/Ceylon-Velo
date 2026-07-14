@@ -34,7 +34,7 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-4xl tracking-widest uppercase animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <h1 className="font-headline text-4xl md:text-7xl tracking-widest uppercase animate-in fade-in slide-in-from-bottom-8 duration-1000">
             ABOUT US
           </h1>
         </div>

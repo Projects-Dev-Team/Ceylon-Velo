@@ -41,7 +41,7 @@ export default function CinnamonBeyPage() {
         <div className="absolute inset-0 bg-black/40" />
         
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-4xl mb-6 tracking-wide">Cinnamon Bey</h1>
+          <h1 className="font-headline text-4xl md:text-7xl mb-6 tracking-wide">Cinnamon Bey</h1>
           <p className="text-lg md:text-xl font-light mb-12 max-w-2xl mx-auto italic opacity-90">
             Discover the best restaurants, cafes, dining experience.
           </p>
