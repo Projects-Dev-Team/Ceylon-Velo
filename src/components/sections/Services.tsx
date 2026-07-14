@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import serviceImage from '@/assets/service.png';
@@ -24,6 +25,7 @@ const services = [
     description: 'Hand-picked private retreats with colonial charm and modern luxury.',
     buttonText: 'DISCOVER',
     img: villa,
+    href: '/villas',
   },
   {
     id: 'service-tour',
@@ -31,6 +33,7 @@ const services = [
     description: 'Train rides, highlands, temples and hidden waterfalls of the hill country.',
     buttonText: 'EXPLORE',
     img: tour,
+    href: '/tours',
   },
   {
     id: 'service-food',
@@ -38,6 +41,7 @@ const services = [
     description: 'Banana-leaf meals, spice tours and private cooking masterclasses.',
     buttonText: 'TASTE',
     img: foods,
+    href: '/food-dining',
   }
 ];
 
@@ -110,9 +114,12 @@ export function Services() {
                         <Button 
                           variant="link" 
                           className="p-0 text-accent font-bold tracking-[0.2em] text-[10px] h-auto uppercase hover:no-underline group/btn"
+                          asChild
                         >
-                          {service.buttonText} 
-                          <span className="ml-2 inline-block transition-transform duration-300 group-hover/btn:translate-x-2">→</span>
+                          <Link href={service.href}>
+                            {service.buttonText} 
+                            <span className="ml-2 inline-block transition-transform duration-300 group-hover/btn:translate-x-2">→</span>
+                          </Link>
                         </Button>
                       </div>
                     </div>
