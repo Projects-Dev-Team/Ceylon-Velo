@@ -51,15 +51,18 @@ export function Services() {
       id="villas" 
       className="relative isolate overflow-hidden py-16 md:py-20"
     >
-      {/* Background Image */}
-      <div className="absolute inset-0 -z-10">
+      {/* Background Decoration */}
+      <div className="absolute inset-0 -z-10 bg-white pointer-events-none">
         <Image
           src={serviceImage}
           alt="Our Services Background"
           fill
-          className="object-cover object-center"
-          priority
+          quality={100}
+          className="object-cover object-center opacity-70"
         />
+        {/* Gradients to smoothly blend the image into the white background above and below */}
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white via-white/80 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/80 to-transparent" />
       </div>
 
       <div className="container relative z-10 mx-auto px-6 md:px-12">
