@@ -12,7 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import reviewImage from '@/assets/review.jpg'
+import reviewImage from '@/assets/images/home/review.png';
 
 const testimonials = [
   {
@@ -61,14 +61,14 @@ export function Testimonials() {
         data-ai-hint="lush jungle"
       />
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+      {/* <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" /> */}
       
       <div className="container relative z-10 mx-auto px-6 md:px-12">
-        <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
-          <span className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">
+        <div className="text-center mb-12  animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
+          <span className="text-accent font-bold tracking-[0.4em] uppercase text-1xl mb-4 block">
             GUEST EXPERIENCES
           </span>
-          <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-white italic">
+          <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-black font-bold ">
             Stories from our travellers
           </h2>
         </div>
@@ -85,7 +85,7 @@ export function Testimonials() {
               {testimonials.map((t, index) => (
                 <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <Card 
-                    className="bg-white/10 backdrop-blur-xl border-white/10 text-white hover:bg-white/20 transition-all duration-500 rounded-none shadow-2xl h-full"
+                    className="bg-black/60 backdrop-blur-xl border-white/10 text-white hover:bg-white/20 transition-all duration-500 rounded-none shadow-2xl h-full"
                   >
                     <CardContent className="p-10 flex flex-col items-start h-full">
                       <Quote className="w-10 h-10 text-accent mb-8 opacity-80" />

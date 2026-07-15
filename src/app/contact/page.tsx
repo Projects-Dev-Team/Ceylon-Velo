@@ -18,11 +18,13 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import heroImage from '@/assets/images/contact/contactHero.jpg'
+import introImage from '@/assets/images/contact/introImage.png'
 import { MapPin, Phone, Mail, Share2, Globe, Building2, HelpCircle } from 'lucide-react';
 
 export default function ContactPage() {
-  const heroImage = PlaceHolderImages.find(img => img.id === 'contact-hero');
-  const introImage = PlaceHolderImages.find(img => img.id === 'contact-intro');
+ 
+
   const formBg = PlaceHolderImages.find(img => img.id === 'contact-form-bg');
 
   return (
@@ -32,7 +34,7 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="relative h-[50vh] md:h-[60vh] w-full flex items-center justify-center overflow-hidden">
         <Image
-          src={heroImage?.imageUrl || ''}
+          src={heroImage || ''}
           alt="Contact Hero"
           fill
           className="object-cover"
@@ -74,9 +76,9 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl animate-in fade-in slide-in-from-right-8 duration-1000">
+          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden animate-in fade-in slide-in-from-right-8 duration-1000">
              <Image
-              src={introImage?.imageUrl || ''}
+              src={introImage || ''}
               alt="Couple overlooking mountain"
               fill
               className="object-cover"

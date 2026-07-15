@@ -14,9 +14,9 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import villa from '@/assets/villa.jpg';
-import foods from '@/assets/AuthenticCuisine.jpg';
-import tour from '@/assets/signature.jpg';
+import villa from '@/assets/images/home/services/villa.png';
+import foods from '@/assets/images/home/services/cuisine.jpg';
+import tour from '@/assets/images/home/services/signaturetour.jpg';
 
 const services = [
   {
