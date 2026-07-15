@@ -5,19 +5,28 @@ import Image from 'next/image';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import heroImage from '@/assets/images/about/hero.jpg';
+import introImage from '@/assets/images/about/introImage.png';
+import offerBg from '@/assets/images/about/offer/offerBg.png';
+import tours from '@/assets/images/about/offer/tour.png';
+import accommodation from '@/assets/images/about/offer/accommodation.png';
+import transport from '@/assets/images/about/offer/transport.png';
+import expertise from '@/assets/images/about/offer/expertise.png';
+import visionBg from '@/assets/images/about/vission/visionBg.jpg';
+
 import { Users, Heart, ShieldCheck, Globe, Plane, Handshake, Mountain, MessageSquare } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 export default function AboutPage() {
-  const heroImage = PlaceHolderImages.find(img => img.id === 'about-hero');
-  const introImage = PlaceHolderImages.find(img => img.id === 'about-intro-image');
+  
+ 
   const offerImages = {
-    tours: PlaceHolderImages.find(img => img.id === 'offer-tours'),
-    accommodation: PlaceHolderImages.find(img => img.id === 'offer-accommodation'),
-    transport: PlaceHolderImages.find(img => img.id === 'offer-transport'),
-    expertise: PlaceHolderImages.find(img => img.id === 'offer-expertise'),
+    tours: tours,
+    accommodation: accommodation,
+    transport: transport,
+    expertise: expertise,
   };
-  const visionBg = PlaceHolderImages.find(img => img.id === 'vision-mission-bg');
+
 
   return (
     <main className="min-h-screen bg-white">
@@ -26,7 +35,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] w-full flex items-center justify-center overflow-hidden">
         <Image
-          src={heroImage?.imageUrl || ''}
+          src={heroImage || ''}
           alt="About Us Hero"
           fill
           className="object-cover"
@@ -59,9 +68,9 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="relative aspect-[4/5] rounded-lg overflow-hidden animate-in fade-in slide-in-from-right-8 duration-1000">
+          <div className="relative aspect-[5/5]  overflow-hidden animate-in fade-in slide-in-from-right-8 duration-1000">
              <Image
-              src={introImage?.imageUrl || ''}
+              src={introImage || ''}
               alt="Ceylon Velo Introduction"
               fill
               className="object-cover"
@@ -74,10 +83,10 @@ export default function AboutPage() {
       <section className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src={visionBg?.imageUrl || ''}
+            src={offerBg || ''}
             alt="Offer Background"
             fill
-            className="object-cover opacity-20"
+            className="object-cover "
           />
           <div className="absolute inset-0 bg-primary/10" />
         </div>
@@ -100,12 +109,12 @@ export default function AboutPage() {
           ].map((item, index) => (
             <div key={index} className="group relative aspect-[3/5] overflow-hidden rounded-xl animate-in fade-in slide-in-from-bottom-8 duration-1000" style={{ animationDelay: `${index * 150}ms` }}>
               <Image
-                src={item.img?.imageUrl || ''}
+                src={item.img || ''}
                 alt={item.title}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              {/* <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" /> */}
               <div className="absolute inset-x-0 bottom-0 p-8 text-white">
                 <h3 className="font-headline text-2xl mb-4 leading-tight">{item.title}</h3>
                 <p className="text-xs text-white/70 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -143,19 +152,19 @@ export default function AboutPage() {
       {/* Vision & Mission Section */}
       <section className="relative py-32 overflow-hidden">
         <Image
-          src={visionBg?.imageUrl || ''}
+          src={visionBg || ''}
           alt="Vision Background"
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-black/40" />
         <div className="container relative z-10 mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-headline text-4xl md:text-5xl text-white mb-4">
               Explore The Beauty Of <span className="text-accent italic">SRI LANKA</span>
             </h2>
             <p className="text-white/70 max-w-3xl mx-auto text-sm leading-relaxed">
-              Experience the perfect blend of luxury, adventure, and relaxation with our carefully curated journeys across the Pearl of the Indian Ocean.
+              Experience the perfect blend of nature, culture, adventure, and relaxation with unforgettable journeys across Sri Lanka. From golden beaches and lush green mountains to ancient heritage sites and vibrant local traditions, every destination offers a unique story. Let Ceylon Cozy guide you through remarkable experiences filled with comfort, discovery, and lasting memories.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
