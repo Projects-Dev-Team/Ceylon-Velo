@@ -4,18 +4,18 @@ import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import heroImage from '@/assets/images/home/hero.png';
 
 export function Hero() {
-  const heroImage = PlaceHolderImages.find(img => img.id === 'hero-image');
+
 
   return (
     <section className="relative h-screen w-full flex items-center overflow-hidden bg-[#0A1A17]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={heroImage?.imageUrl || ''}
-          alt={heroImage?.description || 'Hero Image'}
+          src={heroImage || ''}
+          alt={'Hero Image'}
           fill
           className="object-cover"
           priority

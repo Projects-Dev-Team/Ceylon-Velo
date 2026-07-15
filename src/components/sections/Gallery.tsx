@@ -15,7 +15,7 @@ const galleryItems = [diary1, diary2, diary3, diary4, diary5, diary6];
 
 export function Gallery() {
   return (
-    <section className="py-24 md:py-32 bg-background">
+    <section className="py-24 md:py-32 bg-white">
       <div className="container mx-auto px-6 md:px-12">
         {/* Centered Header with Instagram Info on top */}
         <div className="flex flex-col items-center text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">

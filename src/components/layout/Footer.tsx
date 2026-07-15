@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Instagram, Facebook, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import footerImage from '@/assets/footer.png';
+import footerImage from '@/assets/images/footer/footer.png';
 
 export function Footer() {
   return (
