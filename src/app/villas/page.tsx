@@ -15,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import heroImage from '@/assets/images/villa/heroImage.png'
 
 const villaList = [
   {
@@ -104,7 +105,7 @@ const villaList = [
 ];
 
 export default function VillasPage() {
-  const heroImage = PlaceHolderImages.find(img => img.id === 'villas-hero');
+  
   
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
@@ -130,9 +131,9 @@ export default function VillasPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[80vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
         <Image
-          src={heroImage?.imageUrl || ''}
+          src={heroImage || ''}
           alt="Villas Hero"
           fill
           className="object-cover"

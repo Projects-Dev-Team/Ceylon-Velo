@@ -16,6 +16,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
+import heroImage from '@/assets/images/food/heroImage.png'
+
 const diningList = [
   {
     id: 'res-cinnamon',
@@ -69,7 +71,7 @@ const diningList = [
 ];
 
 export default function FoodDiningPage() {
-  const heroImage = PlaceHolderImages.find(img => img.id === 'food-hero');
+
 
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
@@ -94,9 +96,9 @@ export default function FoodDiningPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[70vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
         <Image
-          src={heroImage?.imageUrl || ''}
+          src={heroImage || ''}
           alt="Food and Dining Hero"
           fill
           className="object-cover"
