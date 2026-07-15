@@ -3,10 +3,10 @@
 import React from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import ella from '@/assets/ella.jpg';
-import sigiriya from '@/assets/Sigiriya.jpg';
-import yala from '@/assets/yala.jpg';
-import beach from '@/assets/mirissa.jpg';
+import ella from '@/assets/images/home/destination/highland.jpg';
+import sigiriya from '@/assets/images/home/destination/heritage.jpg';
+import yala from '@/assets/images/home/destination/wildlife.jpg';
+import beach from '@/assets/images/home/destination/beach.jpg';
 
 const destinations = [
   { id: 'dest-mirissa', tag: 'BEACH', location: 'Mirissa Beach', img: beach },
@@ -17,15 +17,16 @@ const destinations = [
 
 export function Destinations() {
   return (
-    <section className="py-24 md:py-32 bg-background">
+    <section className="py-24 md:py-32 bg-white">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
-          <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-foreground">
-            Four corners <br /> of paradise
-          </h2>
+        <div className="center mb-16 gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
           <p className="text-muted-foreground font-medium tracking-widest text-xs max-w-xs md:text-right uppercase">
-            Curated experiences from the golden coast to the misty peaks.
+           Featured Destinations
           </p>
+          <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-foreground">
+            Four corners of paradise
+          </h2>
+          
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">

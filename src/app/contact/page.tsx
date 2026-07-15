@@ -18,11 +18,13 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import heroImage from '@/assets/images/contact/contactHero.jpg'
+import introImage from '@/assets/images/contact/introImage.png'
 import { MapPin, Phone, Mail, Share2, Globe, Building2, HelpCircle } from 'lucide-react';
 
 export default function ContactPage() {
-  const heroImage = PlaceHolderImages.find(img => img.id === 'contact-hero');
-  const introImage = PlaceHolderImages.find(img => img.id === 'contact-intro');
+
+
   const formBg = PlaceHolderImages.find(img => img.id === 'contact-form-bg');
 
   return (
@@ -30,9 +32,9 @@ export default function ContactPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[50vh] md:h-[60vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
         <Image
-          src={heroImage?.imageUrl || ''}
+          src={heroImage || ''}
           alt="Contact Hero"
           fill
           className="object-cover"
@@ -63,7 +65,7 @@ export default function ContactPage() {
               <p>
                 Adventurer? Traveler? Explorer? If you're looking for world-class travel assistance, tour information, and reliable support, our friendly team is always ready to help you create unforgettable memories. Reach out for any comfort, convenience, and exceptional service tailored to your travel needs.
               </p>
-              
+
               <div className="pt-8">
                 <h3 className="font-headline text-2xl mb-4 text-foreground">
                   Get <span className="text-accent">In Touch</span>
@@ -74,12 +76,14 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl animate-in fade-in slide-in-from-right-8 duration-1000">
-             <Image
-              src={introImage?.imageUrl || ''}
+          <div className="relative w-full max-w-sm mx-auto overflow-hidden animate-in fade-in slide-in-from-right-8 duration-1000">
+            <Image
+              src={introImage || ''}
               alt="Couple overlooking mountain"
-              fill
-              className="object-cover"
+
+              width={400}
+              height={500}
+              className="object-cover w-full h-auto"
             />
           </div>
         </div>
@@ -90,7 +94,7 @@ export default function ContactPage() {
             <CardContent className="p-0 flex flex-col items-center text-center">
               <h4 className="font-headline text-2xl mb-6">Main Office</h4>
               <div className="mb-4">
-                 <Image src="https://picsum.photos/seed/japan-flag/32/24" width={32} height={24} alt="Japan Flag" className="rounded-sm mb-2 mx-auto" />
+                <Image src="https://picsum.photos/seed/japan-flag/32/24" width={32} height={24} alt="Japan Flag" className="rounded-sm mb-2 mx-auto" />
               </div>
               <p className="text-xs text-muted-foreground mb-4">45 Heritage Row, Galle Fort, Sri Lanka</p>
               <div className="flex flex-col gap-1">
@@ -104,7 +108,7 @@ export default function ContactPage() {
             <CardContent className="p-0 flex flex-col items-center text-center">
               <h4 className="font-headline text-2xl mb-6">Branch Of Sri Lanka</h4>
               <div className="mb-4">
-                 <Image src="https://picsum.photos/seed/sl-flag/32/24" width={32} height={24} alt="Sri Lanka Flag" className="rounded-sm mb-2 mx-auto" />
+                <Image src="https://picsum.photos/seed/sl-flag/32/24" width={32} height={24} alt="Sri Lanka Flag" className="rounded-sm mb-2 mx-auto" />
               </div>
               <p className="text-xs text-muted-foreground mb-4">Mirissa, Sri Lanka</p>
               <div className="flex flex-col gap-1">
@@ -148,7 +152,7 @@ export default function ContactPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" />
-        
+
         <div className="container relative z-10 mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Form */}

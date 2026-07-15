@@ -8,6 +8,7 @@ import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import heroImage from '@/assets/images/tours/heroImage.png'
 
 const tourItems = [
   { id: 'tour-1', slug: 'tour-one', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
@@ -25,7 +26,7 @@ const tourItems = [
 ];
 
 export default function ToursPage() {
-  const heroImage = PlaceHolderImages.find(img => img.id === 'tours-hero');
+
   
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,9 +51,9 @@ export default function ToursPage() {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[70vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
         <Image
-          src={heroImage?.imageUrl || ''}
+          src={heroImage || ''}
           alt="Tours Hero"
           fill
           className="object-cover"
