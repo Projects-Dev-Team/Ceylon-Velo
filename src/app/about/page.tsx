@@ -13,13 +13,15 @@ import accommodation from '@/assets/images/about/offer/accommodation.png';
 import transport from '@/assets/images/about/offer/transport.png';
 import expertise from '@/assets/images/about/offer/expertise.png';
 import visionBg from '@/assets/images/about/vission/visionBg.jpg';
+import visionImg from '@/assets/images/about/vission/vision.png';
+import misionImg from '@/assets/images/about/vission/mision.png';
 
 import { Users, Heart, ShieldCheck, Globe, Plane, Handshake, Mountain, MessageSquare } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 export default function AboutPage() {
-  
- 
+
+
   const offerImages = {
     tours: tours,
     accommodation: accommodation,
@@ -33,7 +35,7 @@ export default function AboutPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[70vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
         <Image
           src={heroImage || ''}
           alt="About Us Hero"
@@ -68,12 +70,13 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="relative aspect-[5/5]  overflow-hidden animate-in fade-in slide-in-from-right-8 duration-1000">
-             <Image
+          <div className="relative w-full max-w-sm mx-auto overflow-hidden animate-in fade-in slide-in-from-right-8 duration-1000">
+            <Image
               src={introImage || ''}
               alt="Ceylon Velo Introduction"
-              fill
-              className="object-cover"
+              width={400}
+              height={500}
+              className="object-cover w-full h-auto"
             />
           </div>
         </div>
@@ -90,34 +93,38 @@ export default function AboutPage() {
           />
           <div className="absolute inset-0 bg-primary/10" />
         </div>
-        
+
         <div className="container relative z-10 mx-auto px-6 text-center mb-16">
-          <h2 className="font-headline text-4xl md:text-5xl mb-4">
-            What <span className="text-accent italic">WE OFFER</span>
+          <h2 className="font-headline text-4xl md:text-5xl mb-4 text-white ">
+            What <span className="text-accent font-bold">WE OFFER</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto uppercase tracking-widest text-xs font-bold">
-            Delivering excellence in every aspect of your Sri Lankan journey.
+          <p className="text-white max-w-2xl mx-auto uppercase tracking-widest text-xs ">
+            We believe that every traveller is unique, and so should their journey be. That’s why we specialize in customized travel packages designed to cater to individual preferences, interests, and budgets. Our services include:
           </p>
         </div>
 
         <div className="container relative z-10 mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { title: 'TAILOR MADE TOURS', img: offerImages.tours, desc: 'Bespoke itineraries designed to match your unique interests and travel style.' },
-            { title: 'COMFORTABLE ACCOMMODATION', img: offerImages.accommodation, desc: 'Hand-picked luxury villas and boutique hotels that define island comfort.' },
-            { title: 'RELIABLE TRANSPORTATION', img: offerImages.transport, desc: 'Seamless travel across the island with our fleet of premium vehicles.' },
-            { title: 'LOCAL TRAVEL EXPERTISE', img: offerImages.expertise, desc: 'In-depth knowledge of the best-kept secrets and hidden gems of Sri Lanka.' },
+            { title: 'TAILOR MADE TOURS', img: offerImages.tours, desc: 'We create personalized travel experiences designed to match your interests, schedule, comfort level, and budget for unforgettable adventures.' },
+            { title: 'COMFORTABLE ACCOMMODATION', img: offerImages.accommodation, desc: 'Enjoy carefully selected hotels, villas, and stays that provide comfort, relaxation, safety, and authentic Sri Lankan hospitality throughout your journey.' },
+            { title: 'RELIABLE TRANSPORTATION', img: offerImages.transport, desc: 'Travel conveniently with professional drivers, comfortable vehicles, and smooth transportation services that ensure safe and stress-free island exploration experiences.' },
+            { title: 'LOCAL TRAVEL EXPERTISE', img: offerImages.expertise, desc: 'Our experienced local team provides valuable guidance, hidden destination recommendations, and friendly support to make every trip memorable and enjoyable.' },
           ].map((item, index) => (
-            <div key={index} className="group relative aspect-[3/5] overflow-hidden rounded-xl animate-in fade-in slide-in-from-bottom-8 duration-1000" style={{ animationDelay: `${index * 150}ms` }}>
+            <div key={index} className="group relative aspect-[3/6] overflow-hidden rounded-xl animate-in fade-in slide-in-from-bottom-8 duration-1000" style={{ animationDelay: `${index * 150}ms` }}>
               <Image
                 src={item.img || ''}
                 alt={item.title}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              {/* <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" /> */}
-              <div className="absolute inset-x-0 bottom-0 p-8 text-white">
-                <h3 className="font-headline text-2xl mb-4 leading-tight">{item.title}</h3>
-                <p className="text-xs text-white/70 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent group-hover:from-black/80 group-hover:via-black/40 group-hover:to-black/20 transition-all duration-500" />
+              {/* Title - starts at bottom, moves to top on hover */}
+              <div className="absolute inset-x-0 bottom-0 group-hover:bottom-auto group-hover:top-0 p-8 text-white z-10 transition-all duration-500">
+                <h3 className="font-headline text-2xl leading-tight">{item.title}</h3>
+              </div>
+              {/* Description - appears from bottom on hover */}
+              <div className="absolute inset-x-0 bottom-0 p-8 text-white z-10 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                <p className="text-sm text-white/90 leading-relaxed">
                   {item.desc}
                 </p>
               </div>
@@ -168,17 +175,35 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-md p-12 rounded-2xl border border-white/20 text-center animate-in fade-in slide-in-from-left-8 duration-1000">
-              <h3 className="font-headline text-3xl text-white mb-6 uppercase tracking-widest">OUR VISION</h3>
-              <p className="text-white/80 text-sm leading-relaxed italic">
-                "To become the world's most trusted luxury travel partner for exploring the authentic soul of Sri Lanka, setting the benchmark for premium island hospitality."
-              </p>
+            <div className="relative rounded-2xl border border-white/20 text-center animate-in fade-in slide-in-from-left-8 duration-1000 overflow-hidden">
+              <Image
+                src={visionImg}
+                alt="Our Vision"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+              <div className="relative z-10 p-12">
+                <h3 className="font-headline text-3xl text-white mb-6 uppercase tracking-widest">OUR VISION</h3>
+                <p className="text-white/80 text-sm leading-relaxed italic">
+                  &quot;To become the world&apos;s most trusted luxury travel partner for exploring the authentic soul of Sri Lanka, setting the benchmark for premium island hospitality.&quot;
+                </p>
+              </div>
             </div>
-            <div className="bg-white/10 backdrop-blur-md p-12 rounded-2xl border border-white/20 text-center animate-in fade-in slide-in-from-right-8 duration-1000">
-              <h3 className="font-headline text-3xl text-white mb-6 uppercase tracking-widest">OUR MISSION</h3>
-              <p className="text-white/80 text-sm leading-relaxed italic">
-                "Our mission is to provide exceptional, personalized travel services that showcase the breathtaking destinations and cultural heritage of our beautiful nation."
-              </p>
+            <div className="relative rounded-2xl border border-white/20 text-center animate-in fade-in slide-in-from-right-8 duration-1000 overflow-hidden">
+              <Image
+                src={misionImg}
+                alt="Our Mission"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+              <div className="relative z-10 p-12">
+                <h3 className="font-headline text-3xl text-white mb-6 uppercase tracking-widest">OUR MISSION</h3>
+                <p className="text-white/80 text-sm leading-relaxed italic">
+                  &quot;Our mission is to provide exceptional, personalized travel services that showcase the breathtaking destinations and cultural heritage of our beautiful nation.&quot;
+                </p>
+              </div>
             </div>
           </div>
         </div>
