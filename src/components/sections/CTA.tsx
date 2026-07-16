@@ -17,6 +17,8 @@ export function CTA() {
         fill
         className="object-cover"
         data-ai-hint="misty mountain"
+        sizes="100vw"
+        quality={100}
       />
       <div className="absolute inset-0 bg-black/50" />
       

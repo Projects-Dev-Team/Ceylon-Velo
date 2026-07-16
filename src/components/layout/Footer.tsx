@@ -18,6 +18,8 @@ export function Footer() {
           fill
           className="object-cover"
           priority
+          sizes="100vw"
+          quality={100}
         />
       </div>
 
