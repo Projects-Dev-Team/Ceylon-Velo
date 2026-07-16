@@ -25,6 +25,25 @@ export default function CinnamonBeyPage() {
   const menuCrab = PlaceHolderImages.find(img => img.id === 'menu-crab');
   const mapImg = PlaceHolderImages.find(img => img.id === 'res-map');
 
+  const menuItems = {
+    'sri-lankan': [
+      { name: 'Ceylon Lagoon Crab', price: '$42', desc: 'Freshly caught crab simmered in a rich, spicy coconut milk gravy with local spices.' },
+      { name: 'Traditional Rice & Curry', price: '$28', desc: 'An assortment of 5 seasonal curries served with heirloom red rice and crispy papadums.' },
+    ],
+    'seafood': [
+      { name: 'Grilled Jumbo Prawns', price: '$38', desc: 'Marinated in garlic butter and served with a zesty lemon-herb reduction and grilled asparagus.' },
+      { name: 'Seafood Platter for Two', price: '$75', desc: 'A selection of lobster, calamari, mussels, and fish, grilled to perfection over coconut husks.' },
+    ],
+    'italian': [
+      { name: 'Truffle Porcini Risotto', price: '$32', desc: 'Creamy Arborio rice with wild mushrooms, finished with white truffle oil and aged parmesan.' },
+      { name: 'Homemade Lobster Ravioli', price: '$36', desc: 'Hand-stretched pasta filled with fresh lobster meat in a delicate saffron cream sauce.' },
+    ],
+    'asian': [
+      { name: 'Thai Green Curry', price: '$26', desc: 'Authentic spicy green curry with tender chicken, pea aubergine, and aromatic basil leaves.' },
+      { name: 'Dim Sum Selection', price: '$24', desc: 'A curated basket of steamed prawn har gow, chicken sui mai, and vegetable dumplings.' },
+    ]
+  };
+
   return (
     <main className="min-h-screen bg-white">
       <Header />
@@ -144,29 +163,31 @@ export default function CinnamonBeyPage() {
                   ))}
                 </TabsList>
                 
-                <TabsContent value="sri-lankan" className="mt-0">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                    {[1, 2].map((i) => (
-                      <Card key={i} className="border-none shadow-sm bg-secondary/10 rounded-xl overflow-hidden group hover:shadow-xl transition-all duration-500">
-                        <CardContent className="p-0 flex items-center gap-6">
-                           <div className="relative w-32 h-32 shrink-0">
-                              <Image src={menuCrab?.imageUrl || ''} alt="Menu Item" fill className="object-cover p-4" />
-                           </div>
-                           <div className="text-left py-6 pr-8 w-full">
-                              <div className="flex justify-between items-start mb-2">
-                                <h4 className="font-headline text-xl text-primary">Ceylon Lagoon Crab</h4>
-                                <span className="text-accent font-bold">$42</span>
-                              </div>
-                              <p className="text-xs text-muted-foreground mb-6 line-clamp-2">Freshly caught crab simmered in a rich, spicy coconut milk gravy.</p>
-                              <Button variant="outline" className="h-8 rounded-full text-[9px] font-bold tracking-widest border-accent text-accent hover:bg-accent hover:text-white uppercase transition-colors">
-                                Order Online
-                              </Button>
-                           </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </TabsContent>
+                {Object.entries(menuItems).map(([category, items]) => (
+                  <TabsContent key={category} value={category} className="mt-0 animate-in fade-in duration-500">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                      {items.map((item, i) => (
+                        <Card key={i} className="border-none shadow-sm bg-secondary/10 rounded-xl overflow-hidden group hover:shadow-xl transition-all duration-500">
+                          <CardContent className="p-0 flex items-center gap-6">
+                             <div className="relative w-32 h-32 shrink-0">
+                                <Image src={menuCrab?.imageUrl || ''} alt={item.name} fill className="object-cover p-4" />
+                             </div>
+                             <div className="text-left py-6 pr-8 w-full">
+                                <div className="flex justify-between items-start mb-2">
+                                  <h4 className="font-headline text-xl text-primary">{item.name}</h4>
+                                  <span className="text-accent font-bold">{item.price}</span>
+                                </div>
+                                <p className="text-xs text-muted-foreground mb-6 line-clamp-2">{item.desc}</p>
+                                <Button variant="outline" className="h-8 rounded-full text-[9px] font-bold tracking-widest border-accent text-accent hover:bg-accent hover:text-white uppercase transition-colors">
+                                  Order Online
+                                </Button>
+                             </div>
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  </TabsContent>
+                ))}
             </Tabs>
         </div>
       </section>

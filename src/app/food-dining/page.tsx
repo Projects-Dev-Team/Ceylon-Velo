@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
@@ -24,6 +24,7 @@ const diningList = [
     slug: 'cinnamon-bey',
     title: 'Cinnamon Bey',
     category: 'Boutique',
+    location: 'galle',
     desc: 'Enjoy a delightful dining experience with expertly prepared dishes, welcoming service, and a comfortable atmosphere perfect for family meals, gatherings, and special occasions.',
   },
   {
@@ -31,6 +32,7 @@ const diningList = [
     slug: '#',
     title: 'Villey Restaurant',
     category: 'Luxury',
+    location: 'mirissa',
     desc: 'Relax in a stylish, breezy setting reflecting sea surges and warm sand motifs, creating a serene environment while adding vibrancy for a casual and fun vibe.',
   },
   {
@@ -38,6 +40,7 @@ const diningList = [
     slug: '#',
     title: 'Hilton Hotel',
     category: 'Luxury',
+    location: 'colombo',
     desc: 'Discover authentic local flavors and traditional recipes that showcase the unique culinary heritage and culture of the destination.',
   },
   {
@@ -45,6 +48,7 @@ const diningList = [
     slug: 'cinnamon-bey',
     title: 'Amber Room',
     category: 'Boutique',
+    location: 'galle',
     desc: 'An intimate dining experience focusing on the spice routes of old Ceylon.',
   },
   {
@@ -52,6 +56,7 @@ const diningList = [
     slug: '#',
     title: 'Azure Terrace',
     category: 'Cafe',
+    location: 'mirissa',
     desc: 'Fresh sea breezes and lighter fare make this the perfect afternoon retreat.',
   },
   {
@@ -59,6 +64,7 @@ const diningList = [
     slug: '#',
     title: 'The Spice Cellar',
     category: 'Traditional',
+    location: 'kandy',
     desc: 'Dive deep into the roots of Sri Lankan curry and rice in a heritage setting.',
   },
   {
@@ -66,20 +72,32 @@ const diningList = [
     slug: 'cinnamon-bey',
     title: 'Golden Sands',
     category: 'Boutique',
+    location: 'colombo',
     desc: 'Beachfront luxury dining with a focus on sustainable seafood.',
   },
 ];
 
 export default function FoodDiningPage() {
-
-
-  // Pagination State
+  // Filter and Pagination State
   const [currentPage, setCurrentPage] = useState(1);
+  const [locationFilter, setLocationFilter] = useState('all');
+  const [categoryFilter, setCategoryFilter] = useState('all');
+  
   const itemsPerPage = 6;
-  const totalPages = Math.ceil(diningList.length / itemsPerPage);
+
+  // Filter Logic
+  const filteredDining = useMemo(() => {
+    return diningList.filter(item => {
+      const matchLocation = locationFilter === 'all' || item.location === locationFilter;
+      const matchCategory = categoryFilter === 'all' || item.category.toLowerCase() === categoryFilter;
+      return matchLocation && matchCategory;
+    });
+  }, [locationFilter, categoryFilter]);
+
+  const totalPages = Math.ceil(filteredDining.length / itemsPerPage);
   
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const displayedDining = diningList.slice(startIndex, startIndex + itemsPerPage);
+  const displayedDining = filteredDining.slice(startIndex, startIndex + itemsPerPage);
 
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -89,6 +107,16 @@ export default function FoodDiningPage() {
         section.scrollIntoView({ behavior: 'smooth' });
       }
     }
+  };
+
+  const handleLocationChange = (val: string) => {
+    setLocationFilter(val);
+    setCurrentPage(1);
+  };
+
+  const handleCategoryChange = (val: string) => {
+    setCategoryFilter(val);
+    setCurrentPage(1);
   };
 
   return (
@@ -107,6 +135,11 @@ export default function FoodDiningPage() {
           quality={100}
         />
         <div className="absolute inset-0 bg-black/20" />
+        <div className="relative z-10 text-center text-white px-6">
+          <h1 className="font-headline text-4xl md:text-7xl mb-4 tracking-tight animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
+            Food & Dining
+          </h1>
+        </div>
       </section>
 
       {/* Breadcrumbs & Title Section */}
@@ -130,7 +163,7 @@ export default function FoodDiningPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 max-w-2xl">
           <div className="space-y-2">
             <label className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">Select A Location</label>
-            <Select>
+            <Select value={locationFilter} onValueChange={handleLocationChange}>
               <SelectTrigger className="bg-secondary/30 border-none h-12 rounded-sm focus:ring-accent">
                 <SelectValue placeholder="All" />
               </SelectTrigger>
@@ -145,7 +178,7 @@ export default function FoodDiningPage() {
           </div>
           <div className="space-y-2">
             <label className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">Select A Category</label>
-            <Select>
+            <Select value={categoryFilter} onValueChange={handleCategoryChange}>
               <SelectTrigger className="bg-secondary/30 border-none h-12 rounded-sm focus:ring-accent">
                 <SelectValue placeholder="All" />
               </SelectTrigger>
@@ -161,74 +194,87 @@ export default function FoodDiningPage() {
         </div>
 
         {/* Listings Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 mb-20 min-h-[600px]">
-          {displayedDining.map((item, index) => {
-            const imgData = PlaceHolderImages.find(img => img.id === item.id);
-            return (
-              <Link 
-                href={item.slug === 'cinnamon-bey' ? `/food-dining/${item.slug}` : '#'}
-                key={`${item.title}-${index}`} 
-                className="group flex flex-col bg-white rounded-2xl shadow-sm border border-black/5 overflow-hidden transition-all duration-500 hover:shadow-xl animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
-                style={{ animationDelay: `${(index % 3) * 200}ms` }}
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={imgData?.imageUrl || ''}
-                    alt={item.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
-                <div className="p-8 flex flex-col items-start flex-grow">
-                  <h3 className="font-headline text-2xl text-foreground mb-4 tracking-wide group-hover:text-accent transition-colors">
-                    {item.title}
-                  </h3>
-                  <span className="text-[10px] font-bold tracking-[0.2em] text-accent uppercase mb-4 py-1 px-3 bg-accent/5 rounded-full">
-                    {item.category}
-                  </span>
-                  <p className="text-muted-foreground text-xs leading-relaxed font-light mb-0">
-                    {item.desc}
-                  </p>
-                </div>
-              </Link>
-            );
-          })}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 mb-20 min-h-[400px]">
+          {displayedDining.length > 0 ? (
+            displayedDining.map((item, index) => {
+              const imgData = PlaceHolderImages.find(img => img.id === item.id);
+              return (
+                <Link 
+                  href={item.slug === 'cinnamon-bey' ? `/food-dining/${item.slug}` : '#'}
+                  key={`${item.title}-${index}`} 
+                  className="group flex flex-col bg-white rounded-2xl shadow-sm border border-black/5 overflow-hidden transition-all duration-500 hover:shadow-xl animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
+                  style={{ animationDelay: `${(index % 3) * 200}ms` }}
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={imgData?.imageUrl || ''}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="p-8 flex flex-col items-start flex-grow">
+                    <h3 className="font-headline text-2xl text-foreground mb-4 tracking-wide group-hover:text-accent transition-colors">
+                      {item.title}
+                    </h3>
+                    <div className="flex gap-2 mb-4">
+                      <span className="text-[10px] font-bold tracking-[0.2em] text-accent uppercase py-1 px-3 bg-accent/5 rounded-full">
+                        {item.category}
+                      </span>
+                      <span className="text-[10px] font-bold tracking-[0.2em] text-primary uppercase py-1 px-3 bg-primary/5 rounded-full">
+                        {item.location}
+                      </span>
+                    </div>
+                    <p className="text-muted-foreground text-xs leading-relaxed font-light mb-0">
+                      {item.desc}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })
+          ) : (
+            <div className="col-span-full py-20 text-center">
+              <p className="text-muted-foreground italic">No dining experiences found matching your criteria.</p>
+            </div>
+          )}
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-center items-center gap-4 py-12 animate-in fade-in duration-700">
-          <Button 
-            variant="outline" 
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90 disabled:opacity-50"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </Button>
-          
-          {[...Array(totalPages)].map((_, i) => (
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-4 py-12 animate-in fade-in duration-700">
             <Button 
-              key={i + 1}
-              onClick={() => handlePageChange(i + 1)}
-              className={`w-10 h-10 p-0 rounded-md font-bold transition-all ${
-                currentPage === i + 1 
-                ? 'bg-[#B68D40] text-white hover:bg-[#B68D40]/90' 
-                : 'bg-transparent text-foreground hover:bg-secondary'
-              }`}
+              variant="outline" 
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90 disabled:opacity-50"
             >
-              {i + 1}
+              <ChevronLeft className="w-4 h-4" />
             </Button>
-          ))}
-          
-          <Button 
-            variant="outline" 
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90 disabled:opacity-50"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </Button>
-        </div>
+            
+            {[...Array(totalPages)].map((_, i) => (
+              <Button 
+                key={i + 1}
+                onClick={() => handlePageChange(i + 1)}
+                className={`w-10 h-10 p-0 rounded-md font-bold transition-all ${
+                  currentPage === i + 1 
+                  ? 'bg-[#B68D40] text-white hover:bg-[#B68D40]/90' 
+                  : 'bg-transparent text-foreground hover:bg-secondary'
+                }`}
+              >
+                {i + 1}
+              </Button>
+            ))}
+            
+            <Button 
+              variant="outline" 
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="w-10 h-10 p-0 rounded-md border-border bg-[#B68D40] text-white hover:bg-[#B68D40]/90 disabled:opacity-50"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+          </div>
+        )}
       </section>
 
       <Footer />

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
 import heroImage from '@/assets/images/home/hero1.jpg';
@@ -39,14 +40,16 @@ export function Hero() {
         <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-600 fill-mode-both">
           <Button 
             className="rounded-none bg-accent text-white hover:bg-accent/90 px-8 h-14 text-sm font-bold tracking-widest transition-transform hover:scale-105 shadow-2xl"
+            asChild
           >
-            EXPLORE SRI LANKA
+            <Link href="/tours">EXPLORE SRI LANKA</Link>
           </Button>
           <Button 
             variant="outline"
             className="rounded-none border-white/40 text-white bg-white/10 backdrop-blur-md hover:bg-white/20 px-8 h-14 text-sm font-bold tracking-widest transition-all duration-300 hover:scale-105"
+            asChild
           >
-            VIEW VILLAS
+            <Link href="/villas">VIEW VILLAS</Link>
           </Button>
         </div>
       </div>
