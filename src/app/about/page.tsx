@@ -6,7 +6,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import heroImage from '@/assets/images/about/hero.jpg';
-import introImage from '@/assets/images/about/introImage.png';
+import introImage from '@/assets/images/about/aboutIntroImage1.png';
 import offerBg from '@/assets/images/about/offer/offerBg.png';
 import tours from '@/assets/images/about/offer/tour.png';
 import accommodation from '@/assets/images/about/offer/accommodation.png';
@@ -35,7 +35,7 @@ export default function AboutPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[100vh] w-full flex items-center justify-center overflow-hidden">
         <Image
           src={heroImage || ''}
           alt="About Us Hero"

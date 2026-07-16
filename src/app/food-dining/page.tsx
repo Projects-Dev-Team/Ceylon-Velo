@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-import heroImage from '@/assets/images/food/heroImage.png'
+import heroImage from '@/assets/images/food/foodHeroImage4.jpg'
 
 const diningList = [
   {
@@ -96,7 +96,7 @@ export default function FoodDiningPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[100vh] w-full flex items-center justify-center overflow-hidden">
         <Image
           src={heroImage || ''}
           alt="Food and Dining Hero"

@@ -18,7 +18,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import heroImage from '@/assets/images/contact/contactHero.jpg'
+import heroImage from '@/assets/images/contact/contactHero1.jpg'
 import introImage from '@/assets/images/contact/introImage.png'
 import { MapPin, Phone, Mail, Share2, Globe, Building2, HelpCircle } from 'lucide-react';
 
@@ -32,7 +32,7 @@ export default function ContactPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[100vh] w-full flex items-center justify-center overflow-hidden">
         <Image
           src={heroImage || ''}
           alt="Contact Hero"

@@ -15,7 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import heroImage from '@/assets/images/villa/heroImage.png'
+import heroImage from '@/assets/images/villa/vilaHeroImage1.jpg'
 
 const villaList = [
   {
@@ -131,7 +131,7 @@ export default function VillasPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[100vh] w-full flex items-center justify-center overflow-hidden">
         <Image
           src={heroImage || ''}
           alt="Villas Hero"
@@ -139,7 +139,7 @@ export default function VillasPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white px-6">
           <h1 className="font-headline text-4xl md:text-7xl uppercase mb-4 tracking-tight animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
             Your Haven Away

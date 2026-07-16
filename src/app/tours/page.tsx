@@ -8,7 +8,7 @@ import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import heroImage from '@/assets/images/tours/heroImage.png'
+import heroImage from '@/assets/images/tours/tourHeroImage1.jpg'
 
 const tourItems = [
   { id: 'tour-1', slug: 'tour-one', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
@@ -51,7 +51,7 @@ export default function ToursPage() {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[100vh] w-full flex items-center justify-center overflow-hidden">
         <Image
           src={heroImage || ''}
           alt="Tours Hero"
