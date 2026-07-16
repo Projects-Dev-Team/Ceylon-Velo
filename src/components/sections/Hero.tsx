@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
-import heroImage from '@/assets/images/home/hero.png';
+import heroImage from '@/assets/images/home/hero1.jpg';
 
 export function Hero() {
 
@@ -29,8 +29,8 @@ export function Hero() {
         <span className="text-white/80 font-medium tracking-[0.3em] uppercase text-xs mb-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 fill-mode-both">
           Experience Sri Lanka
         </span>
-        <h1 className="font-headline text-4xl md:text-7xl text-white max-w-3xl leading-tight mb-6 italic animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200 fill-mode-both">
-          Experience Sri Lanka in Comfort
+        <h1 className="font-headline text-4xl md:text-7xl text-white max-w-3xl leading-tight mb-6  animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200 fill-mode-both">
+          One Island. Endless Experiences
         </h1>
         <p className="text-white/90 text-lg md:text-xl max-w-lg mb-10 font-light animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-400 fill-mode-both">
           Encounter leopards, elephants and jungle silence in our hand-picked collection of sanctuaries.
