@@ -32,13 +32,15 @@ export default function ContactPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[100vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[60vh] md:h-[100vh] w-full flex items-center justify-center overflow-hidden">
         <Image
           src={heroImage || ''}
           alt="Contact Hero"
           fill
           className="object-cover"
           priority
+          sizes="100vw"
+          quality={100}
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white px-6">
@@ -150,6 +152,8 @@ export default function ContactPage() {
           alt="Elephants at sunset"
           fill
           className="object-cover"
+          sizes="100vw"
+          quality={100}
         />
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" />
 

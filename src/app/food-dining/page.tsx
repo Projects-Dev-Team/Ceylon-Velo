@@ -96,13 +96,15 @@ export default function FoodDiningPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-[100vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[60vh] md:h-[100vh] w-full flex items-center justify-center overflow-hidden">
         <Image
           src={heroImage || ''}
           alt="Food and Dining Hero"
           fill
           className="object-cover"
           priority
+          sizes="100vw"
+          quality={100}
         />
         <div className="absolute inset-0 bg-black/20" />
       </section>
