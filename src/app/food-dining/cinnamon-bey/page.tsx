@@ -30,13 +30,15 @@ export default function CinnamonBeyPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+      <section className="relative h-[60vh] md:h-screen w-full flex flex-col items-center justify-center overflow-hidden">
         <Image
           src={heroImage?.imageUrl || ''}
           alt="Cinnamon Bey Hero"
           fill
           className="object-cover"
           priority
+          sizes="100vw"
+          quality={100}
         />
         <div className="absolute inset-0 bg-black/40" />
         
@@ -171,7 +173,7 @@ export default function CinnamonBeyPage() {
 
       {/* The Guest Experience */}
       <section className="relative py-32 overflow-hidden text-white text-center">
-        <Image src={guestExpBg?.imageUrl || ''} alt="Guest Experience Bg" fill className="object-cover" />
+        <Image src={guestExpBg?.imageUrl || ''} alt="Guest Experience Bg" fill className="object-cover" sizes="100vw" quality={100} />
         <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
         
         <div className="container relative z-10 mx-auto px-6">

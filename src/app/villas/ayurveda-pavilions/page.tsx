@@ -30,6 +30,8 @@ export default function VillaDetailPage() {
           fill
           className="object-cover"
           priority
+          sizes="100vw"
+          quality={100}
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white px-6">
