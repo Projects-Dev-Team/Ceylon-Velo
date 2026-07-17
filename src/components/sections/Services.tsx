@@ -3,6 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import serviceImage from '@/assets/service.png';
@@ -66,20 +68,32 @@ export function Services() {
       </div>
 
       <div className="container relative z-10 mx-auto px-6 md:px-12">
-        <div className="text-center max-w-2xl mx-auto mb-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-          <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="text-center max-w-2xl mx-auto mb-12"
+        >
+          <motion.span variants={fadeUpVariant} className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
             CEYLON VELO EXPERIENCES
-          </span>
-          <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-4">
+          </motion.span>
+          <motion.h2 variants={fadeUpVariant} className="font-headline text-4xl md:text-5xl text-foreground mb-4">
             Our Services
-          </h2>
-          <p className="text-muted-foreground tracking-widest uppercase text-[10px] font-bold">
+          </motion.h2>
+          <motion.p variants={fadeUpVariant} className="text-muted-foreground tracking-widest uppercase text-[10px] font-bold">
             Three pillars of an unforgettable island journey.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Carousel implementation */}
-        <div className="max-w-5xl mx-auto px-12 relative">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={fadeUpVariant}
+          className="max-w-5xl mx-auto px-12 relative"
+        >
           <Carousel
             opts={{
               align: "start",
@@ -133,7 +147,7 @@ export function Services() {
             <CarouselPrevious className="left-0 -translate-x-full bg-white/10 border-white/20 text-foreground hover:bg-accent hover:text-white" />
             <CarouselNext className="right-0 translate-x-full bg-white/10 border-white/20 text-foreground hover:bg-accent hover:text-white" />
           </Carousel>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
