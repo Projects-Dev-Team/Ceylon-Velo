@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { fadeUpVariant, staggerContainer, slideInLeftVariant, scaleUpVariant } from '@/lib/animations';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import sriLanka from '@/assets/sri.png';
 
@@ -13,7 +15,13 @@ export function About() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left: Image with Badge */}
-          <div className="relative max-w-sm mx-auto lg:mx-0 animate-in fade-in slide-in-from-left-10 duration-1000 fill-mode-both">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={slideInLeftVariant}
+            className="relative max-w-sm mx-auto lg:mx-0"
+          >
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden group">
               <Image
                 src={sriLanka || aboutImage?.imageUrl || ''}
@@ -24,25 +32,34 @@ export function About() {
               />
             </div>
             {/* Circular Badge */}
-            <div className="absolute -bottom-6 -right-6 w-28 h-28 md:w-36 md:h-36 bg-primary text-white rounded-full flex flex-col items-center justify-center p-4 text-center border-4 border-white shadow-lg animate-in zoom-in-50 duration-700 delay-500 fill-mode-both">
+            <motion.div 
+              variants={scaleUpVariant}
+              className="absolute -bottom-6 -right-6 w-28 h-28 md:w-36 md:h-36 bg-primary text-white rounded-full flex flex-col items-center justify-center p-4 text-center border-4 border-white shadow-lg"
+            >
               <span className="font-headline text-xl md:text-2xl font-bold">12+</span>
               <span className="text-[7px] md:text-[9px] tracking-widest uppercase font-medium">Years Curating</span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right: Content */}
-          <div className="flex flex-col justify-center animate-in fade-in slide-in-from-right-10 duration-1000 fill-mode-both">
-            <span className="text-accent font-bold tracking-[0.2em] uppercase text-[10px] mb-4 animate-in fade-in slide-in-from-bottom-2 duration-700 delay-300 fill-mode-both">
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="flex flex-col justify-center"
+          >
+            <motion.span variants={fadeUpVariant} className="text-accent font-bold tracking-[0.2em] uppercase text-[10px] mb-4">
               ABOUT CEYLON VELO
-            </span>
-            <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-foreground mb-8 leading-tight animate-in fade-in slide-in-from-bottom-4 duration-700 delay-400 fill-mode-both">
+            </motion.span>
+            <motion.h2 variants={fadeUpVariant} className="font-headline text-4xl md:text-5xl lg:text-6xl text-foreground mb-8 leading-tight">
               The Home of Sri Lankan Beauty
-            </h2>
-            <p className="text-muted-foreground text-lg mb-12 leading-relaxed max-w-xl animate-in fade-in slide-in-from-bottom-6 duration-700 delay-500 fill-mode-both">
+            </motion.h2>
+            <motion.p variants={fadeUpVariant} className="text-muted-foreground text-lg mb-12 leading-relaxed max-w-xl">
               Discover paradise where pristine beaches, ancient history, vibrant culture, and wild adventures meet. Our expert curators design every moment of your journey with meticulous attention to detail.
-            </p>
+            </motion.p>
 
-            <div className="grid grid-cols-3 gap-8 pt-8 border-t border-border animate-in fade-in slide-in-from-bottom-8 duration-700 delay-700 fill-mode-both">
+            <motion.div variants={fadeUpVariant} className="grid grid-cols-3 gap-8 pt-8 border-t border-border">
               <div className="flex flex-col">
                 <span className="font-headline text-3xl md:text-4xl font-bold text-primary">240+</span>
                 <span className="text-[10px] tracking-wider uppercase text-muted-foreground mt-2 font-semibold">
@@ -61,8 +78,8 @@ export function About() {
                   Island Regions
                 </span>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
