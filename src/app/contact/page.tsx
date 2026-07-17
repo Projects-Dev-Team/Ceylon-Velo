@@ -3,6 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { fadeUpVariant, staggerContainer, slideInLeftVariant, slideInRightVariant } from '@/lib/animations';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
@@ -20,6 +22,8 @@ import {
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import heroImage from '@/assets/images/contact/contactHero1.jpg'
 import introImage from '@/assets/images/contact/introImage.png'
+import flagOfJapan from '@/assets/images/contact/flagOfJapan.png'
+import flagOfSriLanka from '@/assets/images/contact/flagOfSrilanka.png'
 import { MapPin, Phone, Mail, Share2, Globe, Building2, HelpCircle } from 'lucide-react';
 
 export default function ContactPage() {
@@ -44,9 +48,12 @@ export default function ContactPage() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-4xl md:text-7xl mb-4 tracking-wider animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <motion.h1 
+            initial="hidden" animate="visible" variants={fadeUpVariant}
+            className="font-headline text-4xl md:text-7xl mb-4 tracking-wider"
+          >
             Connect with Heartfelt Hospitality
-          </h1>
+          </motion.h1>
         </div>
       </section>
 
@@ -58,8 +65,11 @@ export default function ContactPage() {
           <span className="text-foreground">CONTACT</span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-24">
-          <div className="animate-in fade-in slide-in-from-left-8 duration-1000">
+        <motion.div 
+          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-24"
+        >
+          <motion.div variants={slideInLeftVariant}>
             <h2 className="font-headline text-3xl md:text-4xl mb-8 leading-tight text-foreground">
               Have questions? We're ready to answer your call!
             </h2>
@@ -77,8 +87,8 @@ export default function ContactPage() {
                 </p>
               </div>
             </div>
-          </div>
-          <div className="relative w-full max-w-sm mx-auto overflow-hidden animate-in fade-in slide-in-from-right-8 duration-1000">
+          </motion.div>
+          <motion.div variants={slideInRightVariant} className="relative w-full max-w-sm mx-auto overflow-hidden">
             <Image
               src={introImage || ''}
               alt="Couple overlooking mountain"
@@ -87,62 +97,83 @@ export default function ContactPage() {
               height={500}
               className="object-cover w-full h-auto"
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Office Locations */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
-          <Card className="bg-secondary/20 border-none rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
-            <CardContent className="p-0 flex flex-col items-center text-center">
-              <h4 className="font-headline text-2xl mb-6">Main Office</h4>
-              <div className="mb-4">
-                <Image src="https://picsum.photos/seed/japan-flag/32/24" width={32} height={24} alt="Japan Flag" className="rounded-sm mb-2 mx-auto" />
-              </div>
-              <p className="text-xs text-muted-foreground mb-4">45 Heritage Row, Galle Fort, Sri Lanka</p>
-              <div className="flex flex-col gap-1">
-                <span className="font-bold text-sm">Galle Office Team</span>
-                <span className="text-accent font-bold text-sm">+94 77 123 4567</span>
-              </div>
-            </CardContent>
-          </Card>
+        <motion.div 
+          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24"
+        >
+          <motion.div variants={fadeUpVariant}>
+            <Card className="card-bg border-none rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow h-full">
+              <CardContent className="p-0 flex flex-col items-center text-center">
+                <h4 className="font-headline text-2xl mb-6">Main Office</h4>
+                <p className="text-xs text-muted-foreground mb-4">1-2-3 Shibuya, Shibuya-ku, Tokyo 150-0002, Japan</p>
+                 <div className="mb-4">
+                  <Image src={flagOfJapan} width={70} height={44} alt="Japan Flag" className="rounded-sm mb-2 mx-auto" />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="font-bold text-sm">Dulaj Mahavithana</span>
+                  <span className="text-accent font-bold text-sm">+81 70-4587-9214</span>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
 
-          <Card className="bg-secondary/20 border-none rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
-            <CardContent className="p-0 flex flex-col items-center text-center">
-              <h4 className="font-headline text-2xl mb-6">Branch Of Sri Lanka</h4>
-              <div className="mb-4">
-                <Image src="https://picsum.photos/seed/sl-flag/32/24" width={32} height={24} alt="Sri Lanka Flag" className="rounded-sm mb-2 mx-auto" />
-              </div>
-              <p className="text-xs text-muted-foreground mb-4">Mirissa, Sri Lanka</p>
-              <div className="flex flex-col gap-1">
-                <span className="font-bold text-sm">Island Support Team</span>
-                <span className="text-accent font-bold text-sm">+94 77 987 6543</span>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+          <motion.div variants={fadeUpVariant}>
+            <Card className="card-bg border-none rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow h-full">
+              <CardContent className="p-0 flex flex-col items-center text-center">
+                <h4 className="font-headline text-2xl mb-6">Branch Of Sri Lanka</h4>
+                <div className="mb-4">
+                  <Image src={flagOfSriLanka} width={70} height={44} alt="Sri Lanka Flag" className="rounded-sm mb-2 mx-auto" />
+                </div>
+                <p className="text-xs text-muted-foreground mb-4">Mirissa, Sri Lanka</p>
+                <div className="flex flex-col gap-1">
+                  <span className="font-bold text-sm">Island Support Team</span>
+                  <span className="text-accent font-bold text-sm">+94 77 987 6543</span>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* How We Can Help */}
-      <section className="py-24 bg-background border-y border-border/50">
-        <div className="container mx-auto px-6 text-center mb-16">
-          <h2 className="font-headline text-3xl md:text-5xl mb-12">
+      <section className="py-24 bg-white">
+        <motion.div 
+          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+          className="container mx-auto px-6 text-center mb-16"
+        >
+          <motion.h2 variants={fadeUpVariant} className="font-headline text-3xl md:text-5xl mb-6">
             How We <span className="text-accent">Can Help</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: 'Tour Planning Assistance', desc: 'Crafting bespoke, personalized travel itineraries that match your interests, accommodation, and transport needs for the best experience.', icon: Globe },
-              { title: 'Hotel & Accommodation Support', desc: 'Expert help in finding hand-picked luxury villas and boutique hotels that suit your travel needs and preferred level of comfort.', icon: Building2 },
-              { title: 'Transportation Arrangements', desc: 'Seamless travel across the island with our fleet of premium vehicles and professional chauffeurs for your convenience.', icon: MapPin },
-              { title: 'Travel Guidance & Recommendations', desc: 'Expert local knowledge on the best-kept secrets, cultural attractions, and authentic Sri Lankan experiences.', icon: HelpCircle },
-              { title: 'Customer Support Services', desc: 'Dedicated 24/7 support ensuring every detail of your journey is perfect and stress-free from start to finish.', icon: Phone },
-            ].map((item, index) => (
-              <Card key={index} className="bg-white border-none shadow-sm rounded-xl p-8 hover:bg-secondary/10 transition-colors duration-300 flex flex-col items-start text-left">
-                <h4 className="font-headline text-xl mb-4 text-primary leading-tight">{item.title}</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
-              </Card>
-            ))}
+          </motion.h2>
+          
+          {/* Center Pink Dash */}
+          <motion.div variants={fadeUpVariant} className="w-6 h-[2px] bg-[#E84E89] mx-auto mb-16"></motion.div>
+
+          <div className="relative max-w-5xl mx-auto">
+            {/* Center Pink Circle */}
+            <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-[2px] border-[#E84E89] bg-transparent"></div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+              {[
+                { title: 'Tour Planning Assistance', desc: 'We Help You Organize Personalized Travel Plans With Destinations, Activities, Accommodations, And Transportation Tailored To Your Preferences.' },
+                { title: 'Hotel & Accommodation Support', desc: 'Our Team Assists You In Finding Comfortable Accommodations That Match Your Budget, Travel Style, And Desired Travel Experience.' },
+                { title: 'Transportation Arrangements', desc: 'We Provide Reliable Transportation Solutions With Comfortable Vehicles And Professional Drivers For Smooth And Stress-Free Travel Experiences.' },
+                { title: 'Travel Guidance & Recommendations', desc: 'Get Expert Local Recommendations, Destination Insights, And Helpful Travel Advice To Explore Sri Lanka With Confidence And Convenience.' },
+                { title: 'Customer Support Services', desc: 'Our Friendly Support Team Is Always Available To Answer Questions, Assist Bookings, And Ensure A Memorable Travel Journey.' },
+              ].map((item, index) => (
+                <motion.div key={index} variants={fadeUpVariant}>
+                  <Card className="card-bg border-0 border-l-[8px] border-solid border-[#E99A3D] shadow-md rounded-xl p-8 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 ease-in-out flex flex-col items-start text-left cursor-pointer h-full">
+                    <h4 className="font-headline text-xl font-bold mb-6 text-foreground">{item.title}</h4>
+                    <p className="text-sm font-medium text-foreground/80 leading-relaxed">{item.desc}</p>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Contact Form Section */}
@@ -158,9 +189,12 @@ export default function ContactPage() {
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" />
 
         <div className="container relative z-10 mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div 
+            variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+          >
             {/* Form */}
-            <div className="bg-black/20 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/10 shadow-2xl animate-in fade-in slide-in-from-left-8 duration-1000">
+            <motion.div variants={slideInLeftVariant} className="bg-black/20 backdrop-blur-md p-8 md:p-12 rounded-2xl border border-white/10 shadow-2xl">
               <form className="space-y-6">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -209,10 +243,10 @@ export default function ContactPage() {
                   SUBMIT
                 </Button>
               </form>
-            </div>
+            </motion.div>
 
             {/* Contact Info */}
-            <div className="text-white animate-in fade-in slide-in-from-right-8 duration-1000">
+            <motion.div variants={slideInRightVariant} className="text-white">
               <h2 className="font-headline text-4xl md:text-5xl mb-12">Connect With Us Easily</h2>
               <div className="space-y-12">
                 {[
@@ -232,17 +266,20 @@ export default function ContactPage() {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Why Contact Section */}
       <section className="py-24 bg-white">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="font-headline text-3xl md:text-4xl mb-16">
+        <motion.div 
+          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+          className="container mx-auto px-6 text-center"
+        >
+          <motion.h2 variants={fadeUpVariant} className="font-headline text-3xl md:text-4xl mb-16">
             Why Contact <span className="text-accent italic font-brand text-5xl">Ceylon Velo</span>
-          </h2>
+          </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { title: 'Personalized Travel Assistance', desc: 'Crafting unique journeys that reflect your personal travel style and interests.' },
@@ -250,15 +287,17 @@ export default function ContactPage() {
               { title: 'Expert Local Knowledge', desc: 'Deep insights into the best hidden gems and authentic cultural sites of Sri Lanka.' },
               { title: 'Reliable Tour Services', desc: 'Consistent, professional service you can trust throughout your entire island stay.' },
             ].map((item, index) => (
-              <Card key={index} className="bg-secondary/10 border-none rounded-xl p-8 hover:shadow-lg transition-all duration-300">
-                <CardContent className="p-0">
-                  <h4 className="font-headline text-lg mb-4 text-primary leading-tight">{item.title}</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
-                </CardContent>
-              </Card>
+              <motion.div key={index} variants={fadeUpVariant}>
+                <Card className="bg-secondary/10 border-none rounded-xl p-8 hover:shadow-lg transition-all duration-300 h-full">
+                  <CardContent className="p-0">
+                    <h4 className="font-headline text-lg mb-4 text-primary leading-tight">{item.title}</h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <Footer />

@@ -3,6 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { fadeUpVariant, staggerContainer, slideInLeftVariant, slideInRightVariant } from '@/lib/animations';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Card, CardContent } from '@/components/ui/card';
@@ -40,8 +42,14 @@ export default function TourOnePage() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-4xl md:text-7xl mb-4 tracking-widest uppercase">TOUR ONE</h1>
-          <p className="text-xs md:text-sm tracking-[0.5em] uppercase font-bold opacity-80">Plan Your Tour One</p>
+          <motion.h1 
+            initial="hidden" animate="visible" variants={fadeUpVariant}
+            className="font-headline text-4xl md:text-7xl mb-4 tracking-widest uppercase"
+          >TOUR ONE</motion.h1>
+          <motion.p 
+            initial="hidden" animate="visible" variants={fadeUpVariant} transition={{ delay: 0.2 }}
+            className="text-xs md:text-sm tracking-[0.5em] uppercase font-bold opacity-80"
+          >Plan Your Tour One</motion.p>
         </div>
       </section>
 
@@ -56,9 +64,12 @@ export default function TourOnePage() {
           <span className="text-foreground">TOUR ONE</span>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
+        <motion.div 
+          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start"
+        >
           {/* Main Text Content */}
-          <div className="lg:col-span-2 space-y-16 animate-in fade-in slide-in-from-left-8 duration-1000">
+          <motion.div variants={slideInLeftVariant} className="lg:col-span-2 space-y-16">
             <div>
               <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl mb-12 leading-tight text-primary uppercase">
                 COURTYARDS & VERANDAHS – GEOFFREY BAWA ARCHITECTURE TOUR IN SRI LANKA
@@ -124,10 +135,10 @@ export default function TourOnePage() {
                 </li>
               </ul>
             </div>
-          </div>
+          </motion.div>
 
           {/* Sidebar */}
-          <div className="space-y-12 animate-in fade-in slide-in-from-right-8 duration-1000">
+          <motion.div variants={slideInRightVariant} className="space-y-12">
             {/* Map Card */}
             <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-xl border border-border">
               <Image src={mapImage?.imageUrl || ''} alt="Tour Map" fill className="object-cover" />
@@ -170,27 +181,30 @@ export default function TourOnePage() {
                 </div>
               </CardContent>
             </Card>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Gallery Section */}
-        <div className="mt-32">
-          <div className="flex items-center gap-4 mb-12">
+        <motion.div 
+          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+          className="mt-32"
+        >
+          <motion.div variants={fadeUpVariant} className="flex items-center gap-4 mb-12">
             <h3 className="font-headline text-4xl uppercase tracking-wide">Gallery</h3>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {galleryImages.map((img, index) => (
-              <div key={index} className="relative aspect-square rounded-sm overflow-hidden group shadow-md transition-all duration-500 hover:shadow-2xl">
+              <motion.div key={index} variants={fadeUpVariant} className="relative aspect-square rounded-sm overflow-hidden group shadow-md transition-all duration-500 hover:shadow-2xl">
                 <Image 
                   src={img?.imageUrl || ''} 
                   alt={`Tour Gallery ${index}`} 
                   fill 
                   className="object-cover transition-transform duration-1000 group-hover:scale-110" 
                 />
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <Footer />

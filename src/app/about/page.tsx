@@ -2,11 +2,12 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { fadeUpVariant, staggerContainer, slideInLeftVariant, slideInRightVariant } from '@/lib/animations';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import heroImage from '@/assets/images/about/hero.jpg';
-import introImage from '@/assets/images/about/aboutIntroImage1.png';
+import introImage from '@/assets/images/about/aboutIntroImage.png';
 import offerBg from '@/assets/images/about/offer/offerBg.png';
 import tours from '@/assets/images/about/offer/tour.png';
 import accommodation from '@/assets/images/about/offer/accommodation.png';
@@ -47,16 +48,22 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-4xl md:text-7xl tracking-widest uppercase animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <motion.h1 
+            initial="hidden" animate="visible" variants={fadeUpVariant}
+            className="font-headline text-4xl md:text-7xl tracking-widest uppercase"
+          >
             ABOUT US
-          </h1>
+          </motion.h1>
         </div>
       </section>
 
       {/* Intro Section */}
       <section className="py-24 container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="animate-in fade-in slide-in-from-left-8 duration-1000">
+        <motion.div 
+          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+        >
+          <motion.div variants={slideInLeftVariant}>
             <h2 className="font-headline text-4xl md:text-5xl mb-8 leading-tight">
               About <span className="text-accent">CEYLON VELO</span>
             </h2>
@@ -71,8 +78,8 @@ export default function AboutPage() {
                 Our mission is to bridge the gap between authentic Sri Lankan adventures and world-class luxury. We believe that true travel is about connecting with people, culture, and nature, and we design every itinerary to foster those meaningful connections.
               </p>
             </div>
-          </div>
-          <div className="relative w-full max-w-sm mx-auto overflow-hidden animate-in fade-in slide-in-from-right-8 duration-1000">
+          </motion.div>
+          <motion.div variants={slideInRightVariant} className="relative w-full max-w-sm mx-auto overflow-hidden">
             <Image
               src={introImage || ''}
               alt="Ceylon Velo Introduction"
@@ -80,8 +87,8 @@ export default function AboutPage() {
               height={500}
               className="object-cover w-full h-auto"
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* What We Offer Section */}
@@ -98,23 +105,29 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-primary/10" />
         </div>
 
-        <div className="container relative z-10 mx-auto px-6 text-center mb-16">
-          <h2 className="font-headline text-4xl md:text-5xl mb-4 text-white ">
+        <motion.div 
+          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+          className="container relative z-10 mx-auto px-6 text-center mb-16"
+        >
+          <motion.h2 variants={fadeUpVariant} className="font-headline text-4xl md:text-5xl mb-4 text-white ">
             What <span className="text-accent font-bold">WE OFFER</span>
-          </h2>
-          <p className="text-white max-w-2xl mx-auto uppercase tracking-widest text-xs ">
+          </motion.h2>
+          <motion.p variants={fadeUpVariant} className="text-white max-w-2xl mx-auto uppercase tracking-widest text-xs ">
             We believe that every traveller is unique, and so should their journey be. That’s why we specialize in customized travel packages designed to cater to individual preferences, interests, and budgets. Our services include:
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="container relative z-10 mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div 
+          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+          className="container relative z-10 mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {[
             { title: 'TAILOR MADE TOURS', img: offerImages.tours, desc: 'We create personalized travel experiences designed to match your interests, schedule, comfort level, and budget for unforgettable adventures.' },
             { title: 'COMFORTABLE ACCOMMODATION', img: offerImages.accommodation, desc: 'Enjoy carefully selected hotels, villas, and stays that provide comfort, relaxation, safety, and authentic Sri Lankan hospitality throughout your journey.' },
             { title: 'RELIABLE TRANSPORTATION', img: offerImages.transport, desc: 'Travel conveniently with professional drivers, comfortable vehicles, and smooth transportation services that ensure safe and stress-free island exploration experiences.' },
             { title: 'LOCAL TRAVEL EXPERTISE', img: offerImages.expertise, desc: 'Our experienced local team provides valuable guidance, hidden destination recommendations, and friendly support to make every trip memorable and enjoyable.' },
           ].map((item, index) => (
-            <div key={index} className="group relative aspect-[3/6] overflow-hidden rounded-xl animate-in fade-in slide-in-from-bottom-8 duration-1000" style={{ animationDelay: `${index * 150}ms` }}>
+            <motion.div key={index} variants={fadeUpVariant} className="group relative aspect-[3/6] overflow-hidden rounded-xl">
               <Image
                 src={item.img || ''}
                 alt={item.title}
@@ -132,17 +145,20 @@ export default function AboutPage() {
                   {item.desc}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Why Choose Section */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-6 text-center mb-16">
-          <h2 className="font-headline text-4xl md:text-5xl mb-12">
+        <motion.div 
+          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+          className="container mx-auto px-6 text-center mb-16"
+        >
+          <motion.h2 variants={fadeUpVariant} className="font-headline text-4xl md:text-5xl mb-12">
             Why Choose <span className="text-accent italic">CEYLON VELO</span>
-          </h2>
+          </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { title: 'EXPERIENCED TRAVEL TEAM', desc: 'Our passionate experts carefully plan every detail to ensure your journey is smooth and stress-free.', icon: Users },
@@ -150,14 +166,16 @@ export default function AboutPage() {
               { title: 'TRUSTED & RELIABLE SERVICE', desc: 'Committed to providing professional support and exceptional guest satisfaction from start to finish.', icon: ShieldCheck },
               { title: 'DISCOVER AUTHENTIC SRI LANKA', desc: 'Explore breathtaking destinations, cultural attractions, and hidden gems while experiencing true warmth.', icon: Globe },
             ].map((item, index) => (
-              <Card key={index} className="bg-secondary/30 border-none shadow-sm rounded-2xl p-8 hover:bg-white transition-colors duration-500 animate-in fade-in zoom-in-95 duration-700" style={{ animationDelay: `${index * 150}ms` }}>
-                <item.icon className="w-8 h-8 text-accent mb-6 mx-auto" />
-                <h4 className="font-headline text-lg mb-4 text-primary leading-tight">{item.title}</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
-              </Card>
+              <motion.div key={index} variants={fadeUpVariant}>
+                <Card className="bg-secondary/30 border-none shadow-sm rounded-2xl p-8 hover:bg-white transition-colors duration-500 h-full">
+                  <item.icon className="w-8 h-8 text-accent mb-6 mx-auto" />
+                  <h4 className="font-headline text-lg mb-4 text-primary leading-tight">{item.title}</h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                </Card>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Vision & Mission Section */}
@@ -171,17 +189,20 @@ export default function AboutPage() {
           quality={100}
         />
         <div className="absolute inset-0 bg-black/40" />
-        <div className="container relative z-10 mx-auto px-6">
+        <motion.div 
+          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+          className="container relative z-10 mx-auto px-6"
+        >
           <div className="text-center mb-16">
-            <h2 className="font-headline text-4xl md:text-5xl text-white mb-4">
+            <motion.h2 variants={fadeUpVariant} className="font-headline text-4xl md:text-5xl text-white mb-4">
               Explore The Beauty Of <span className="text-accent italic">SRI LANKA</span>
-            </h2>
-            <p className="text-white/70 max-w-3xl mx-auto text-sm leading-relaxed">
+            </motion.h2>
+            <motion.p variants={fadeUpVariant} className="text-white/70 max-w-3xl mx-auto text-sm leading-relaxed">
               Experience the perfect blend of nature, culture, adventure, and relaxation with unforgettable journeys across Sri Lanka. From golden beaches and lush green mountains to ancient heritage sites and vibrant local traditions, every destination offers a unique story. Let Ceylon Cozy guide you through remarkable experiences filled with comfort, discovery, and lasting memories.
-            </p>
+            </motion.p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            <div className="relative rounded-2xl border border-white/20 text-center animate-in fade-in slide-in-from-left-8 duration-1000 overflow-hidden">
+            <motion.div variants={slideInLeftVariant} className="relative rounded-2xl border border-white/20 text-center overflow-hidden">
               <Image
                 src={visionImg}
                 alt="Our Vision"
@@ -195,8 +216,8 @@ export default function AboutPage() {
                   &quot;To become the world&apos;s most trusted luxury travel partner for exploring the authentic soul of Sri Lanka, setting the benchmark for premium island hospitality.&quot;
                 </p>
               </div>
-            </div>
-            <div className="relative rounded-2xl border border-white/20 text-center animate-in fade-in slide-in-from-right-8 duration-1000 overflow-hidden">
+            </motion.div>
+            <motion.div variants={slideInRightVariant} className="relative rounded-2xl border border-white/20 text-center overflow-hidden">
               <Image
                 src={misionImg}
                 alt="Our Mission"
@@ -210,17 +231,20 @@ export default function AboutPage() {
                   &quot;Our mission is to provide exceptional, personalized travel services that showcase the breathtaking destinations and cultural heritage of our beautiful nation.&quot;
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Who We Are Grid */}
       <section className="py-24 container mx-auto px-6 md:px-12">
-        <div className="text-center mb-16">
-          <h2 className="font-headline text-4xl md:text-5xl mb-12">
+        <motion.div 
+          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+          className="text-center mb-16"
+        >
+          <motion.h2 variants={fadeUpVariant} className="font-headline text-4xl md:text-5xl mb-12">
             Who <span className="text-accent italic">We Are</span>
-          </h2>
+          </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               { title: 'Passionate Travel Experts', icon: Plane, desc: 'A dedicated team of local professionals who live and breathe the spirit of island adventure.' },
@@ -228,7 +252,7 @@ export default function AboutPage() {
               { title: 'Creating Meaningful Adventures', icon: Mountain, desc: 'We craft journeys that go beyond sight-seeing, focusing on deep cultural immersion and impact.' },
               { title: 'Dedicated To Customer Satisfaction', icon: MessageSquare, desc: 'Your happiness is our priority, with 24/7 support ensuring every moment is perfect.' },
             ].map((item, index) => (
-              <div key={index} className="flex items-center gap-8 p-8 bg-secondary/20 rounded-xl hover:shadow-lg transition-all duration-300 animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ animationDelay: `${index * 150}ms` }}>
+              <motion.div key={index} variants={fadeUpVariant} className="flex items-center gap-8 p-8 bg-secondary/20 rounded-xl hover:shadow-lg transition-all duration-300">
                 <div className="w-16 h-16 bg-accent rounded-lg flex items-center justify-center shrink-0">
                   <item.icon className="w-8 h-8 text-white" />
                 </div>
@@ -236,10 +260,10 @@ export default function AboutPage() {
                   <h4 className="font-headline text-xl mb-2 text-primary">{item.title}</h4>
                   <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <Footer />

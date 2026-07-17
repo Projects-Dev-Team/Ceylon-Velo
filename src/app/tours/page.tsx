@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
@@ -63,45 +65,57 @@ export default function ToursPage() {
         />
         <div className="absolute inset-0 bg-black/30" />
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-4xl md:text-7xl mb-4 tracking-wider animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
+          <motion.h1 
+            initial="hidden" animate="visible" variants={fadeUpVariant}
+            className="font-headline text-4xl md:text-7xl mb-4 tracking-wider"
+          >
             DISCOVER YOUR NEXT ADVENTURE
-          </h1>
-          <p className="text-sm md:text-lg tracking-[0.4em] uppercase font-bold animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 fill-mode-both">
+          </motion.h1>
+          <motion.p 
+            initial="hidden" animate="visible" variants={fadeUpVariant} transition={{ delay: 0.2 }}
+            className="text-sm md:text-lg tracking-[0.4em] uppercase font-bold"
+          >
             CREATE UNFORGETTABLE TRAVEL MEMORIES
-          </p>
+          </motion.p>
         </div>
       </section>
 
       {/* Breadcrumbs & Title Section */}
       <section className="py-16 md:py-16 container mx-auto px-6 md:px-12" id="tour-listings">
-        <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-8">
-          <Link href="/" className="hover:text-accent">HOME</Link>
-          <span>/</span>
-          <span className="text-foreground">TOURS</span>
-        </div>
+        <motion.div 
+          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+        >
+          <motion.div variants={fadeUpVariant} className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-8">
+            <Link href="/" className="hover:text-accent">HOME</Link>
+            <span>/</span>
+            <span className="text-foreground">TOURS</span>
+          </motion.div>
 
-        <div className="max-w-8xl mb-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-          <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl mb-8 leading-tight">
-            Explore Our <span className="text-accent italic font-brand text-6xl md:text-7xl normal-case">Signature Journeys</span>
-          </h1>
-          <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-light">
-            Exotic locations, wild adventures, romantic escapes, or off the beaten track: which path will you choose to explore our paradise isle? We offer you many to pick from, and, as there is much to see and do in Sri Lanka, tours to suit your specific interests and duration of stay can be tailor-made too.
-          </p>
-        </div>
+          <motion.div variants={fadeUpVariant} className="max-w-8xl mb-12">
+            <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl mb-8 leading-tight">
+              Explore Our <span className="text-accent italic font-brand text-6xl md:text-7xl normal-case">Signature Journeys</span>
+            </h1>
+            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-light">
+              Exotic locations, wild adventures, romantic escapes, or off the beaten track: which path will you choose to explore our paradise isle? We offer you many to pick from, and, as there is much to see and do in Sri Lanka, tours to suit your specific interests and duration of stay can be tailor-made too.
+            </p>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Tours Grid */}
       <section className="pb-32 container mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 min-h-[600px]">
+        <motion.div 
+          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 min-h-[600px]"
+        >
           {displayedTours.map((tour, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === tour.id);
             return (
-              <Link 
-                href={tour.slug === 'tour-one' ? `/tours/${tour.slug}` : '#'}
-                key={`${tour.title}-${index}`} 
-                className="group flex flex-col bg-white rounded-lg shadow-sm border border-border/50 overflow-hidden transition-all duration-500 hover:shadow-xl animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
-                style={{ animationDelay: `${(index % 3) * 200}ms` }}
-              >
+              <motion.div key={`${tour.title}-${index}`} variants={fadeUpVariant} className="h-full">
+                <Link 
+                  href={tour.slug === 'tour-one' ? `/tours/${tour.slug}` : '#'}
+                  className="group flex flex-col bg-white rounded-lg shadow-sm border border-border/50 overflow-hidden transition-all duration-500 hover:shadow-xl h-full"
+                >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
                     src={imgData?.imageUrl || ''}
@@ -121,13 +135,17 @@ export default function ToursPage() {
                     LEARN MORE...
                   </span>
                 </div>
-              </Link>
+                </Link>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Pagination */}
-        <div className="flex justify-center items-center gap-4 animate-in fade-in duration-700">
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={fadeUpVariant}
+          className="flex justify-center items-center gap-4"
+        >
           <Button 
             variant="outline" 
             onClick={() => handlePageChange(currentPage - 1)}
@@ -159,7 +177,7 @@ export default function ToursPage() {
           >
             <ChevronRight className="w-4 h-4" />
           </Button>
-        </div>
+        </motion.div>
       </section>
 
       <Footer />

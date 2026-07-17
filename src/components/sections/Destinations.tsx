@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import ella from '@/assets/images/home/destination/highland.jpg';
 import sigiriya from '@/assets/images/home/destination/heritage.jpg';
@@ -19,24 +21,35 @@ export function Destinations() {
   return (
     <section className="py-24 md:py-32 bg-white">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="center mb-16 gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
-          <p className="text-muted-foreground font-medium tracking-widest text-xs max-w-xs md:text-right uppercase">
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="center mb-16 gap-4"
+        >
+          <motion.p variants={fadeUpVariant} className="text-muted-foreground font-medium tracking-widest text-xs max-w-xs md:text-right uppercase">
            Featured Destinations
-          </p>
-          <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-foreground">
+          </motion.p>
+          <motion.h2 variants={fadeUpVariant} className="font-headline text-4xl md:text-5xl lg:text-6xl text-foreground">
             Four corners of paradise
-          </h2>
-          
-        </div>
+          </motion.h2>
+        </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8"
+        >
           {destinations.map((dest, index) => {
             const imgData = PlaceHolderImages.find(img => img.id === dest.id);
             return (
-              <div 
+              <motion.div 
                 key={dest.id}
-                className="group relative aspect-[3/4] overflow-hidden rounded-md cursor-pointer animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
-                style={{ animationDelay: `${(index + 1) * 150}ms` }}
+                variants={fadeUpVariant}
+                className="group relative aspect-[3/4] overflow-hidden rounded-md cursor-pointer"
               >
                 <Image
                   src={dest?.img || imgData?.imageUrl || ''}
@@ -60,10 +73,10 @@ export function Destinations() {
                     <span className="text-[10px] text-white/90 font-bold tracking-widest uppercase">Explore <span className="ml-1">→</span></span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
