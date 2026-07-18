@@ -154,7 +154,7 @@ export default function ExperiencesPage() {
           </motion.p>
         </div>
 
-        {/* Categories Carousel - Updated to show 4 cards at once and visible descriptions */}
+        {/* Categories Carousel - 4 cards visible for wider impact */}
         <motion.div 
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant}
           className="relative px-12"
@@ -179,7 +179,7 @@ export default function ExperiencesPage() {
 
                       <div className="relative flex flex-col flex-grow items-center text-center p-6 pt-10">
                         <h4 className="font-headline text-lg mb-2 group-hover:text-accent transition-colors">{cat.title}</h4>
-                        <p className="text-[10px] text-muted-foreground leading-relaxed px-2 transition-opacity duration-300">
+                        <p className="text-[10px] text-muted-foreground leading-relaxed px-2">
                           {cat.desc}
                         </p>
                       </div>
@@ -282,7 +282,7 @@ export default function ExperiencesPage() {
             <CarouselContent className="-ml-6 items-stretch">
               {featured.map((feat, index) => {
                 return (
-                  <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
+                  <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <motion.div
                       variants={fadeUpVariant}
                       className="h-full"
