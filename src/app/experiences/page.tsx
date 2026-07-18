@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -38,21 +37,21 @@ export default function ExperiencesPage() {
   const planImg = PlaceHolderImages.find(img => img.id === 'exp-plan-img');
   
   const categories = [
-    { id: 'exp-beach', title: 'Beaches & Sunset', desc: 'Relax on golden shores and watch the magic unfold.' },
-    { id: 'exp-wildlife', title: 'Wildlife & Safari', desc: 'Encounter majestic leopards and elephants in their habitat.' },
-    { id: 'exp-heritage', title: 'Heritage & Culture', desc: 'Explore ancient temples and UNESCO heritage sites.' },
-    { id: 'exp-train', title: 'Scenic Train Journeys', desc: 'Traverse lush highlands on the world\'s most beautiful trains.' },
-    { id: 'exp-tea', title: 'Tea Country Retreats', desc: 'Wake up to misty mountains and endless green estates.' },
-    { id: 'exp-food', title: 'Fine Dining & Culinary', desc: 'Savor traditional spices and world-class gourmet cuisine.' },
+    { id: 'exp-beach', title: 'Beaches & Sunset', desc: 'Relax on golden shores and watch the magic unfold.', icon: Sparkles },
+    { id: 'exp-wildlife', title: 'Wildlife & Safari', desc: 'Encounter majestic leopards and elephants in their habitat.', icon: Gem },
+    { id: 'exp-heritage', title: 'Heritage & Culture', desc: 'Explore ancient temples and UNESCO heritage sites.', icon: Map },
+    { id: 'exp-train', title: 'Scenic Train Journeys', desc: 'Traverse lush highlands on the world\'s most beautiful trains.', icon: Compass },
+    { id: 'exp-tea', title: 'Tea Country Retreats', desc: 'Wake up to misty mountains and endless green estates.', icon: Hotel },
+    { id: 'exp-food', title: 'Fine Dining & Culinary', desc: 'Savor traditional spices and world-class gourmet cuisine.', icon: Users },
   ];
 
   const featured = [
-    { id: 'exp-whale', title: 'Mirissa Whale Watching', desc: 'Encounter these gentle giants in the deep blue waters of the south.' },
-    { id: 'exp-highlands', title: 'Ella Highlands', desc: 'Trek through misty peaks and lush tea estates for breathtaking views.' },
-    { id: 'exp-sigiriya', title: 'Sigiriya Rock Fortress', desc: 'Climb the ancient Lion Rock and witness a palace above the clouds.' },
-    { id: 'exp-yala', title: 'Yala Safari', desc: 'An adrenaline-fueled journey into leopard country and wild wilderness.' },
-    { id: 'exp-bentota', title: 'Bentota Beach Massage', desc: 'Indulge in ancient Ayurveda practices right by the ocean waves.' },
-    { id: 'exp-galle', title: 'Galle Fort Experience', desc: 'Walk through history in this colonial gem at the island\'s edge.' },
+    { id: 'exp-whale', slug: '#', title: 'Mirissa Whale Watching', desc: 'Encounter these gentle giants in the deep blue waters of the south.' },
+    { id: 'exp-highlands', slug: '#', title: 'Ella Highlands', desc: 'Trek through misty peaks and lush tea estates for breathtaking views.' },
+    { id: 'exp-sigiriya', slug: 'sigiriya-lion-rock', title: 'Sigiriya Rock Fortress', desc: 'Climb the ancient Lion Rock and witness a palace above the clouds.' },
+    { id: 'exp-yala', slug: 'yala-leopard-safari', title: 'Yala Safari', desc: 'An adrenaline-fueled journey into leopard country and wild wilderness.' },
+    { id: 'exp-bentota', slug: '#', title: 'Bentota Beach Massage', desc: 'Indulge in ancient Ayurveda practices right by the ocean waves.' },
+    { id: 'exp-galle', slug: '#', title: 'Galle Fort Experience', desc: 'Walk through history in this colonial gem at the island\'s edge.' },
   ];
 
   const gallery = [
@@ -94,7 +93,7 @@ export default function ExperiencesPage() {
         </div>
 
         <div className="text-center max-w-4xl mx-auto mb-20">
-          <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
+          <span className="text-[#B08C45] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
             DISCOVER SRI LANKA
           </span>
           <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-8">
@@ -106,39 +105,47 @@ export default function ExperiencesPage() {
         </div>
 
         {/* Categories Carousel */}
-        <div className="relative px-12">
+        <div className="relative px-6 md:px-12">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-4">
               {categories.map((cat, index) => {
                 const img = PlaceHolderImages.find(i => i.id === cat.id);
                 return (
-                  <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/6">
-                    <div className="group cursor-pointer">
-                      <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 shadow-md transition-transform duration-500 group-hover:scale-105">
-                        <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover" />
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
+                  <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
+                    <Card className="bg-white border-none shadow-md overflow-hidden group cursor-pointer h-full flex flex-col hover:shadow-xl transition-all duration-500">
+                      <div className="relative aspect-square overflow-hidden shrink-0">
+                        <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
+                        
+                        {/* Overlapping Icon */}
+                        <div className="absolute -bottom-6 right-6 w-12 h-12 rounded-full bg-[#E47E25] shadow-lg flex items-center justify-center text-white z-20 border-4 border-white transform transition-transform group-hover:scale-110">
+                          <cat.icon className="w-5 h-5" />
+                        </div>
                       </div>
-                      <h4 className="font-headline text-lg mb-2 text-center group-hover:text-accent transition-colors">{cat.title}</h4>
-                      <p className="text-[10px] text-muted-foreground text-center leading-relaxed px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {cat.desc}
-                      </p>
-                    </div>
+                      
+                      <div className="p-6 pt-10 flex-grow flex flex-col items-center text-center">
+                        <h4 className="font-headline text-xl mb-3 group-hover:text-[#B08C45] transition-colors">{cat.title}</h4>
+                        <p className="text-[10px] text-muted-foreground leading-relaxed px-2">
+                          {cat.desc}
+                        </p>
+                      </div>
+                    </Card>
                   </CarouselItem>
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="left-0 -translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
-            <CarouselNext className="right-0 translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
+            <CarouselPrevious className="hidden xl:flex left-0 -translate-x-full border-none bg-secondary/50 hover:bg-[#B08C45] hover:text-white" />
+            <CarouselNext className="hidden xl:flex right-0 translate-x-full border-none bg-secondary/50 hover:bg-[#B08C45] hover:text-white" />
           </Carousel>
           <div className="mt-12 flex justify-center">
-            <Button className="rounded-none bg-[#1F5145] text-white hover:bg-[#1F5145]/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase">
-              EXPLORE ALL EXPERIENCES
+            <Button asChild className="rounded-none bg-[#1F5145] text-white hover:bg-[#1F5145]/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase">
+              <Link href="/experiences/all">EXPLORE ALL EXPERIENCES</Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Planning Process */}
+      {/* How We Plan Your Journey */}
       <section className="py-24 bg-[#F8F5EF] border-y border-border/50">
         <div className="container mx-auto px-6 text-center">
           <span className="text-[#B08C45] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
@@ -157,17 +164,26 @@ export default function ExperiencesPage() {
               { icon: CalendarDays, title: 'Arrive in Sri Lanka', desc: 'We handle every detail from the moment you land.' },
               { icon: Camera, title: 'Unforgettable Memories', desc: 'Go home with a heart full of stories.' },
             ].map((step, i) => (
-              <div key={i} className="relative z-10 flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-white shadow-xl flex items-center justify-center mb-6 text-[#B08C45] border border-[#B08C45]/20 group hover:bg-[#B08C45] hover:text-white transition-all duration-500">
+              <div 
+                key={i} 
+                className="relative z-10 flex flex-col items-center p-6 bg-white md:bg-transparent rounded-xl md:rounded-none shadow-sm md:shadow-none border border-border/50 md:border-none group"
+              >
+                <div className="w-16 h-16 rounded-full bg-white shadow-xl flex items-center justify-center mb-6 text-[#B08C45] border border-[#B08C45]/20 group-hover:bg-[#B08C45] group-hover:text-white transition-all duration-500 relative">
                   <step.icon className="w-6 h-6" />
-                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-accent text-white text-[10px] flex items-center justify-center font-bold">0{i + 1}</span>
+                  
+                  {/* Step Number - Top Left on Mobile, Bottom on Desktop */}
+                  <span className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 md:translate-x-0 md:translate-y-0 md:static md:mt-4 md:order-last w-6 h-6 rounded-full bg-[#E47E25] text-white text-[10px] flex items-center justify-center font-bold shadow-md">
+                    0{i + 1}
+                  </span>
                 </div>
-                <h4 className="font-bold tracking-widest uppercase text-[10px] mb-4 text-foreground">{step.title}</h4>
-                <p className="text-[11px] text-muted-foreground leading-relaxed px-4">{step.desc}</p>
+                
+                <h4 className="font-bold tracking-widest uppercase text-[10px] mb-4 text-foreground text-center">{step.title}</h4>
+                <p className="text-[11px] text-muted-foreground leading-relaxed px-4 text-center">{step.desc}</p>
               </div>
             ))}
+            
             {/* Connector Line (Desktop) */}
-            <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-[1px] bg-border z-0" />
+            <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-[2px] bg-[#B08C45]/20 z-0" />
           </div>
         </div>
       </section>
@@ -175,7 +191,7 @@ export default function ExperiencesPage() {
       {/* Featured Experiences */}
       <section className="py-24 md:py-32 container mx-auto px-6 md:px-12">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
+          <span className="text-[#E47E25] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
             HANDPICKED EXPERIENCES
           </span>
           <h2 className="font-headline text-4xl md:text-5xl mb-6 text-foreground">
@@ -186,32 +202,42 @@ export default function ExperiencesPage() {
           </p>
         </div>
 
-        <div className="relative px-12 mb-16">
+        <div className="relative px-6 md:px-12 mb-16">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-6">
               {featured.map((feat, index) => {
                 const img = PlaceHolderImages.find(i => i.id === feat.id);
                 return (
-                  <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5 xl:basis-1/6">
-                    <Card className="border-none shadow-none bg-transparent group overflow-hidden">
-                      <div className="relative aspect-[3/4] rounded-xl overflow-hidden mb-6">
+                  <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
+                    <Card className="bg-white border-none shadow-md overflow-hidden group h-full flex flex-col hover:shadow-xl transition-all duration-500">
+                      <div className="relative aspect-[4/5] overflow-hidden shrink-0">
                         <Image src={img?.imageUrl || ''} alt={feat.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
-                      <h4 className="font-headline text-lg mb-2 leading-tight group-hover:text-accent transition-colors">{feat.title}</h4>
-                      <p className="text-[10px] text-muted-foreground leading-relaxed line-clamp-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{feat.desc}</p>
+                      <div className="p-6 flex-grow flex flex-col">
+                        <h4 className="font-headline text-xl mb-3 leading-tight group-hover:text-[#B08C45] transition-colors">{feat.title}</h4>
+                        <p className="text-[10px] text-muted-foreground leading-relaxed line-clamp-3 mb-6">
+                          {feat.desc}
+                        </p>
+                        <Link 
+                          href={feat.slug !== '#' ? `/experiences/${feat.slug}` : '#'} 
+                          className="mt-auto text-[9px] font-bold tracking-widest uppercase text-[#E47E25] flex items-center gap-2 group/link"
+                        >
+                          Discover More <ArrowRight className="w-3 h-3 transition-transform group-hover/link:translate-x-1" />
+                        </Link>
+                      </div>
                     </Card>
                   </CarouselItem>
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="left-0 -translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
-            <CarouselNext className="right-0 translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
+            <CarouselPrevious className="hidden xl:flex left-0 -translate-x-full border-none bg-secondary/50 hover:bg-[#B08C45] hover:text-white" />
+            <CarouselNext className="hidden xl:flex right-0 translate-x-full border-none bg-secondary/50 hover:bg-[#B08C45] hover:text-white" />
           </Carousel>
         </div>
         <div className="flex justify-center">
-          <Button variant="outline" className="rounded-none border-[#1F5145] text-[#1F5145] hover:bg-[#1F5145] hover:text-white px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all">
-            VIEW ALL EXPERIENCES
+          <Button asChild variant="outline" className="rounded-none border-[#1F5145] text-[#1F5145] hover:bg-[#1F5145] hover:text-white px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all">
+            <Link href="/experiences/all">VIEW ALL EXPERIENCES</Link>
           </Button>
         </div>
       </section>
@@ -219,7 +245,7 @@ export default function ExperiencesPage() {
       {/* Value Props */}
       <section className="py-24 bg-[#F8F5EF]">
         <div className="container mx-auto px-6 text-center mb-16">
-          <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
+          <span className="text-[#B08C45] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
             THE CEYLON VELO WAY
           </span>
           <h2 className="font-headline text-4xl md:text-5xl mb-6 text-foreground">
@@ -236,7 +262,7 @@ export default function ExperiencesPage() {
             { icon: Users, title: 'Local Expertise', desc: 'Insightful experiences guided by true local connoisseurs.' },
             { icon: Headphones, title: '24/7 Concierge Support', desc: 'Seamless assistance before, during, and after your journey.' },
           ].map((item, i) => (
-            <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-border/50 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+            <div key={i} className="bg-white p-8 rounded-xl shadow-md border border-border/50 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
               <div className="w-12 h-12 bg-[#B08C45]/10 rounded-full flex items-center justify-center mx-auto mb-6 text-[#B08C45]">
                 <item.icon className="w-6 h-6" />
               </div>
@@ -247,52 +273,7 @@ export default function ExperiencesPage() {
         </div>
       </section>
 
-      {/* Instagram Journey */}
-      <section className="py-24 md:py-32 container mx-auto px-6 md:px-12 text-center">
-        <span className="text-[#B08C45] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
-          FOLLOW OUR JOURNEY
-        </span>
-        <h2 className="font-headline text-4xl md:text-5xl mb-6 text-foreground">
-          Journey Through Sri Lanka
-        </h2>
-        <p className="text-muted-foreground text-sm italic max-w-2xl mx-auto mb-12">
-          Discover breathtaking scenery, authentic experiences, and unforgettable moments from across the island.
-        </p>
-        <div className="flex justify-center mb-16">
-          <Button className="rounded-none bg-[#1F5145] text-white hover:bg-accent px-8 h-12 text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-2">
-            <Camera className="w-4 h-4" /> FOLLOW ON INSTAGRAM
-          </Button>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          {gallery.map((id, index) => (
-            <div key={index} className="relative aspect-square rounded-lg overflow-hidden group shadow-md transition-all duration-500">
-              <Image 
-                src={PlaceHolderImages.find(img => img.id === id)?.imageUrl || ''} 
-                alt={`Gallery ${index}`} 
-                fill 
-                className="object-cover transition-transform duration-700 group-hover:scale-110" 
-              />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                <Compass className="text-white w-8 h-8" />
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-8 py-8 border-t border-border/50 text-muted-foreground">
-           <div className="flex items-center gap-4 text-[#B08C45]">
-             <CheckCircle2 className="w-6 h-6" />
-             <p className="text-sm italic font-medium">Every photo tells a story.</p>
-           </div>
-           <div className="flex items-center gap-4 text-[#B08C45]">
-             <CheckCircle2 className="w-6 h-6" />
-             <p className="text-sm italic font-medium">Every journey creates a memory.</p>
-           </div>
-        </div>
-      </section>
-
-      {/* Planning Form Section */}
+      {/* Lead Generation Form */}
       <section className="py-24 bg-white border-t border-border/50">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -302,7 +283,7 @@ export default function ExperiencesPage() {
                <div className="absolute inset-0 bg-black/10" />
                <div className="absolute bottom-12 left-12 right-12 p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 text-white">
                   <h4 className="font-headline text-2xl mb-4 italic">"Nature does not hurry, yet everything is accomplished."</h4>
-                  <p className="text-xs uppercase tracking-[0.3em] font-bold">Discover Your Soul in Sri Lanka</p>
+                  <p className="text-xs uppercase tracking-[0.3em] font-bold text-[#E47E25]">Discover Your Soul in Sri Lanka</p>
                </div>
             </div>
 
@@ -354,7 +335,7 @@ export default function ExperiencesPage() {
         </div>
       </section>
 
-      {/* Bottom CTA Overlay Section (from reference) */}
+      {/* Bottom CTA Overlay Section */}
       <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
          <Image src={heroImage?.imageUrl || ''} alt="CTA Background" fill className="object-cover" />
          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
@@ -362,7 +343,7 @@ export default function ExperiencesPage() {
             <div className="max-w-2xl text-white">
                <h2 className="font-headline text-5xl md:text-6xl mb-4 leading-tight">
                   Your Sri Lankan <br /> story <br />
-                  <span className="text-accent italic">starts here..</span>
+                  <span className="text-[#E47E25] italic">starts here..</span>
                </h2>
             </div>
             <Button className="bg-[#E47E25] hover:bg-[#E47E25]/90 text-white rounded-lg h-12 px-10 font-bold tracking-widest transition-transform hover:scale-105 shadow-2xl">
