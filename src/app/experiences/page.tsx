@@ -157,7 +157,7 @@ export default function ExperiencesPage() {
           </motion.p>
         </div>
 
-        {/* Categories Carousel - 4 cards visible for wider impact */}
+        {/* Categories Carousel - 4 cards visible */}
         <motion.div 
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant}
           className="relative px-12"
@@ -169,18 +169,20 @@ export default function ExperiencesPage() {
                 const CatIcon = cat.icon;
                 return (
                   <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                    <div className="group relative cursor-pointer bg-white rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col overflow-hidden">
+                    <div className="group relative bg-white rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col overflow-hidden">
+                      {/* Image Div */}
                       <div className="relative aspect-square overflow-hidden shrink-0">
                         <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                       </div>
                       
-                      {/* Overlapping Icon */}
-                      <div className="absolute top-[calc(50%-24px)] left-1/2 -translate-x-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border border-border/50 text-accent z-20 group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                      {/* Icon Div - Placed Fixed Between Divs */}
+                      <div className="relative z-20 -mt-6 mx-auto w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border border-border/50 text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500">
                         <CatIcon className="w-6 h-6" />
                       </div>
 
-                      <div className="relative flex flex-col flex-grow items-center text-center p-6 pt-10">
+                      {/* Text Div */}
+                      <div className="relative flex flex-col flex-grow items-center text-center p-6 pt-4">
                         <h4 className="font-headline text-lg mb-2 group-hover:text-accent transition-colors">{cat.title}</h4>
                         <p className="text-[10px] text-muted-foreground leading-relaxed px-2">
                           {cat.desc}
@@ -296,7 +298,6 @@ export default function ExperiencesPage() {
                           <Carousel opts={{ loop: true }} className="w-full h-full group/inner">
                             <CarouselContent className="m-0 h-full">
                               {feat.images.map((imgId, imgIdx) => {
-                                // Corrected: Use imgId to find the corresponding image
                                 const img = PlaceHolderImages.find(i => i.id === imgId);
                                 return (
                                   <CarouselItem key={imgIdx} className="p-0 h-full relative">
