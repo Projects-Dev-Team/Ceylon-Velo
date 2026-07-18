@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -23,7 +22,13 @@ import {
   Camera,
   CalendarDays,
   Gem,
-  CheckCircle2
+  CheckCircle2,
+  Sun,
+  PawPrint,
+  Landmark,
+  TrainFront,
+  Leaf,
+  UtensilsCrossed
 } from 'lucide-react';
 import {
   Carousel,
@@ -38,12 +43,12 @@ export default function ExperiencesPage() {
   const planImg = PlaceHolderImages.find(img => img.id === 'exp-plan-img');
   
   const categories = [
-    { id: 'exp-beach', title: 'Beaches & Sunset', desc: 'Relax on golden shores and watch the magic unfold.' },
-    { id: 'exp-wildlife', title: 'Wildlife & Safari', desc: 'Encounter majestic leopards and elephants in their habitat.' },
-    { id: 'exp-heritage', title: 'Heritage & Culture', desc: 'Explore ancient temples and UNESCO heritage sites.' },
-    { id: 'exp-train', title: 'Scenic Train Journeys', desc: 'Traverse lush highlands on the world\'s most beautiful trains.' },
-    { id: 'exp-tea', title: 'Tea Country Retreats', desc: 'Wake up to misty mountains and endless green estates.' },
-    { id: 'exp-food', title: 'Fine Dining & Culinary', desc: 'Savor traditional spices and world-class gourmet cuisine.' },
+    { id: 'exp-beach', title: 'Beaches & Sunset', desc: 'Relax on golden shores and watch the magic unfold.', icon: Sun },
+    { id: 'exp-wildlife', title: 'Wildlife & Safari', desc: 'Encounter majestic leopards and elephants in their habitat.', icon: PawPrint },
+    { id: 'exp-heritage', title: 'Heritage & Culture', desc: 'Explore ancient temples and UNESCO heritage sites.', icon: Landmark },
+    { id: 'exp-train', title: 'Scenic Train Journeys', desc: 'Traverse lush highlands on the world\'s most beautiful trains.', icon: TrainFront },
+    { id: 'exp-tea', title: 'Tea Country Retreats', desc: 'Wake up to misty mountains and endless green estates.', icon: Leaf },
+    { id: 'exp-food', title: 'Fine Dining & Culinary', desc: 'Savor traditional spices and world-class gourmet cuisine.', icon: UtensilsCrossed },
   ];
 
   const featured = [
@@ -80,7 +85,7 @@ export default function ExperiencesPage() {
             EXPERIENCE IN SRI LANKA
           </h1>
           <p className="text-sm md:text-lg tracking-[0.4em] uppercase font-bold opacity-80">
-            Experience In Sri Lanka
+            Discover Your Soul in Paradise
           </p>
         </div>
       </section>
@@ -108,20 +113,29 @@ export default function ExperiencesPage() {
         {/* Categories Carousel */}
         <div className="relative px-12">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
-            <CarouselContent className="-ml-4">
+            <CarouselContent className="-ml-4 items-stretch">
               {categories.map((cat, index) => {
                 const img = PlaceHolderImages.find(i => i.id === cat.id);
+                const CatIcon = cat.icon;
                 return (
                   <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/6">
-                    <div className="group cursor-pointer">
-                      <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 shadow-md transition-transform duration-500 group-hover:scale-105">
-                        <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover" />
+                    <div className="group relative cursor-pointer bg-white rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col overflow-hidden">
+                      <div className="relative aspect-square overflow-hidden shrink-0">
+                        <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
                       </div>
-                      <h4 className="font-headline text-lg mb-2 text-center group-hover:text-accent transition-colors">{cat.title}</h4>
-                      <p className="text-[10px] text-muted-foreground text-center leading-relaxed px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {cat.desc}
-                      </p>
+                      
+                      {/* Overlapping Icon */}
+                      <div className="absolute top-[calc(50%-24px)] left-1/2 -translate-x-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border border-border/50 text-accent z-20 group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                        <CatIcon className="w-6 h-6" />
+                      </div>
+
+                      <div className="relative flex flex-col flex-grow items-center text-center p-6 pt-10">
+                        <h4 className="font-headline text-lg mb-2 group-hover:text-accent transition-colors">{cat.title}</h4>
+                        <p className="text-[10px] text-muted-foreground leading-relaxed px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          {cat.desc}
+                        </p>
+                      </div>
                     </div>
                   </CarouselItem>
                 );
@@ -131,8 +145,8 @@ export default function ExperiencesPage() {
             <CarouselNext className="right-0 translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
           </Carousel>
           <div className="mt-12 flex justify-center">
-            <Button className="rounded-none bg-[#1F5145] text-white hover:bg-[#1F5145]/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase">
-              EXPLORE ALL EXPERIENCES
+            <Button asChild className="rounded-none bg-[#1F5145] text-white hover:bg-[#1F5145]/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase">
+              <Link href="/experiences/all">EXPLORE ALL EXPERIENCES</Link>
             </Button>
           </div>
         </div>
@@ -144,9 +158,11 @@ export default function ExperiencesPage() {
           <span className="text-[#B08C45] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
             YOUR JOURNEY, OUR EXPERTISE
           </span>
-          <h2 className="font-headline text-4xl md:text-5xl mb-16 text-foreground">
-            How We Plan Your Journey
-          </h2>
+          <div className="flex flex-col items-center">
+            <h2 className="font-headline text-4xl md:text-5xl mb-16 text-foreground">
+              How We Plan Your Journey
+            </h2>
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8 max-w-6xl mx-auto relative">
             {/* Steps */}
@@ -157,17 +173,22 @@ export default function ExperiencesPage() {
               { icon: CalendarDays, title: 'Arrive in Sri Lanka', desc: 'We handle every detail from the moment you land.' },
               { icon: Camera, title: 'Unforgettable Memories', desc: 'Go home with a heart full of stories.' },
             ].map((step, i) => (
-              <div key={i} className="relative z-10 flex flex-col items-center">
-                <div className="w-16 h-16 rounded-full bg-white shadow-xl flex items-center justify-center mb-6 text-[#B08C45] border border-[#B08C45]/20 group hover:bg-[#B08C45] hover:text-white transition-all duration-500">
-                  <step.icon className="w-6 h-6" />
-                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-accent text-white text-[10px] flex items-center justify-center font-bold">0{i + 1}</span>
+              <div key={i} className="relative z-10 flex flex-col items-center bg-white p-6 rounded-2xl shadow-md border border-border/50 hover:shadow-lg transition-all duration-300">
+                {/* Number: Top-left absolute on mobile, centered below icon on desktop */}
+                <span className="absolute top-4 left-4 md:relative md:top-auto md:left-auto md:order-2 w-7 h-7 rounded-full bg-accent text-white text-[10px] flex items-center justify-center font-bold shadow-md shrink-0 md:mb-4">
+                  0{i + 1}
+                </span>
+
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white shadow-xl flex items-center justify-center text-[#B08C45] border border-[#B08C45]/20 group hover:bg-[#B08C45] hover:text-white transition-all duration-500 mb-6 md:mb-4 md:order-1 shrink-0">
+                  <step.icon className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <h4 className="font-bold tracking-widest uppercase text-[10px] mb-4 text-foreground">{step.title}</h4>
-                <p className="text-[11px] text-muted-foreground leading-relaxed px-4">{step.desc}</p>
+                
+                <h4 className="font-bold tracking-widest uppercase text-[10px] mb-4 text-foreground md:order-3">{step.title}</h4>
+                <p className="text-[11px] text-muted-foreground leading-relaxed px-4 md:order-4">{step.desc}</p>
               </div>
             ))}
             {/* Connector Line (Desktop) */}
-            <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-[1px] bg-border z-0" />
+            <div className="hidden md:block absolute top-[50%] left-[5%] right-[5%] h-[1px] bg-border z-0 -translate-y-[100px]" />
           </div>
         </div>
       </section>
@@ -188,18 +209,20 @@ export default function ExperiencesPage() {
 
         <div className="relative px-12 mb-16">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
-            <CarouselContent className="-ml-6">
+            <CarouselContent className="-ml-6 items-stretch">
               {featured.map((feat, index) => {
                 const img = PlaceHolderImages.find(i => i.id === feat.id);
                 return (
                   <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5 xl:basis-1/6">
-                    <Card className="border-none shadow-none bg-transparent group overflow-hidden">
-                      <div className="relative aspect-[3/4] rounded-xl overflow-hidden mb-6">
+                    <Card className="border-none shadow-md bg-white group overflow-hidden h-full flex flex-col">
+                      <div className="relative aspect-[3/4] overflow-hidden shrink-0">
                         <Image src={img?.imageUrl || ''} alt={feat.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
-                      <h4 className="font-headline text-lg mb-2 leading-tight group-hover:text-accent transition-colors">{feat.title}</h4>
-                      <p className="text-[10px] text-muted-foreground leading-relaxed line-clamp-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{feat.desc}</p>
+                      <div className="p-6 flex-grow flex flex-col">
+                        <h4 className="font-headline text-lg mb-2 leading-tight group-hover:text-accent transition-colors">{feat.title}</h4>
+                        <p className="text-[10px] text-muted-foreground leading-relaxed line-clamp-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{feat.desc}</p>
+                      </div>
                     </Card>
                   </CarouselItem>
                 );
@@ -210,8 +233,8 @@ export default function ExperiencesPage() {
           </Carousel>
         </div>
         <div className="flex justify-center">
-          <Button variant="outline" className="rounded-none border-[#1F5145] text-[#1F5145] hover:bg-[#1F5145] hover:text-white px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all">
-            VIEW ALL EXPERIENCES
+          <Button asChild variant="outline" className="rounded-none border-[#1F5145] text-[#1F5145] hover:bg-[#1F5145] hover:text-white px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all">
+            <Link href="/experiences/all">VIEW ALL EXPERIENCES</Link>
           </Button>
         </div>
       </section>
@@ -236,7 +259,7 @@ export default function ExperiencesPage() {
             { icon: Users, title: 'Local Expertise', desc: 'Insightful experiences guided by true local connoisseurs.' },
             { icon: Headphones, title: '24/7 Concierge Support', desc: 'Seamless assistance before, during, and after your journey.' },
           ].map((item, i) => (
-            <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-border/50 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+            <div key={i} className="bg-white p-8 rounded-xl shadow-md border border-border/50 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
               <div className="w-12 h-12 bg-[#B08C45]/10 rounded-full flex items-center justify-center mx-auto mb-6 text-[#B08C45]">
                 <item.icon className="w-6 h-6" />
               </div>
@@ -279,17 +302,6 @@ export default function ExperiencesPage() {
             </div>
           ))}
         </div>
-        
-        <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-8 py-8 border-t border-border/50 text-muted-foreground">
-           <div className="flex items-center gap-4 text-[#B08C45]">
-             <CheckCircle2 className="w-6 h-6" />
-             <p className="text-sm italic font-medium">Every photo tells a story.</p>
-           </div>
-           <div className="flex items-center gap-4 text-[#B08C45]">
-             <CheckCircle2 className="w-6 h-6" />
-             <p className="text-sm italic font-medium">Every journey creates a memory.</p>
-           </div>
-        </div>
       </section>
 
       {/* Planning Form Section */}
@@ -320,55 +332,40 @@ export default function ExperiencesPage() {
                   Tell us what you are looking for, and our bespoke travel specialists will create a personalized itinerary designed exclusively for you.
                </p>
 
-               <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                       <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Full Name *</Label>
-                       <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="John Doe" />
+               <div className="bg-white p-8 rounded-3xl shadow-2xl border border-border/50">
+                <form className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Full Name *</Label>
+                        <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="John Doe" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Email Address *</Label>
+                        <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="john@example.com" type="email" />
+                      </div>
                     </div>
                     <div className="space-y-2">
-                       <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Email Address *</Label>
-                       <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="john@example.com" type="email" />
+                      <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Phone / WhatsApp</Label>
+                      <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="+123 456 7890" />
                     </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Phone / WhatsApp</Label>
-                    <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="+123 456 7890" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Detail about your journey</Label>
-                    <Textarea className="border-border/50 min-h-[140px] bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="Tell us about your travel dates, group size, and interests..." />
-                  </div>
-                  
-                  <div className="flex flex-col sm:flex-row gap-6 pt-4">
-                     <Button className="bg-[#B08C45] hover:bg-[#A2712E] text-white rounded-none h-14 px-12 font-bold tracking-[0.2em] text-sm shadow-xl transition-all">
-                        ENQUIRE
-                     </Button>
-                     <Button className="bg-[#1F5145] hover:bg-[#1F5145]/90 text-white rounded-none h-14 px-12 font-bold tracking-[0.2em] text-sm shadow-xl transition-all">
-                        SEND REQUEST
-                     </Button>
-                  </div>
-               </form>
+                    <div className="space-y-2">
+                      <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Detail about your journey</Label>
+                      <Textarea className="border-border/50 min-h-[140px] bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="Tell us about your travel dates, group size, and interests..." />
+                    </div>
+                    
+                    <div className="flex flex-col sm:flex-row gap-6 pt-4">
+                      <Button className="bg-[#B08C45] hover:bg-[#A2712E] text-white rounded-none h-14 px-12 font-bold tracking-[0.2em] text-sm shadow-xl transition-all">
+                          ENQUIRE
+                      </Button>
+                      <Button className="bg-[#1F5145] hover:bg-[#1F5145]/90 text-white rounded-none h-14 px-12 font-bold tracking-[0.2em] text-sm shadow-xl transition-all">
+                          SEND REQUEST
+                      </Button>
+                    </div>
+                </form>
+               </div>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Bottom CTA Overlay Section (from reference) */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
-         <Image src={heroImage?.imageUrl || ''} alt="CTA Background" fill className="object-cover" />
-         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
-         <div className="relative z-10 text-left container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-end justify-between">
-            <div className="max-w-2xl text-white">
-               <h2 className="font-headline text-5xl md:text-6xl mb-4 leading-tight">
-                  Your Sri Lankan <br /> story <br />
-                  <span className="text-accent italic">starts here..</span>
-               </h2>
-            </div>
-            <Button className="bg-[#E47E25] hover:bg-[#E47E25]/90 text-white rounded-lg h-12 px-10 font-bold tracking-widest transition-transform hover:scale-105 shadow-2xl">
-               BOOK NOW
-            </Button>
-         </div>
       </section>
 
       <Footer />
