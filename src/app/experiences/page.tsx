@@ -113,8 +113,8 @@ export default function ExperiencesPage() {
                 const img = PlaceHolderImages.find(i => i.id === cat.id);
                 return (
                   <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/6">
-                    <div className="group cursor-pointer">
-                      <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 shadow-md transition-transform duration-500 group-hover:scale-105">
+                    <div className="group cursor-pointer bg-white p-4 rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500">
+                      <div className="relative aspect-square rounded-xl overflow-hidden mb-6 shadow-sm transition-transform duration-500 group-hover:scale-105">
                         <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
                       </div>
@@ -144,9 +144,11 @@ export default function ExperiencesPage() {
           <span className="text-[#B08C45] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
             YOUR JOURNEY, OUR EXPERTISE
           </span>
-          <h2 className="font-headline text-4xl md:text-5xl mb-16 text-foreground">
-            How We Plan Your Journey
-          </h2>
+          <div className="flex flex-col items-center">
+            <h2 className="font-headline text-4xl md:text-5xl mb-16 text-foreground">
+              How We Plan Your Journey
+            </h2>
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8 max-w-6xl mx-auto relative">
             {/* Steps */}
@@ -157,7 +159,7 @@ export default function ExperiencesPage() {
               { icon: CalendarDays, title: 'Arrive in Sri Lanka', desc: 'We handle every detail from the moment you land.' },
               { icon: Camera, title: 'Unforgettable Memories', desc: 'Go home with a heart full of stories.' },
             ].map((step, i) => (
-              <div key={i} className="relative z-10 flex flex-col items-center">
+              <div key={i} className="relative z-10 flex flex-col items-center bg-white p-6 rounded-2xl shadow-md border border-border/50 hover:shadow-lg transition-all duration-300">
                 <div className="w-16 h-16 rounded-full bg-white shadow-xl flex items-center justify-center mb-6 text-[#B08C45] border border-[#B08C45]/20 group hover:bg-[#B08C45] hover:text-white transition-all duration-500">
                   <step.icon className="w-6 h-6" />
                   <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-accent text-white text-[10px] flex items-center justify-center font-bold">0{i + 1}</span>
@@ -167,7 +169,7 @@ export default function ExperiencesPage() {
               </div>
             ))}
             {/* Connector Line (Desktop) */}
-            <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-[1px] bg-border z-0" />
+            <div className="hidden md:block absolute top-[50%] left-[5%] right-[5%] h-[1px] bg-border z-0 -translate-y-[100px]" />
           </div>
         </div>
       </section>
@@ -193,13 +195,15 @@ export default function ExperiencesPage() {
                 const img = PlaceHolderImages.find(i => i.id === feat.id);
                 return (
                   <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5 xl:basis-1/6">
-                    <Card className="border-none shadow-none bg-transparent group overflow-hidden">
-                      <div className="relative aspect-[3/4] rounded-xl overflow-hidden mb-6">
+                    <Card className="border-none shadow-md bg-white group overflow-hidden h-full">
+                      <div className="relative aspect-[3/4] overflow-hidden mb-6">
                         <Image src={img?.imageUrl || ''} alt={feat.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
-                      <h4 className="font-headline text-lg mb-2 leading-tight group-hover:text-accent transition-colors">{feat.title}</h4>
-                      <p className="text-[10px] text-muted-foreground leading-relaxed line-clamp-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{feat.desc}</p>
+                      <div className="px-6 pb-6">
+                        <h4 className="font-headline text-lg mb-2 leading-tight group-hover:text-accent transition-colors">{feat.title}</h4>
+                        <p className="text-[10px] text-muted-foreground leading-relaxed line-clamp-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{feat.desc}</p>
+                      </div>
                     </Card>
                   </CarouselItem>
                 );
@@ -236,7 +240,7 @@ export default function ExperiencesPage() {
             { icon: Users, title: 'Local Expertise', desc: 'Insightful experiences guided by true local connoisseurs.' },
             { icon: Headphones, title: '24/7 Concierge Support', desc: 'Seamless assistance before, during, and after your journey.' },
           ].map((item, i) => (
-            <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-border/50 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+            <div key={i} className="bg-white p-8 rounded-xl shadow-md border border-border/50 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
               <div className="w-12 h-12 bg-[#B08C45]/10 rounded-full flex items-center justify-center mx-auto mb-6 text-[#B08C45]">
                 <item.icon className="w-6 h-6" />
               </div>
@@ -279,17 +283,6 @@ export default function ExperiencesPage() {
             </div>
           ))}
         </div>
-        
-        <div className="mt-16 flex flex-col md:flex-row items-center justify-center gap-8 py-8 border-t border-border/50 text-muted-foreground">
-           <div className="flex items-center gap-4 text-[#B08C45]">
-             <CheckCircle2 className="w-6 h-6" />
-             <p className="text-sm italic font-medium">Every photo tells a story.</p>
-           </div>
-           <div className="flex items-center gap-4 text-[#B08C45]">
-             <CheckCircle2 className="w-6 h-6" />
-             <p className="text-sm italic font-medium">Every journey creates a memory.</p>
-           </div>
-        </div>
       </section>
 
       {/* Planning Form Section */}
@@ -320,55 +313,40 @@ export default function ExperiencesPage() {
                   Tell us what you are looking for, and our bespoke travel specialists will create a personalized itinerary designed exclusively for you.
                </p>
 
-               <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                       <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Full Name *</Label>
-                       <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="John Doe" />
+               <div className="bg-white p-8 rounded-3xl shadow-2xl border border-border/50">
+                <form className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Full Name *</Label>
+                        <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="John Doe" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Email Address *</Label>
+                        <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="john@example.com" type="email" />
+                      </div>
                     </div>
                     <div className="space-y-2">
-                       <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Email Address *</Label>
-                       <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="john@example.com" type="email" />
+                      <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Phone / WhatsApp</Label>
+                      <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="+123 456 7890" />
                     </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Phone / WhatsApp</Label>
-                    <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="+123 456 7890" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Detail about your journey</Label>
-                    <Textarea className="border-border/50 min-h-[140px] bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="Tell us about your travel dates, group size, and interests..." />
-                  </div>
-                  
-                  <div className="flex flex-col sm:flex-row gap-6 pt-4">
-                     <Button className="bg-[#B08C45] hover:bg-[#A2712E] text-white rounded-none h-14 px-12 font-bold tracking-[0.2em] text-sm shadow-xl transition-all">
-                        ENQUIRE
-                     </Button>
-                     <Button className="bg-[#1F5145] hover:bg-[#1F5145]/90 text-white rounded-none h-14 px-12 font-bold tracking-[0.2em] text-sm shadow-xl transition-all">
-                        SEND REQUEST
-                     </Button>
-                  </div>
-               </form>
+                    <div className="space-y-2">
+                      <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Detail about your journey</Label>
+                      <Textarea className="border-border/50 min-h-[140px] bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="Tell us about your travel dates, group size, and interests..." />
+                    </div>
+                    
+                    <div className="flex flex-col sm:flex-row gap-6 pt-4">
+                      <Button className="bg-[#B08C45] hover:bg-[#A2712E] text-white rounded-none h-14 px-12 font-bold tracking-[0.2em] text-sm shadow-xl transition-all">
+                          ENQUIRE
+                      </Button>
+                      <Button className="bg-[#1F5145] hover:bg-[#1F5145]/90 text-white rounded-none h-14 px-12 font-bold tracking-[0.2em] text-sm shadow-xl transition-all">
+                          SEND REQUEST
+                      </Button>
+                    </div>
+                </form>
+               </div>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Bottom CTA Overlay Section (from reference) */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
-         <Image src={heroImage?.imageUrl || ''} alt="CTA Background" fill className="object-cover" />
-         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
-         <div className="relative z-10 text-left container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-end justify-between">
-            <div className="max-w-2xl text-white">
-               <h2 className="font-headline text-5xl md:text-6xl mb-4 leading-tight">
-                  Your Sri Lankan <br /> story <br />
-                  <span className="text-accent italic">starts here..</span>
-               </h2>
-            </div>
-            <Button className="bg-[#E47E25] hover:bg-[#E47E25]/90 text-white rounded-lg h-12 px-10 font-bold tracking-widest transition-transform hover:scale-105 shadow-2xl">
-               BOOK NOW
-            </Button>
-         </div>
       </section>
 
       <Footer />
