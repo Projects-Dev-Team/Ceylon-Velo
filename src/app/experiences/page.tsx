@@ -54,11 +54,6 @@ export default function ExperiencesPage() {
     { id: 'exp-galle', slug: '#', title: 'Galle Fort Experience', desc: 'Walk through history in this colonial gem at the island\'s edge.' },
   ];
 
-  const gallery = [
-    'insta-1', 'insta-2', 'insta-3', 'insta-4', 'insta-5',
-    'insta-6', 'insta-1', 'insta-2', 'insta-3', 'insta-4'
-  ];
-
   return (
     <main className="min-h-screen bg-white">
       <Header />
@@ -166,23 +161,28 @@ export default function ExperiencesPage() {
             ].map((step, i) => (
               <div 
                 key={i} 
-                className="relative z-10 flex flex-col items-center p-6 bg-white md:bg-transparent rounded-xl md:rounded-none shadow-sm md:shadow-none border border-border/50 md:border-none group"
+                className="relative z-10 flex flex-col items-center p-6 md:p-0 rounded-xl md:rounded-none bg-white md:bg-transparent shadow-sm md:shadow-none border border-border/50 md:border-none group"
               >
-                <div className="w-16 h-16 rounded-full bg-white shadow-xl flex items-center justify-center mb-6 text-[#B08C45] border border-[#B08C45]/20 group-hover:bg-[#B08C45] group-hover:text-white transition-all duration-500 relative">
+                {/* Mobile: Number in top-left corner of card */}
+                <span className="md:hidden absolute top-4 left-4 w-6 h-6 rounded-full bg-[#E47E25] text-white text-[10px] flex items-center justify-center font-bold shadow-md">
+                  0{i + 1}
+                </span>
+
+                <div className="w-16 h-16 rounded-full bg-white shadow-xl flex items-center justify-center mb-6 text-[#B08C45] border border-[#B08C45]/20 group-hover:bg-[#B08C45] group-hover:text-white transition-all duration-500 relative z-20">
                   <step.icon className="w-6 h-6" />
-                  
-                  {/* Step Number - Top Left on Mobile, Bottom on Desktop */}
-                  <span className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 md:translate-x-0 md:translate-y-0 md:static md:mt-4 md:order-last w-6 h-6 rounded-full bg-[#E47E25] text-white text-[10px] flex items-center justify-center font-bold shadow-md">
-                    0{i + 1}
-                  </span>
                 </div>
+                
+                {/* Desktop: Number below the icon */}
+                <span className="hidden md:flex w-6 h-6 rounded-full bg-[#E47E25] text-white text-[10px] items-center justify-center font-bold shadow-md mb-4 relative z-20">
+                  0{i + 1}
+                </span>
                 
                 <h4 className="font-bold tracking-widest uppercase text-[10px] mb-4 text-foreground text-center">{step.title}</h4>
                 <p className="text-[11px] text-muted-foreground leading-relaxed px-4 text-center">{step.desc}</p>
               </div>
             ))}
             
-            {/* Connector Line (Desktop) */}
+            {/* Connector Line (Desktop) - Connects main icons */}
             <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-[2px] bg-[#B08C45]/20 z-0" />
           </div>
         </div>
