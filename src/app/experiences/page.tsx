@@ -88,7 +88,7 @@ export default function ExperiencesPage() {
         </div>
 
         <div className="text-center max-w-4xl mx-auto mb-20">
-          <span className="text-[#B08C45] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
+          <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
             DISCOVER SRI LANKA
           </span>
           <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-8">
@@ -100,37 +100,38 @@ export default function ExperiencesPage() {
         </div>
 
         {/* Categories Carousel */}
-        <div className="relative px-6 md:px-12">
+        <div className="relative px-12">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
-            <CarouselContent className="-ml-4">
+            <CarouselContent className="-ml-4 items-stretch">
               {categories.map((cat, index) => {
                 const img = PlaceHolderImages.find(i => i.id === cat.id);
+                const CatIcon = cat.icon;
                 return (
                   <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
-                    <Card className="bg-white border-none shadow-md overflow-hidden group cursor-pointer h-full flex flex-col hover:shadow-xl transition-all duration-500">
+                    <div className="group relative cursor-pointer bg-white rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col overflow-hidden">
                       <div className="relative aspect-square overflow-hidden shrink-0">
-                        <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
-                        
-                        {/* Overlapping Icon */}
-                        <div className="absolute -bottom-6 right-6 w-12 h-12 rounded-full bg-[#E47E25] shadow-lg flex items-center justify-center text-white z-20 border-4 border-white transform transition-transform group-hover:scale-110">
-                          <cat.icon className="w-5 h-5" />
-                        </div>
+                        <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
                       </div>
                       
-                      <div className="p-6 pt-10 flex-grow flex flex-col items-center text-center">
-                        <h4 className="font-headline text-xl mb-3 group-hover:text-[#B08C45] transition-colors">{cat.title}</h4>
+                      {/* Overlapping Icon */}
+                      <div className="absolute top-[calc(50%-24px)] left-1/2 -translate-x-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border border-border/50 text-accent z-20 group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                        <CatIcon className="w-6 h-6" />
+                      </div>
+
+                      <div className="relative flex flex-col flex-grow items-center text-center p-6 pt-10">
+                        <h4 className="font-headline text-lg mb-2 group-hover:text-accent transition-colors">{cat.title}</h4>
                         <p className="text-[10px] text-muted-foreground leading-relaxed px-2">
                           {cat.desc}
                         </p>
                       </div>
-                    </Card>
+                    </div>
                   </CarouselItem>
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="hidden xl:flex left-0 -translate-x-full border-none bg-secondary/50 hover:bg-[#B08C45] hover:text-white" />
-            <CarouselNext className="hidden xl:flex right-0 translate-x-full border-none bg-secondary/50 hover:bg-[#B08C45] hover:text-white" />
+            <CarouselPrevious className="left-0 -translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
+            <CarouselNext className="right-0 translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
           </Carousel>
           <div className="mt-12 flex justify-center">
             <Button asChild className="rounded-none bg-[#1F5145] text-white hover:bg-[#1F5145]/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase">
