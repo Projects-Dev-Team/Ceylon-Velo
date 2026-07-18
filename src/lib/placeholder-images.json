@@ -1,6 +1,90 @@
 {
   "placeholderImages": [
     {
+      "id": "exp-hero",
+      "description": "Luxury pool at sunset in Sri Lanka",
+      "imageUrl": "https://picsum.photos/seed/exp-hero/1920/1080",
+      "imageHint": "resort pool sunset"
+    },
+    {
+      "id": "exp-beach",
+      "description": "Beaches & Sunset icon",
+      "imageUrl": "https://picsum.photos/seed/exp-beach/400/400",
+      "imageHint": "beach sunset"
+    },
+    {
+      "id": "exp-wildlife",
+      "description": "Wildlife & Safari icon",
+      "imageUrl": "https://picsum.photos/seed/exp-wildlife/400/400",
+      "imageHint": "leopard safari"
+    },
+    {
+      "id": "exp-heritage",
+      "description": "Heritage & Culture icon",
+      "imageUrl": "https://picsum.photos/seed/exp-heritage/400/400",
+      "imageHint": "ancient temple"
+    },
+    {
+      "id": "exp-train",
+      "description": "Scenic Train Journeys icon",
+      "imageUrl": "https://picsum.photos/seed/exp-train/400/400",
+      "imageHint": "mountain train"
+    },
+    {
+      "id": "exp-tea",
+      "description": "Tea Country Retreats icon",
+      "imageUrl": "https://picsum.photos/seed/exp-tea/400/400",
+      "imageHint": "tea plantation"
+    },
+    {
+      "id": "exp-food",
+      "description": "Fine Dining icon",
+      "imageUrl": "https://picsum.photos/seed/exp-food/400/400",
+      "imageHint": "luxury dining"
+    },
+    {
+      "id": "exp-whale",
+      "description": "Whale watching in Mirissa",
+      "imageUrl": "https://picsum.photos/seed/exp-whale/600/800",
+      "imageHint": "whale tail ocean"
+    },
+    {
+      "id": "exp-highlands",
+      "description": "Ella Highlands scenic view",
+      "imageUrl": "https://picsum.photos/seed/exp-high/600/800",
+      "imageHint": "mountain landscape"
+    },
+    {
+      "id": "exp-sigiriya",
+      "description": "Sigiriya Rock Fortress featured",
+      "imageUrl": "https://picsum.photos/seed/exp-sig/600/800",
+      "imageHint": "sigiriya rock"
+    },
+    {
+      "id": "exp-yala",
+      "description": "Yala Safari jeep",
+      "imageUrl": "https://picsum.photos/seed/exp-yala/600/800",
+      "imageHint": "safari jeep"
+    },
+    {
+      "id": "exp-bentota",
+      "description": "Bentota beach massage",
+      "imageUrl": "https://picsum.photos/seed/exp-ben/600/800",
+      "imageHint": "beach spa"
+    },
+    {
+      "id": "exp-galle",
+      "description": "Galle Fort lighthouse",
+      "imageUrl": "https://picsum.photos/seed/exp-gal/600/800",
+      "imageHint": "lighthouse sunset"
+    },
+    {
+      "id": "exp-plan-img",
+      "description": "Couple planning their journey",
+      "imageUrl": "https://picsum.photos/seed/exp-plan/800/1000",
+      "imageHint": "couple planning"
+    },
+    {
       "id": "hero-image",
       "description": "Luxury boutique villa in Sri Lanka",
       "imageUrl": "https://picsum.photos/seed/sl-hero/1920/1080",
