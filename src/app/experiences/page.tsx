@@ -108,20 +108,22 @@ export default function ExperiencesPage() {
         {/* Categories Carousel */}
         <div className="relative px-12">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
-            <CarouselContent className="-ml-4">
+            <CarouselContent className="-ml-4 items-stretch">
               {categories.map((cat, index) => {
                 const img = PlaceHolderImages.find(i => i.id === cat.id);
                 return (
                   <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/6">
-                    <div className="group cursor-pointer bg-white p-4 rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500">
-                      <div className="relative aspect-square rounded-xl overflow-hidden mb-6 shadow-sm transition-transform duration-500 group-hover:scale-105">
+                    <div className="group cursor-pointer bg-white p-4 rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col">
+                      <div className="relative aspect-square rounded-xl overflow-hidden mb-6 shadow-sm transition-transform duration-500 group-hover:scale-105 shrink-0">
                         <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
                       </div>
-                      <h4 className="font-headline text-lg mb-2 text-center group-hover:text-accent transition-colors">{cat.title}</h4>
-                      <p className="text-[10px] text-muted-foreground text-center leading-relaxed px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {cat.desc}
-                      </p>
+                      <div className="flex flex-col flex-grow items-center text-center">
+                        <h4 className="font-headline text-lg mb-2 group-hover:text-accent transition-colors">{cat.title}</h4>
+                        <p className="text-[10px] text-muted-foreground leading-relaxed px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          {cat.desc}
+                        </p>
+                      </div>
                     </div>
                   </CarouselItem>
                 );
@@ -190,17 +192,17 @@ export default function ExperiencesPage() {
 
         <div className="relative px-12 mb-16">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
-            <CarouselContent className="-ml-6">
+            <CarouselContent className="-ml-6 items-stretch">
               {featured.map((feat, index) => {
                 const img = PlaceHolderImages.find(i => i.id === feat.id);
                 return (
                   <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5 xl:basis-1/6">
-                    <Card className="border-none shadow-md bg-white group overflow-hidden h-full">
-                      <div className="relative aspect-[3/4] overflow-hidden mb-6">
+                    <Card className="border-none shadow-md bg-white group overflow-hidden h-full flex flex-col">
+                      <div className="relative aspect-[3/4] overflow-hidden mb-6 shrink-0">
                         <Image src={img?.imageUrl || ''} alt={feat.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
-                      <div className="px-6 pb-6">
+                      <div className="px-6 pb-6 flex-grow flex flex-col">
                         <h4 className="font-headline text-lg mb-2 leading-tight group-hover:text-accent transition-colors">{feat.title}</h4>
                         <p className="text-[10px] text-muted-foreground leading-relaxed line-clamp-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{feat.desc}</p>
                       </div>
