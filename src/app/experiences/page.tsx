@@ -132,82 +132,61 @@ export default function ExperiencesPage() {
 
       {/* Choose Your Experience Section */}
       <section className="pt-16 pb-24 container mx-auto px-6 md:px-12">
-        <motion.div 
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="text-center max-w-4xl mx-auto mb-20"
-        >
-          <motion.span variants={fadeUpVariant} className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
-            DISCOVER SRI LANKA
-          </motion.span>
-          <motion.h2 variants={fadeUpVariant} className="font-headline text-4xl md:text-5xl text-foreground mb-8">
-            Choose Your Experience
-          </motion.h2>
-          <motion.p variants={fadeUpVariant} className="text-muted-foreground leading-relaxed italic max-w-2xl mx-auto">
-            Find the perfect blend of adventure, relaxation, culture or luxury. Choose a category below and let the story of your journey begin to unfold.
-          </motion.p>
-        </motion.div>
+        <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-24">
+          <Link href="/" className="hover:text-accent">HOME</Link>
+          <span>/</span>
+          <span className="text-foreground">EXPERIENCES</span>
+        </div>
 
+        <div className="text-center max-w-4xl mx-auto mb-20">
+          <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
+            DISCOVER SRI LANKA
+          </span>
+          <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-8">
+            Choose Your Experience
+          </h2>
+          <p className="text-muted-foreground leading-relaxed italic max-w-2xl mx-auto">
+            Find the perfect blend of adventure, relaxation, culture or luxury. Choose a category below and let the story of your journey begin to unfold.
+          </p>
+        </div>
+
+        {/* Categories Carousel */}
         <div className="relative px-12">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-4 items-stretch">
               {categories.map((cat, index) => {
-                const img = PlaceHolderImages.find((i) => i.id === cat.id);
+                const img = PlaceHolderImages.find(i => i.id === cat.id);
                 const CatIcon = cat.icon;
-
                 return (
-                  <CarouselItem
-                    key={index}
-                    className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5"
-                  >
-                    <motion.div
-                      variants={fadeUpVariant}
-                      className="group relative cursor-pointer bg-white rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col overflow-hidden"
-                    >
+                  <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/6">
+                    <div className="group relative cursor-pointer bg-white rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col overflow-hidden">
                       <div className="relative aspect-square overflow-hidden shrink-0">
-                        <Image
-                          src={img?.imageUrl || ""}
-                          alt={cat.title}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
+                        <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
                       </div>
-
-                      <div className="absolute top-[calc(100%-2.25rem)] left-1/2 -translate-x-1/2 z-10">
-                        <div className="w-[72px] h-[72px] rounded-full bg-white shadow-lg border border-border flex items-center justify-center transition-all duration-500 group-hover:bg-accent group-hover:text-white group-hover:scale-110">
-                          <CatIcon className="w-7 h-7 text-[#1F5145] group-hover:text-white transition-colors" />
-                        </div>
+                      
+                      {/* Overlapping Icon */}
+                      <div className="absolute top-[calc(50%-24px)] left-1/2 -translate-x-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border border-border/50 text-accent z-20 group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                        <CatIcon className="w-6 h-6" />
                       </div>
 
-                      <div className="relative flex flex-col flex-grow items-center text-center p-6 pt-12">
-                        <h4 className="font-headline text-lg mb-2 group-hover:text-accent transition-colors">
-                          {cat.title}
-                        </h4>
-                        <p className="text-[10px] text-muted-foreground leading-relaxed px-2">
+                      <div className="relative flex flex-col flex-grow items-center text-center p-6 pt-10">
+                        <h4 className="font-headline text-lg mb-2 group-hover:text-accent transition-colors">{cat.title}</h4>
+                        <p className="text-[10px] text-muted-foreground leading-relaxed px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           {cat.desc}
                         </p>
                       </div>
-                    </motion.div>
+                    </div>
                   </CarouselItem>
                 );
               })}
             </CarouselContent>
-
             <CarouselPrevious className="left-0 -translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
             <CarouselNext className="right-0 translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
           </Carousel>
-
           <div className="mt-12 flex justify-center">
-            <Button
-              asChild
-              className="rounded-none bg-[#1F5145] text-white hover:bg-[#1F5145]/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105"
-            >
-              <Link href="/experiences/all">
-                EXPLORE ALL EXPERIENCES
-              </Link>
+            <Button asChild className="rounded-none bg-[#1F5145] text-white hover:bg-[#1F5145]/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase">
+              <Link href="/experiences/all">EXPLORE ALL EXPERIENCES</Link>
             </Button>
           </div>
         </div>
