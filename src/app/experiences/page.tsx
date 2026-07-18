@@ -23,8 +23,17 @@ import {
   CalendarDays,
   Gem,
   CheckCircle2,
+<<<<<<< HEAD
   ChevronLeft,
   ChevronRight
+=======
+  Sun,
+  PawPrint,
+  Landmark,
+  TrainFront,
+  Leaf,
+  UtensilsCrossed
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
 } from 'lucide-react';
 import {
   Carousel,
@@ -39,12 +48,21 @@ export default function ExperiencesPage() {
   const planImg = PlaceHolderImages.find(img => img.id === 'exp-plan-img');
   
   const categories = [
+<<<<<<< HEAD
     { id: 'exp-beach', title: 'Beaches & Sunset', desc: 'Relax on golden shores and watch the magic unfold.', icon: Sparkles },
     { id: 'exp-wildlife', title: 'Wildlife & Safari', desc: 'Encounter majestic leopards and elephants in their habitat.', icon: Gem },
     { id: 'exp-heritage', title: 'Heritage & Culture', desc: 'Explore ancient temples and UNESCO heritage sites.', icon: Map },
     { id: 'exp-train', title: 'Scenic Train Journeys', desc: 'Traverse lush highlands on the world\'s most beautiful trains.', icon: Compass },
     { id: 'exp-tea', title: 'Tea Country Retreats', desc: 'Wake up to misty mountains and endless green estates.', icon: Hotel },
     { id: 'exp-food', title: 'Fine Dining & Culinary', desc: 'Savor traditional spices and world-class gourmet cuisine.', icon: Users },
+=======
+    { id: 'exp-beach', title: 'Beaches & Sunset', desc: 'Relax on golden shores and watch the magic unfold.', icon: Sun },
+    { id: 'exp-wildlife', title: 'Wildlife & Safari', desc: 'Encounter majestic leopards and elephants in their habitat.', icon: PawPrint },
+    { id: 'exp-heritage', title: 'Heritage & Culture', desc: 'Explore ancient temples and UNESCO heritage sites.', icon: Landmark },
+    { id: 'exp-train', title: 'Scenic Train Journeys', desc: 'Traverse lush highlands on the world\'s most beautiful trains.', icon: TrainFront },
+    { id: 'exp-tea', title: 'Tea Country Retreats', desc: 'Wake up to misty mountains and endless green estates.', icon: Leaf },
+    { id: 'exp-food', title: 'Fine Dining & Culinary', desc: 'Savor traditional spices and world-class gourmet cuisine.', icon: UtensilsCrossed },
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
   ];
 
   const featured = [
@@ -111,8 +129,13 @@ export default function ExperiencesPage() {
           <h1 className="font-headline text-4xl md:text-7xl mb-4 tracking-wider uppercase animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
             EXPERIENCE IN SRI LANKA
           </h1>
+<<<<<<< HEAD
           <p className="text-sm md:text-lg tracking-[0.4em] uppercase font-bold opacity-80 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300 fill-mode-both">
             Experience In Sri Lanka
+=======
+          <p className="text-sm md:text-lg tracking-[0.4em] uppercase font-bold opacity-80">
+            Discover Your Soul in Paradise
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
           </p>
         </div>
       </section>
@@ -145,11 +168,16 @@ export default function ExperiencesPage() {
                 const img = PlaceHolderImages.find(i => i.id === cat.id);
                 const CatIcon = cat.icon;
                 return (
+<<<<<<< HEAD
                   <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5">
                     <div 
                       className="group relative cursor-pointer bg-white rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 fill-mode-both"
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
+=======
+                  <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/6">
+                    <div className="group relative cursor-pointer bg-white rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col overflow-hidden">
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
                       <div className="relative aspect-square overflow-hidden shrink-0">
                         <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
@@ -162,7 +190,11 @@ export default function ExperiencesPage() {
 
                       <div className="relative flex flex-col flex-grow items-center text-center p-6 pt-10">
                         <h4 className="font-headline text-lg mb-2 group-hover:text-accent transition-colors">{cat.title}</h4>
+<<<<<<< HEAD
                         <p className="text-[10px] text-muted-foreground leading-relaxed px-2">
+=======
+                        <p className="text-[10px] text-muted-foreground leading-relaxed px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
                           {cat.desc}
                         </p>
                       </div>
@@ -175,7 +207,11 @@ export default function ExperiencesPage() {
             <CarouselNext className="right-0 translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
           </Carousel>
           <div className="mt-12 flex justify-center">
+<<<<<<< HEAD
             <Button asChild className="rounded-none bg-[#1F5145] text-white hover:bg-[#1F5145]/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105">
+=======
+            <Button asChild className="rounded-none bg-[#1F5145] text-white hover:bg-[#1F5145]/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase">
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
               <Link href="/experiences/all">EXPLORE ALL EXPERIENCES</Link>
             </Button>
           </div>
@@ -188,9 +224,17 @@ export default function ExperiencesPage() {
           <span className="text-[#B08C45] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block animate-in fade-in duration-700">
             YOUR JOURNEY, OUR EXPERTISE
           </span>
+<<<<<<< HEAD
           <h2 className="font-headline text-4xl md:text-5xl mb-16 text-foreground animate-in fade-in slide-in-from-bottom-4 duration-1000">
             How We Plan Your Journey
           </h2>
+=======
+          <div className="flex flex-col items-center">
+            <h2 className="font-headline text-4xl md:text-5xl mb-16 text-foreground">
+              How We Plan Your Journey
+            </h2>
+          </div>
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
           
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8 max-w-6xl mx-auto relative">
             {/* Steps */}
@@ -201,6 +245,7 @@ export default function ExperiencesPage() {
               { icon: CalendarDays, title: 'Arrive in Sri Lanka', desc: 'We handle every detail from the moment you land.' },
               { icon: Camera, title: 'Unforgettable Memories', desc: 'Go home with a heart full of stories.' },
             ].map((step, i) => (
+<<<<<<< HEAD
               <div 
                 key={i} 
                 className="relative z-10 flex flex-col items-center p-6 md:p-0 rounded-xl md:rounded-none bg-white md:bg-transparent shadow-sm md:shadow-none border border-border/50 md:border-none group animate-in fade-in slide-in-from-bottom-8 fill-mode-both"
@@ -220,11 +265,29 @@ export default function ExperiencesPage() {
                 
                 <h4 className="font-bold tracking-widest uppercase text-[10px] mb-4 text-foreground text-center">{step.title}</h4>
                 <p className="text-[11px] text-muted-foreground leading-relaxed px-4 text-center">{step.desc}</p>
+=======
+              <div key={i} className="relative z-10 flex flex-col items-center bg-white p-6 rounded-2xl shadow-md border border-border/50 hover:shadow-lg transition-all duration-300">
+                {/* Number: Top-left absolute on mobile, centered below icon on desktop */}
+                <span className="absolute top-4 left-4 md:relative md:top-auto md:left-auto md:order-2 w-7 h-7 rounded-full bg-accent text-white text-[10px] flex items-center justify-center font-bold shadow-md shrink-0 md:mb-4">
+                  0{i + 1}
+                </span>
+
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white shadow-xl flex items-center justify-center text-[#B08C45] border border-[#B08C45]/20 group hover:bg-[#B08C45] hover:text-white transition-all duration-500 mb-6 md:mb-4 md:order-1 shrink-0">
+                  <step.icon className="w-5 h-5 md:w-6 md:h-6" />
+                </div>
+                
+                <h4 className="font-bold tracking-widest uppercase text-[10px] mb-4 text-foreground md:order-3">{step.title}</h4>
+                <p className="text-[11px] text-muted-foreground leading-relaxed px-4 md:order-4">{step.desc}</p>
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
               </div>
             ))}
             
             {/* Connector Line (Desktop) */}
+<<<<<<< HEAD
             <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-[2px] bg-[#B08C45]/20 z-0 animate-in fade-in duration-1000 delay-700" />
+=======
+            <div className="hidden md:block absolute top-[50%] left-[5%] right-[5%] h-[1px] bg-border z-0 -translate-y-[100px]" />
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
           </div>
         </div>
       </section>
@@ -245,9 +308,10 @@ export default function ExperiencesPage() {
 
         <div className="relative px-6 md:px-12 mb-16">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
-            <CarouselContent className="-ml-6">
+            <CarouselContent className="-ml-6 items-stretch">
               {featured.map((feat, index) => {
                 return (
+<<<<<<< HEAD
                   <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5">
                     <Card 
                       className="bg-white border-none shadow-md overflow-hidden group h-full flex flex-col hover:shadow-xl transition-all duration-500 animate-in fade-in slide-in-from-right-8 fill-mode-both"
@@ -290,6 +354,18 @@ export default function ExperiencesPage() {
                           Discover More <ArrowRight className="w-3 h-3 transition-transform group-hover/link:translate-x-1" />
                         </Link>
                       </div>
+=======
+                  <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5 xl:basis-1/6">
+                    <Card className="border-none shadow-md bg-white group overflow-hidden h-full flex flex-col">
+                      <div className="relative aspect-[3/4] overflow-hidden shrink-0">
+                        <Image src={img?.imageUrl || ''} alt={feat.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </div>
+                      <div className="p-6 flex-grow flex flex-col">
+                        <h4 className="font-headline text-lg mb-2 leading-tight group-hover:text-accent transition-colors">{feat.title}</h4>
+                        <p className="text-[10px] text-muted-foreground leading-relaxed line-clamp-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">{feat.desc}</p>
+                      </div>
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
                     </Card>
                   </CarouselItem>
                 );
@@ -300,7 +376,11 @@ export default function ExperiencesPage() {
           </Carousel>
         </div>
         <div className="flex justify-center">
+<<<<<<< HEAD
           <Button asChild variant="outline" className="rounded-none border-[#1F5145] text-[#1F5145] hover:bg-[#1F5145] hover:text-white px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105">
+=======
+          <Button asChild variant="outline" className="rounded-none border-[#1F5145] text-[#1F5145] hover:bg-[#1F5145] hover:text-white px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all">
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
             <Link href="/experiences/all">VIEW ALL EXPERIENCES</Link>
           </Button>
         </div>
@@ -326,11 +406,15 @@ export default function ExperiencesPage() {
             { icon: Users, title: 'Local Expertise', desc: 'Insightful experiences guided by true local connoisseurs.' },
             { icon: Headphones, title: '24/7 Concierge Support', desc: 'Seamless assistance before, during, and after your journey.' },
           ].map((item, i) => (
+<<<<<<< HEAD
             <div 
               key={i} 
               className="bg-white p-8 rounded-xl shadow-md border border-border/50 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 animate-in fade-in zoom-in-95 fill-mode-both"
               style={{ animationDelay: `${i * 100}ms` }}
             >
+=======
+            <div key={i} className="bg-white p-8 rounded-xl shadow-md border border-border/50 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
               <div className="w-12 h-12 bg-[#B08C45]/10 rounded-full flex items-center justify-center mx-auto mb-6 text-[#B08C45]">
                 <item.icon className="w-6 h-6" />
               </div>
@@ -341,7 +425,45 @@ export default function ExperiencesPage() {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* Lead Generation Form */}
+=======
+      {/* Instagram Journey */}
+      <section className="py-24 md:py-32 container mx-auto px-6 md:px-12 text-center">
+        <span className="text-[#B08C45] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
+          FOLLOW OUR JOURNEY
+        </span>
+        <h2 className="font-headline text-4xl md:text-5xl mb-6 text-foreground">
+          Journey Through Sri Lanka
+        </h2>
+        <p className="text-muted-foreground text-sm italic max-w-2xl mx-auto mb-12">
+          Discover breathtaking scenery, authentic experiences, and unforgettable moments from across the island.
+        </p>
+        <div className="flex justify-center mb-16">
+          <Button className="rounded-none bg-[#1F5145] text-white hover:bg-accent px-8 h-12 text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-2">
+            <Camera className="w-4 h-4" /> FOLLOW ON INSTAGRAM
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          {gallery.map((id, index) => (
+            <div key={index} className="relative aspect-square rounded-lg overflow-hidden group shadow-md transition-all duration-500">
+              <Image 
+                src={PlaceHolderImages.find(img => img.id === id)?.imageUrl || ''} 
+                alt={`Gallery ${index}`} 
+                fill 
+                className="object-cover transition-transform duration-700 group-hover:scale-110" 
+              />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                <Compass className="text-white w-8 h-8" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Planning Form Section */}
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
       <section className="py-24 bg-white border-t border-border/50">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -369,16 +491,23 @@ export default function ExperiencesPage() {
                   Tell us what you are looking for, and our bespoke travel specialists will create a personalized itinerary designed exclusively for you.
                </p>
 
-               <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                       <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Full Name *</Label>
-                       <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="John Doe" />
+               <div className="bg-white p-8 rounded-3xl shadow-2xl border border-border/50">
+                <form className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Full Name *</Label>
+                        <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="John Doe" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Email Address *</Label>
+                        <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="john@example.com" type="email" />
+                      </div>
                     </div>
                     <div className="space-y-2">
-                       <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Email Address *</Label>
-                       <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="john@example.com" type="email" />
+                      <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Phone / WhatsApp</Label>
+                      <Input className="border-border/50 h-12 bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="+123 456 7890" />
                     </div>
+<<<<<<< HEAD
                   </div>
                   <div className="space-y-2">
                     <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Phone / WhatsApp</Label>
@@ -398,11 +527,29 @@ export default function ExperiencesPage() {
                      </Button>
                   </div>
                </form>
+=======
+                    <div className="space-y-2">
+                      <Label className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Detail about your journey</Label>
+                      <Textarea className="border-border/50 min-h-[140px] bg-[#F8F5EF]/30 focus:bg-white transition-all rounded-sm" placeholder="Tell us about your travel dates, group size, and interests..." />
+                    </div>
+                    
+                    <div className="flex flex-col sm:flex-row gap-6 pt-4">
+                      <Button className="bg-[#B08C45] hover:bg-[#A2712E] text-white rounded-none h-14 px-12 font-bold tracking-[0.2em] text-sm shadow-xl transition-all">
+                          ENQUIRE
+                      </Button>
+                      <Button className="bg-[#1F5145] hover:bg-[#1F5145]/90 text-white rounded-none h-14 px-12 font-bold tracking-[0.2em] text-sm shadow-xl transition-all">
+                          SEND REQUEST
+                      </Button>
+                    </div>
+                </form>
+               </div>
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
             </div>
           </div>
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* Bottom CTA Overlay Section */}
       <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
          <Image src={heroImage?.imageUrl || ''} alt="CTA Background" fill className="object-cover" />
@@ -420,6 +567,8 @@ export default function ExperiencesPage() {
          </div>
       </section>
 
+=======
+>>>>>>> 7ef611a80e4fa21367ec1f4c9134c57b26f92145
       <Footer />
     </main>
   );
