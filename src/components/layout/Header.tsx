@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -13,7 +12,9 @@ const navLinks = [
   { name: 'VILLAS', href: '/villas' },
   { name: 'TOURS', href: '/tours' },
   { name: 'FOOD & DINING', href: '/food-dining' },
+  { name: 'EXPERIENCES', href: '/experiences' },
   { name: 'ABOUT', href: '/about' },
+  { name: 'ISLAND DIARY', href: '/island-diary' },
   { name: 'CONTACT', href: '/contact' },
 ];
 
