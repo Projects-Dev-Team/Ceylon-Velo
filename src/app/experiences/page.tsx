@@ -127,11 +127,14 @@ export default function ExperiencesPage() {
 
       {/* Choose Your Experience Section */}
       <section className="pt-16 pb-24 container mx-auto px-6 md:px-12">
-        <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-24">
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
+          className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-24"
+        >
           <Link href="/" className="hover:text-accent">HOME</Link>
           <span>/</span>
           <span className="text-foreground">EXPERIENCES</span>
-        </div>
+        </motion.div>
 
         <div className="text-center max-w-4xl mx-auto mb-20">
           <motion.span 
@@ -293,6 +296,7 @@ export default function ExperiencesPage() {
                           <Carousel opts={{ loop: true }} className="w-full h-full group/inner">
                             <CarouselContent className="m-0 h-full">
                               {feat.images.map((imgId, imgIdx) => {
+                                // Corrected: Use imgId to find the corresponding image
                                 const img = PlaceHolderImages.find(i => i.id === imgId);
                                 return (
                                   <CarouselItem key={imgIdx} className="p-0 h-full relative">
