@@ -145,8 +145,8 @@ export default function ExperiencesPage() {
             <CarouselNext className="right-0 translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
           </Carousel>
           <div className="mt-12 flex justify-center">
-            <Button className="rounded-none bg-[#1F5145] text-white hover:bg-[#1F5145]/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase">
-              EXPLORE ALL EXPERIENCES
+            <Button asChild className="rounded-none bg-[#1F5145] text-white hover:bg-[#1F5145]/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase">
+              <Link href="/experiences/all">EXPLORE ALL EXPERIENCES</Link>
             </Button>
           </div>
         </div>
@@ -174,7 +174,7 @@ export default function ExperiencesPage() {
               { icon: Camera, title: 'Unforgettable Memories', desc: 'Go home with a heart full of stories.' },
             ].map((step, i) => (
               <div key={i} className="relative z-10 flex flex-col items-center bg-white p-6 rounded-2xl shadow-md border border-border/50 hover:shadow-lg transition-all duration-300">
-                {/* Number: Top-left absolute on mobile, relative center below icon on desktop */}
+                {/* Number: Top-left absolute on mobile, centered below icon on desktop */}
                 <span className="absolute top-4 left-4 md:relative md:top-auto md:left-auto md:order-2 w-7 h-7 rounded-full bg-accent text-white text-[10px] flex items-center justify-center font-bold shadow-md shrink-0 md:mb-4">
                   0{i + 1}
                 </span>
@@ -233,8 +233,8 @@ export default function ExperiencesPage() {
           </Carousel>
         </div>
         <div className="flex justify-center">
-          <Button variant="outline" className="rounded-none border-[#1F5145] text-[#1F5145] hover:bg-[#1F5145] hover:text-white px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all">
-            VIEW ALL EXPERIENCES
+          <Button asChild variant="outline" className="rounded-none border-[#1F5145] text-[#1F5145] hover:bg-[#1F5145] hover:text-white px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all">
+            <Link href="/experiences/all">VIEW ALL EXPERIENCES</Link>
           </Button>
         </div>
       </section>
