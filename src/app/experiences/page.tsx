@@ -174,14 +174,17 @@ export default function ExperiencesPage() {
               { icon: Camera, title: 'Unforgettable Memories', desc: 'Go home with a heart full of stories.' },
             ].map((step, i) => (
               <div key={i} className="relative z-10 flex flex-col items-center bg-white p-6 rounded-2xl shadow-md border border-border/50 hover:shadow-lg transition-all duration-300">
-                <div className="flex items-center md:flex-col md:items-center gap-4 md:gap-0 mb-6">
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white shadow-xl flex items-center justify-center text-[#B08C45] border border-[#B08C45]/20 group hover:bg-[#B08C45] hover:text-white transition-all duration-500 md:mb-4 shrink-0">
-                    <step.icon className="w-5 h-5 md:w-6 md:h-6" />
-                  </div>
-                  <span className="w-7 h-7 rounded-full bg-accent text-white text-[10px] flex items-center justify-center font-bold shadow-md shrink-0">0{i + 1}</span>
+                {/* Number: Top-left absolute on mobile, relative center below icon on desktop */}
+                <span className="absolute top-4 left-4 md:relative md:top-auto md:left-auto md:order-2 w-7 h-7 rounded-full bg-accent text-white text-[10px] flex items-center justify-center font-bold shadow-md shrink-0 md:mb-4">
+                  0{i + 1}
+                </span>
+
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white shadow-xl flex items-center justify-center text-[#B08C45] border border-[#B08C45]/20 group hover:bg-[#B08C45] hover:text-white transition-all duration-500 mb-6 md:mb-4 md:order-1 shrink-0">
+                  <step.icon className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <h4 className="font-bold tracking-widest uppercase text-[10px] mb-4 text-foreground">{step.title}</h4>
-                <p className="text-[11px] text-muted-foreground leading-relaxed px-4">{step.desc}</p>
+                
+                <h4 className="font-bold tracking-widest uppercase text-[10px] mb-4 text-foreground md:order-3">{step.title}</h4>
+                <p className="text-[11px] text-muted-foreground leading-relaxed px-4 md:order-4">{step.desc}</p>
               </div>
             ))}
             {/* Connector Line (Desktop) */}
