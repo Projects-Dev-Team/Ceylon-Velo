@@ -55,7 +55,7 @@ export default function ExperiencesPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden">
       <Header />
 
       {/* Hero Section */}
@@ -64,16 +64,16 @@ export default function ExperiencesPage() {
           src={heroImage?.imageUrl || ''}
           alt="Experiences Hero"
           fill
-          className="object-cover"
+          className="object-cover animate-in fade-in duration-1000"
           priority
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-4xl md:text-7xl mb-4 tracking-wider uppercase animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <h1 className="font-headline text-4xl md:text-7xl mb-4 tracking-wider uppercase animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
             EXPERIENCE IN SRI LANKA
           </h1>
-          <p className="text-sm md:text-lg tracking-[0.4em] uppercase font-bold opacity-80">
+          <p className="text-sm md:text-lg tracking-[0.4em] uppercase font-bold opacity-80 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300 fill-mode-both">
             Experience In Sri Lanka
           </p>
         </div>
@@ -81,13 +81,13 @@ export default function ExperiencesPage() {
 
       {/* Breadcrumbs & Intro */}
       <section className="pt-16 pb-24 container mx-auto px-6 md:px-12">
-        <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-24">
+        <div className="flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-muted-foreground mb-24 animate-in fade-in slide-in-from-left-4 duration-700">
           <Link href="/" className="hover:text-accent">HOME</Link>
           <span>/</span>
           <span className="text-foreground">EXPERIENCES</span>
         </div>
 
-        <div className="text-center max-w-4xl mx-auto mb-20">
+        <div className="text-center max-w-4xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-8 duration-1000">
           <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
             DISCOVER SRI LANKA
           </span>
@@ -100,15 +100,18 @@ export default function ExperiencesPage() {
         </div>
 
         {/* Categories Carousel */}
-        <div className="relative px-12">
+        <div className="relative px-12 animate-in fade-in zoom-in-95 duration-1000 delay-200">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-4 items-stretch">
               {categories.map((cat, index) => {
                 const img = PlaceHolderImages.find(i => i.id === cat.id);
                 const CatIcon = cat.icon;
                 return (
-                  <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
-                    <div className="group relative cursor-pointer bg-white rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col overflow-hidden">
+                  <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5">
+                    <div 
+                      className="group relative cursor-pointer bg-white rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 fill-mode-both"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
                       <div className="relative aspect-square overflow-hidden shrink-0">
                         <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
@@ -134,7 +137,7 @@ export default function ExperiencesPage() {
             <CarouselNext className="right-0 translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
           </Carousel>
           <div className="mt-12 flex justify-center">
-            <Button asChild className="rounded-none bg-[#1F5145] text-white hover:bg-[#1F5145]/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase">
+            <Button asChild className="rounded-none bg-[#1F5145] text-white hover:bg-[#1F5145]/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105">
               <Link href="/experiences/all">EXPLORE ALL EXPERIENCES</Link>
             </Button>
           </div>
@@ -144,10 +147,10 @@ export default function ExperiencesPage() {
       {/* How We Plan Your Journey */}
       <section className="py-24 bg-[#F8F5EF] border-y border-border/50">
         <div className="container mx-auto px-6 text-center">
-          <span className="text-[#B08C45] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
+          <span className="text-[#B08C45] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block animate-in fade-in duration-700">
             YOUR JOURNEY, OUR EXPERTISE
           </span>
-          <h2 className="font-headline text-4xl md:text-5xl mb-16 text-foreground">
+          <h2 className="font-headline text-4xl md:text-5xl mb-16 text-foreground animate-in fade-in slide-in-from-bottom-4 duration-1000">
             How We Plan Your Journey
           </h2>
           
@@ -162,9 +165,9 @@ export default function ExperiencesPage() {
             ].map((step, i) => (
               <div 
                 key={i} 
-                className="relative z-10 flex flex-col items-center p-6 md:p-0 rounded-xl md:rounded-none bg-white md:bg-transparent shadow-sm md:shadow-none border border-border/50 md:border-none group"
+                className="relative z-10 flex flex-col items-center p-6 md:p-0 rounded-xl md:rounded-none bg-white md:bg-transparent shadow-sm md:shadow-none border border-border/50 md:border-none group animate-in fade-in slide-in-from-bottom-8 fill-mode-both"
+                style={{ animationDelay: `${i * 150}ms` }}
               >
-                {/* Mobile: Number in top-left corner of card */}
                 <span className="md:hidden absolute top-4 left-4 w-6 h-6 rounded-full bg-[#E47E25] text-white text-[10px] flex items-center justify-center font-bold shadow-md">
                   0{i + 1}
                 </span>
@@ -173,8 +176,7 @@ export default function ExperiencesPage() {
                   <step.icon className="w-6 h-6" />
                 </div>
                 
-                {/* Desktop: Number below the icon */}
-                <span className="hidden md:flex w-6 h-6 rounded-full bg-[#E47E25] text-white text-[10px] items-center justify-center font-bold shadow-md mb-4 relative z-20">
+                <span className="hidden md:flex w-6 h-6 rounded-full bg-[#E47E25] text-white text-[10px] items-center justify-center font-bold shadow-md mb-4 relative z-20 transition-transform group-hover:scale-110">
                   0{i + 1}
                 </span>
                 
@@ -183,15 +185,15 @@ export default function ExperiencesPage() {
               </div>
             ))}
             
-            {/* Connector Line (Desktop) - Connects main icons */}
-            <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-[2px] bg-[#B08C45]/20 z-0" />
+            {/* Connector Line (Desktop) */}
+            <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-[2px] bg-[#B08C45]/20 z-0 animate-in fade-in duration-1000 delay-700" />
           </div>
         </div>
       </section>
 
       {/* Featured Experiences */}
       <section className="py-24 md:py-32 container mx-auto px-6 md:px-12">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000">
           <span className="text-[#E47E25] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
             HANDPICKED EXPERIENCES
           </span>
@@ -209,8 +211,11 @@ export default function ExperiencesPage() {
               {featured.map((feat, index) => {
                 const img = PlaceHolderImages.find(i => i.id === feat.id);
                 return (
-                  <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
-                    <Card className="bg-white border-none shadow-md overflow-hidden group h-full flex flex-col hover:shadow-xl transition-all duration-500">
+                  <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5">
+                    <Card 
+                      className="bg-white border-none shadow-md overflow-hidden group h-full flex flex-col hover:shadow-xl transition-all duration-500 animate-in fade-in slide-in-from-right-8 fill-mode-both"
+                      style={{ animationDelay: `${index * 100}ms` }}
+                    >
                       <div className="relative aspect-[4/5] overflow-hidden shrink-0">
                         <Image src={img?.imageUrl || ''} alt={feat.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -237,7 +242,7 @@ export default function ExperiencesPage() {
           </Carousel>
         </div>
         <div className="flex justify-center">
-          <Button asChild variant="outline" className="rounded-none border-[#1F5145] text-[#1F5145] hover:bg-[#1F5145] hover:text-white px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all">
+          <Button asChild variant="outline" className="rounded-none border-[#1F5145] text-[#1F5145] hover:bg-[#1F5145] hover:text-white px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105">
             <Link href="/experiences/all">VIEW ALL EXPERIENCES</Link>
           </Button>
         </div>
@@ -245,7 +250,7 @@ export default function ExperiencesPage() {
 
       {/* Value Props */}
       <section className="py-24 bg-[#F8F5EF]">
-        <div className="container mx-auto px-6 text-center mb-16">
+        <div className="container mx-auto px-6 text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000">
           <span className="text-[#B08C45] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
             THE CEYLON VELO WAY
           </span>
@@ -263,7 +268,11 @@ export default function ExperiencesPage() {
             { icon: Users, title: 'Local Expertise', desc: 'Insightful experiences guided by true local connoisseurs.' },
             { icon: Headphones, title: '24/7 Concierge Support', desc: 'Seamless assistance before, during, and after your journey.' },
           ].map((item, i) => (
-            <div key={i} className="bg-white p-8 rounded-xl shadow-md border border-border/50 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+            <div 
+              key={i} 
+              className="bg-white p-8 rounded-xl shadow-md border border-border/50 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500 animate-in fade-in zoom-in-95 fill-mode-both"
+              style={{ animationDelay: `${i * 100}ms` }}
+            >
               <div className="w-12 h-12 bg-[#B08C45]/10 rounded-full flex items-center justify-center mx-auto mb-6 text-[#B08C45]">
                 <item.icon className="w-6 h-6" />
               </div>
@@ -282,7 +291,7 @@ export default function ExperiencesPage() {
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl animate-in fade-in slide-in-from-left-8 duration-1000">
                <Image src={planImg?.imageUrl || ''} alt="Plan Journey" fill className="object-cover" />
                <div className="absolute inset-0 bg-black/10" />
-               <div className="absolute bottom-12 left-12 right-12 p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 text-white">
+               <div className="absolute bottom-12 left-12 right-12 p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 text-white animate-in slide-in-from-bottom-4 duration-1000 delay-500 fill-mode-both">
                   <h4 className="font-headline text-2xl mb-4 italic">"Nature does not hurry, yet everything is accomplished."</h4>
                   <p className="text-xs uppercase tracking-[0.3em] font-bold text-[#E47E25]">Discover Your Soul in Sri Lanka</p>
                </div>
@@ -323,10 +332,10 @@ export default function ExperiencesPage() {
                   </div>
                   
                   <div className="flex flex-col sm:flex-row gap-6 pt-4">
-                     <Button className="bg-[#B08C45] hover:bg-[#A2712E] text-white rounded-none h-14 px-12 font-bold tracking-[0.2em] text-sm shadow-xl transition-all">
+                     <Button className="bg-[#B08C45] hover:bg-[#A2712E] text-white rounded-none h-14 px-12 font-bold tracking-[0.2em] text-sm shadow-xl transition-all duration-300 hover:scale-105 active:scale-95">
                         ENQUIRE
                      </Button>
-                     <Button className="bg-[#1F5145] hover:bg-[#1F5145]/90 text-white rounded-none h-14 px-12 font-bold tracking-[0.2em] text-sm shadow-xl transition-all">
+                     <Button className="bg-[#1F5145] hover:bg-[#1F5145]/90 text-white rounded-none h-14 px-12 font-bold tracking-[0.2em] text-sm shadow-xl transition-all duration-300 hover:scale-105 active:scale-95">
                         SEND REQUEST
                      </Button>
                   </div>
@@ -340,14 +349,14 @@ export default function ExperiencesPage() {
       <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
          <Image src={heroImage?.imageUrl || ''} alt="CTA Background" fill className="object-cover" />
          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
-         <div className="relative z-10 text-left container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-end justify-between">
+         <div className="relative z-10 text-left container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-end justify-between animate-in fade-in slide-in-from-bottom-12 duration-1000">
             <div className="max-w-2xl text-white">
                <h2 className="font-headline text-5xl md:text-6xl mb-4 leading-tight">
                   Your Sri Lankan <br /> story <br />
                   <span className="text-[#E47E25] italic">starts here..</span>
                </h2>
             </div>
-            <Button className="bg-[#E47E25] hover:bg-[#E47E25]/90 text-white rounded-lg h-12 px-10 font-bold tracking-widest transition-transform hover:scale-105 shadow-2xl">
+            <Button className="bg-[#E47E25] hover:bg-[#E47E25]/90 text-white rounded-lg h-12 px-10 font-bold tracking-widest transition-transform hover:scale-105 shadow-2xl active:scale-95">
                BOOK NOW
             </Button>
          </div>
