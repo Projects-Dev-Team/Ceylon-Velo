@@ -22,7 +22,9 @@ import {
   Camera,
   CalendarDays,
   Gem,
-  CheckCircle2
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import {
   Carousel,
@@ -46,12 +48,48 @@ export default function ExperiencesPage() {
   ];
 
   const featured = [
-    { id: 'exp-whale', slug: '#', title: 'Mirissa Whale Watching', desc: 'Encounter these gentle giants in the deep blue waters of the south.' },
-    { id: 'exp-highlands', slug: '#', title: 'Ella Highlands', desc: 'Trek through misty peaks and lush tea estates for breathtaking views.' },
-    { id: 'exp-sigiriya', slug: 'sigiriya-lion-rock', title: 'Sigiriya Rock Fortress', desc: 'Climb the ancient Lion Rock and witness a palace above the clouds.' },
-    { id: 'exp-yala', slug: 'yala-leopard-safari', title: 'Yala Safari', desc: 'An adrenaline-fueled journey into leopard country and wild wilderness.' },
-    { id: 'exp-bentota', slug: '#', title: 'Bentota Beach Massage', desc: 'Indulge in ancient Ayurveda practices right by the ocean waves.' },
-    { id: 'exp-galle', slug: '#', title: 'Galle Fort Experience', desc: 'Walk through history in this colonial gem at the island\'s edge.' },
+    { 
+      id: 'exp-whale', 
+      slug: '#', 
+      title: 'Mirissa Whale Watching', 
+      desc: 'Encounter these gentle giants in the deep blue waters of the south.',
+      images: ['exp-whale', 'insta-4', 'insta-5'] 
+    },
+    { 
+      id: 'exp-highlands', 
+      slug: '#', 
+      title: 'Ella Highlands', 
+      desc: 'Trek through misty peaks and lush tea estates for breathtaking views.',
+      images: ['exp-highlands', 'insta-2', 'insta-1']
+    },
+    { 
+      id: 'exp-sigiriya', 
+      slug: 'sigiriya-lion-rock', 
+      title: 'Sigiriya Rock Fortress', 
+      desc: 'Climb the ancient Lion Rock and witness a palace above the clouds.',
+      images: ['exp-sigiriya', 'gallery-1', 'gallery-2']
+    },
+    { 
+      id: 'exp-yala', 
+      slug: 'yala-leopard-safari', 
+      title: 'Yala Safari', 
+      desc: 'An adrenaline-fueled journey into leopard country and wild wilderness.',
+      images: ['exp-yala', 'insta-1', 'insta-2']
+    },
+    { 
+      id: 'exp-bentota', 
+      slug: '#', 
+      title: 'Bentota Beach Massage', 
+      desc: 'Indulge in ancient Ayurveda practices right by the ocean waves.',
+      images: ['exp-bentota', 'insta-4', 'insta-3']
+    },
+    { 
+      id: 'exp-galle', 
+      slug: '#', 
+      title: 'Galle Fort Experience', 
+      desc: 'Walk through history in this colonial gem at the island\'s edge.',
+      images: ['exp-galle', 'insta-6', 'insta-3']
+    },
   ];
 
   return (
@@ -209,17 +247,37 @@ export default function ExperiencesPage() {
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-6">
               {featured.map((feat, index) => {
-                const img = PlaceHolderImages.find(i => i.id === feat.id);
                 return (
                   <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/5">
                     <Card 
                       className="bg-white border-none shadow-md overflow-hidden group h-full flex flex-col hover:shadow-xl transition-all duration-500 animate-in fade-in slide-in-from-right-8 fill-mode-both"
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
+                      {/* Internal Image Slider */}
                       <div className="relative aspect-[4/5] overflow-hidden shrink-0">
-                        <Image src={img?.imageUrl || ''} alt={feat.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <Carousel opts={{ loop: true }} className="w-full h-full">
+                          <CarouselContent className="m-0 h-full">
+                            {feat.images.map((imgId, imgIdx) => {
+                              const img = PlaceHolderImages.find(i => i.id === imgId);
+                              return (
+                                <CarouselItem key={imgIdx} className="p-0 h-full relative">
+                                  <Image 
+                                    src={img?.imageUrl || ''} 
+                                    alt={`${feat.title} ${imgIdx + 1}`} 
+                                    fill 
+                                    className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                                  />
+                                </CarouselItem>
+                              )
+                            })}
+                          </CarouselContent>
+                          {/* Navigation for nested slider */}
+                          <CarouselPrevious className="left-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/40 border-none text-white" />
+                          <CarouselNext className="right-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/40 border-none text-white" />
+                        </Carousel>
+                        <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
+
                       <div className="p-6 flex-grow flex flex-col">
                         <h4 className="font-headline text-xl mb-3 leading-tight group-hover:text-[#B08C45] transition-colors">{feat.title}</h4>
                         <p className="text-[10px] text-muted-foreground leading-relaxed line-clamp-3 mb-6">
