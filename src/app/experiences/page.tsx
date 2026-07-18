@@ -272,8 +272,8 @@ export default function ExperiencesPage() {
                             })}
                           </CarouselContent>
                           {/* Navigation for nested slider */}
-                          <CarouselPrevious className="left-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/40 border-none text-white" />
-                          <CarouselNext className="right-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 hover:bg-white/40 border-none text-white" />
+                          <CarouselPrevious className="left-2 h-8 w-8 bg-white/40 hover:bg-white/60 border-none text-white transition-opacity" />
+                          <CarouselNext className="right-2 h-8 w-8 bg-white/40 hover:bg-white/60 border-none text-white transition-opacity" />
                         </Carousel>
                         <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
