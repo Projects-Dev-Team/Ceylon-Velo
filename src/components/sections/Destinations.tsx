@@ -21,19 +21,24 @@ export function Destinations() {
   return (
     <section className="py-24 md:py-32 bg-white">
       <div className="container mx-auto px-6 md:px-12">
+        
+        {/* Updated Heading Section */}
         <motion.div 
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="center mb-16 gap-4"
+          className="flex flex-col items-center justify-center text-center mb-16 gap-4"
         >
-          <motion.p variants={fadeUpVariant} className="text-muted-foreground font-medium tracking-widest text-xs max-w-xs md:text-right uppercase">
-           Featured Destinations
+          <motion.p variants={fadeUpVariant} className="text-accent font-medium tracking-widest text-xs uppercase">
+           HANDPICKED EXPERIENCES
           </motion.p>
           <motion.h2 variants={fadeUpVariant} className="font-headline text-4xl md:text-5xl lg:text-6xl text-foreground">
-            Four corners of paradise
+             Featured Experiences
           </motion.h2>
+          <motion.p variants={fadeUpVariant} className="text-muted-foreground font-medium tracking-widest text-xs ">
+           Discover handpicked experiences inspired by Sri Lanka 's most extraordinary places
+          </motion.p>
         </motion.div>
 
         <motion.div 

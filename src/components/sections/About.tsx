@@ -50,10 +50,10 @@ export function About() {
             className="flex flex-col justify-center"
           >
             <motion.span variants={fadeUpVariant} className="text-accent font-bold tracking-[0.2em] uppercase text-[10px] mb-4">
-              ABOUT CEYLON VELO
+              WELCOME TO CEYLONE VELO
             </motion.span>
             <motion.h2 variants={fadeUpVariant} className="font-headline text-4xl md:text-5xl lg:text-6xl text-foreground mb-8 leading-tight">
-              The Home of Sri Lankan Beauty
+              Experience Sri Lanka Beyond the Ordinary
             </motion.h2>
             <motion.p variants={fadeUpVariant} className="text-muted-foreground text-lg mb-12 leading-relaxed max-w-xl">
               Discover paradise where pristine beaches, ancient history, vibrant culture, and wild adventures meet. Our expert curators design every moment of your journey with meticulous attention to detail.
