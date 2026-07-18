@@ -23,7 +23,13 @@ import {
   Camera,
   CalendarDays,
   Gem,
-  CheckCircle2
+  CheckCircle2,
+  Sun,
+  PawPrint,
+  Landmark,
+  TrainFront,
+  Leaf,
+  UtensilsCrossed
 } from 'lucide-react';
 import {
   Carousel,
@@ -38,12 +44,12 @@ export default function ExperiencesPage() {
   const planImg = PlaceHolderImages.find(img => img.id === 'exp-plan-img');
   
   const categories = [
-    { id: 'exp-beach', title: 'Beaches & Sunset', desc: 'Relax on golden shores and watch the magic unfold.' },
-    { id: 'exp-wildlife', title: 'Wildlife & Safari', desc: 'Encounter majestic leopards and elephants in their habitat.' },
-    { id: 'exp-heritage', title: 'Heritage & Culture', desc: 'Explore ancient temples and UNESCO heritage sites.' },
-    { id: 'exp-train', title: 'Scenic Train Journeys', desc: 'Traverse lush highlands on the world\'s most beautiful trains.' },
-    { id: 'exp-tea', title: 'Tea Country Retreats', desc: 'Wake up to misty mountains and endless green estates.' },
-    { id: 'exp-food', title: 'Fine Dining & Culinary', desc: 'Savor traditional spices and world-class gourmet cuisine.' },
+    { id: 'exp-beach', title: 'Beaches & Sunset', desc: 'Relax on golden shores and watch the magic unfold.', icon: Sun },
+    { id: 'exp-wildlife', title: 'Wildlife & Safari', desc: 'Encounter majestic leopards and elephants in their habitat.', icon: PawPrint },
+    { id: 'exp-heritage', title: 'Heritage & Culture', desc: 'Explore ancient temples and UNESCO heritage sites.', icon: Landmark },
+    { id: 'exp-train', title: 'Scenic Train Journeys', desc: 'Traverse lush highlands on the world\'s most beautiful trains.', icon: TrainFront },
+    { id: 'exp-tea', title: 'Tea Country Retreats', desc: 'Wake up to misty mountains and endless green estates.', icon: Leaf },
+    { id: 'exp-food', title: 'Fine Dining & Culinary', desc: 'Savor traditional spices and world-class gourmet cuisine.', icon: UtensilsCrossed },
   ];
 
   const featured = [
@@ -111,14 +117,21 @@ export default function ExperiencesPage() {
             <CarouselContent className="-ml-4 items-stretch">
               {categories.map((cat, index) => {
                 const img = PlaceHolderImages.find(i => i.id === cat.id);
+                const CatIcon = cat.icon;
                 return (
                   <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/6">
-                    <div className="group cursor-pointer bg-white rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col overflow-hidden">
+                    <div className="group relative cursor-pointer bg-white rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col overflow-hidden">
                       <div className="relative aspect-square overflow-hidden shrink-0">
                         <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
                       </div>
-                      <div className="flex flex-col flex-grow items-center text-center p-6">
+                      
+                      {/* Overlapping Icon */}
+                      <div className="absolute top-[calc(50%-24px)] left-1/2 -translate-x-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border border-border/50 text-accent z-20 group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                        <CatIcon className="w-6 h-6" />
+                      </div>
+
+                      <div className="relative flex flex-col flex-grow items-center text-center p-6 pt-10">
                         <h4 className="font-headline text-lg mb-2 group-hover:text-accent transition-colors">{cat.title}</h4>
                         <p className="text-[10px] text-muted-foreground leading-relaxed px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           {cat.desc}
