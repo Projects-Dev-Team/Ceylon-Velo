@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -175,9 +174,11 @@ export default function ExperiencesPage() {
               { icon: Camera, title: 'Unforgettable Memories', desc: 'Go home with a heart full of stories.' },
             ].map((step, i) => (
               <div key={i} className="relative z-10 flex flex-col items-center bg-white p-6 rounded-2xl shadow-md border border-border/50 hover:shadow-lg transition-all duration-300">
-                <div className="w-16 h-16 rounded-full bg-white shadow-xl flex items-center justify-center mb-6 text-[#B08C45] border border-[#B08C45]/20 group hover:bg-[#B08C45] hover:text-white transition-all duration-500">
-                  <step.icon className="w-6 h-6" />
-                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-accent text-white text-[10px] flex items-center justify-center font-bold">0{i + 1}</span>
+                <div className="flex flex-col items-center mb-6">
+                  <div className="w-16 h-16 rounded-full bg-white shadow-xl flex items-center justify-center text-[#B08C45] border border-[#B08C45]/20 group hover:bg-[#B08C45] hover:text-white transition-all duration-500 mb-4">
+                    <step.icon className="w-6 h-6" />
+                  </div>
+                  <span className="w-7 h-7 rounded-full bg-accent text-white text-[10px] flex items-center justify-center font-bold shadow-md">0{i + 1}</span>
                 </div>
                 <h4 className="font-bold tracking-widest uppercase text-[10px] mb-4 text-foreground">{step.title}</h4>
                 <p className="text-[11px] text-muted-foreground leading-relaxed px-4">{step.desc}</p>
