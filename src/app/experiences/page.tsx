@@ -9,9 +9,6 @@ import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { 
@@ -19,7 +16,6 @@ import {
   Map, 
   Hotel, 
   Users, 
-  Headphones, 
   ArrowRight,
   Sparkles,
   Camera,
@@ -38,7 +34,6 @@ import {
 
 export default function ExperiencesPage() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'exp-hero');
-  const planImg = PlaceHolderImages.find(img => img.id === 'exp-plan-img');
   
   const categories = [
     { id: 'exp-beach', title: 'Beaches & Sunset', desc: 'Relax on golden shores and watch the magic unfold.', icon: Sparkles },
@@ -139,30 +134,42 @@ export default function ExperiencesPage() {
         </div>
 
         <div className="text-center max-w-4xl mx-auto mb-20">
-          <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
+          <motion.span 
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant}
+            className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block"
+          >
             DISCOVER SRI LANKA
-          </span>
-          <h2 className="font-headline text-4xl md:text-5xl text-foreground mb-8">
+          </motion.span>
+          <motion.h2 
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant}
+            className="font-headline text-4xl md:text-5xl text-foreground mb-8"
+          >
             Choose Your Experience
-          </h2>
-          <p className="text-muted-foreground leading-relaxed italic max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant}
+            className="text-muted-foreground leading-relaxed italic max-w-2xl mx-auto"
+          >
             Find the perfect blend of adventure, relaxation, culture or luxury. Choose a category below and let the story of your journey begin to unfold.
-          </p>
+          </motion.p>
         </div>
 
-        {/* Categories Carousel */}
-        <div className="relative px-12">
+        {/* Categories Carousel - Updated to show 4 cards at once and visible descriptions */}
+        <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUpVariant}
+          className="relative px-12"
+        >
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-4 items-stretch">
               {categories.map((cat, index) => {
                 const img = PlaceHolderImages.find(i => i.id === cat.id);
                 const CatIcon = cat.icon;
                 return (
-                  <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/6">
+                  <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <div className="group relative cursor-pointer bg-white rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col overflow-hidden">
                       <div className="relative aspect-square overflow-hidden shrink-0">
                         <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors" />
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                       </div>
                       
                       {/* Overlapping Icon */}
@@ -172,7 +179,7 @@ export default function ExperiencesPage() {
 
                       <div className="relative flex flex-col flex-grow items-center text-center p-6 pt-10">
                         <h4 className="font-headline text-lg mb-2 group-hover:text-accent transition-colors">{cat.title}</h4>
-                        <p className="text-[10px] text-muted-foreground leading-relaxed px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p className="text-[10px] text-muted-foreground leading-relaxed px-2 transition-opacity duration-300">
                           {cat.desc}
                         </p>
                       </div>
@@ -189,7 +196,7 @@ export default function ExperiencesPage() {
               <Link href="/experiences/all">EXPLORE ALL EXPERIENCES</Link>
             </Button>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* How We Plan Your Journey */}
@@ -225,8 +232,8 @@ export default function ExperiencesPage() {
                 transition={{ delay: i * 0.1 }}
                 className="relative z-10 flex flex-col items-center p-8 md:p-0 rounded-xl bg-white md:bg-transparent shadow-sm md:shadow-none border border-border/50 md:border-none group"
               >
-                {/* Mobile Number Icon */}
-                <span className="md:hidden absolute top-4 left-4 w-6 h-6 rounded-full bg-[#E47E25] text-white text-[10px] flex items-center justify-center font-bold shadow-md">
+                {/* Mobile Number Icon (Top Left) */}
+                <span className="md:hidden absolute top-2 left-2 w-6 h-6 rounded-full bg-[#E47E25] text-white text-[10px] flex items-center justify-center font-bold shadow-md">
                   0{i + 1}
                 </span>
 
@@ -235,7 +242,7 @@ export default function ExperiencesPage() {
                 </div>
                 
                 {/* Desktop Number Icon below main icon */}
-                <span className="hidden md:flex w-6 h-6 rounded-full bg-[#E47E25] text-white text-[10px] items-center justify-center font-bold shadow-md mb-4 relative z-20 transition-transform group-hover:scale-110">
+                <span className="hidden md:flex w-6 h-6 rounded-full bg-[#E47E25] text-white text-[10px] items-center justify-center font-bold shadow-md mb-4 relative z-20 transition-transform group-hover:scale-110 mx-auto">
                   0{i + 1}
                 </span>
                 
