@@ -289,7 +289,7 @@ export default function ExperiencesPage() {
                     >
                       <Card className="bg-white border-none shadow-md overflow-hidden group h-full flex flex-col hover:shadow-xl transition-all duration-500">
                         {/* Internal Image Slider */}
-                        <div className="relative aspect-[4/5] overflow-hidden shrink-0">
+                        <div className="relative aspect-[4/3] overflow-hidden shrink-0">
                           <Carousel opts={{ loop: true }} className="w-full h-full group/inner">
                             <CarouselContent className="m-0 h-full">
                               {feat.images.map((imgId, imgIdx) => {
