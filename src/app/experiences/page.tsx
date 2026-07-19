@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -13,6 +12,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { allExperiencesData } from '@/lib/experience-data';
 import { 
   Compass, 
   Map, 
@@ -28,7 +28,7 @@ import {
   Headphones,
   Mail,
   Send,
-  MapPin
+  Instagram,
 } from 'lucide-react';
 import {
   Carousel,
@@ -49,38 +49,7 @@ export default function ExperiencesPage() {
     { id: 'exp-tea', title: 'Tea Country Retreats', desc: 'Wake up to misty mountains and endless green estates.', icon: Hotel },
   ];
 
-  const featured = [
-    { 
-      id: 'exp-whale', 
-      slug: '#', 
-      title: 'Mirissa Whale Watching', 
-      desc: 'Encounter these gentle giants in the deep blue waters of the south.',
-      images: ['exp-whale', 'insta-4', 'insta-5'] 
-    },
-    { 
-      id: 'exp-highlands', 
-      slug: '#', 
-      title: 'Ella Highlands', 
-      desc: 'Trek through misty peaks and lush tea estates for breathtaking views.',
-      images: ['exp-highlands', 'insta-2', 'insta-1']
-    },
-    { 
-      id: 'exp-sigiriya', 
-      slug: 'sigiriya-lion-rock', 
-      title: 'Sigiriya Rock Fortress', 
-      desc: 'Climb the ancient Lion Rock and witness a palace above the clouds.',
-      images: ['exp-sigiriya', 'gallery-1', 'gallery-2']
-    },
-    { 
-      id: 'exp-yala', 
-      slug: 'yala-leopard-safari', 
-      title: 'Yala Safari', 
-      desc: 'An adrenaline-fueled journey into leopard country and wild wilderness.',
-      images: ['exp-yala', 'insta-1', 'insta-2']
-    },
-  ];
-
-  const gallery = ['insta-1', 'insta-2', 'insta-3', 'insta-4', 'insta-5'];
+  const gallery = ['insta-1', 'insta-2', 'insta-3', 'insta-4', 'insta-5', 'insta-6', 'insta-2', 'insta-5', 'insta-4', 'insta-1'];
 
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
@@ -155,7 +124,7 @@ export default function ExperiencesPage() {
           className="relative px-12"
         >
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
-            <CarouselContent className="-ml-4 items-stretch">
+            <CarouselContent className="-ml-4 pl-10 pr-10 pb-8 items-stretch">
               {categories.map((cat, index) => {
                 const img = PlaceHolderImages.find(i => i.id === cat.id);
                 const CatIcon = cat.icon;
@@ -265,10 +234,10 @@ export default function ExperiencesPage() {
           </motion.p>
         </motion.div>
 
-        <div className="relative px-6 md:px-12 mb-16">
+        <div className="relative px-6 md:px-12 mb-10">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
-            <CarouselContent className="-ml-6 items-stretch">
-              {featured.map((feat, index) => {
+            <CarouselContent className="-ml-6 pr-10 pl-10 pb-8 items-stretch">
+              {allExperiencesData.slice(0, 4).map((feat, index) => {
                 return (
                   <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <motion.div variants={fadeUpVariant} className="h-full">
@@ -276,7 +245,7 @@ export default function ExperiencesPage() {
                         <div className="relative aspect-[4/3] overflow-hidden shrink-0">
                           <Carousel opts={{ loop: true }} className="w-full h-full group/inner">
                             <CarouselContent className="m-0 h-full">
-                              {feat.images.map((imgId, imgIdx) => {
+                              {feat.galleryImageIds.map((imgId, imgIdx) => {
                                 const img = PlaceHolderImages.find(i => i.id === imgId);
                                 return (
                                   <CarouselItem key={imgIdx} className="p-0 h-full relative">
@@ -290,17 +259,15 @@ export default function ExperiencesPage() {
                                 )
                               })}
                             </CarouselContent>
-                            <CarouselPrevious className="left-2 opacity-100 h-8 w-8 bg-white/40 hover:bg-white/60 border-none text-white" />
-                            <CarouselNext className="right-2 opacity-100 h-8 w-8 bg-white/40 hover:bg-white/60 border-none text-white" />
                           </Carousel>
                         </div>
                         <div className="p-6 flex-grow flex flex-col">
                           <h4 className="font-headline text-xl mb-3 leading-tight group-hover:text-accent transition-colors">{feat.title}</h4>
                           <p className="text-[10px] text-muted-foreground leading-relaxed line-clamp-3 mb-6">
-                            {feat.desc}
+                            {feat.shortDesc}
                           </p>
                           <Link 
-                            href={feat.slug !== '#' ? `/experiences/${feat.slug}` : '#'} 
+                            href={`/experiences/${feat.slug}`} 
                             className="mt-auto text-[9px] font-bold tracking-widest uppercase text-accent flex items-center gap-2 group/link"
                           >
                             Discover More <ArrowRight className="w-3 h-3 transition-transform group-hover/link:translate-x-1" />
@@ -312,11 +279,13 @@ export default function ExperiencesPage() {
                 );
               })}
             </CarouselContent>
+            <CarouselPrevious className="left-0 -translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
+            <CarouselNext className="right-0 translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
           </Carousel>
         </div>
         <div className="flex justify-center">
-          <Button asChild variant="outline" className="rounded-none border-primary text-primary hover:bg-primary hover:text-white px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105">
-            <Link href="/experiences/all">VIEW ALL EXPERIENCES</Link>
+          <Button asChild className="rounded-none bg-primary text-white hover:bg-primary/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105">
+            <Link href="/experiences/all">EXPLORE ALL EXPERIENCES</Link>
           </Button>
         </div>
       </section>
@@ -365,13 +334,13 @@ export default function ExperiencesPage() {
         </p>
         <div className="flex justify-center mb-16">
           <Button className="rounded-none bg-primary text-white hover:bg-accent px-8 h-12 text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-2">
-            <Camera className="w-4 h-4" /> FOLLOW ON INSTAGRAM
+            <Instagram className="w-4 h-4" /> FOLLOW ON INSTAGRAM
           </Button>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-1">
           {gallery.map((id, index) => (
-            <div key={index} className="relative aspect-square rounded-lg overflow-hidden group shadow-md transition-all duration-500">
+            <div key={index} className="relative aspect-square overflow-hidden group shadow-md transition-all duration-500">
               <Image 
                 src={PlaceHolderImages.find(img => img.id === id)?.imageUrl || ''} 
                 alt={`Gallery ${index}`} 
@@ -379,7 +348,7 @@ export default function ExperiencesPage() {
                 className="object-cover transition-transform duration-700 group-hover:scale-110" 
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                <Compass className="text-white w-8 h-8" />
+                <Instagram className="text-white w-8 h-8" />
               </div>
             </div>
           ))}
@@ -387,13 +356,12 @@ export default function ExperiencesPage() {
       </section>
 
       {/* Let's Plan Your Journey Section */}
-      <section className="py-24 bg-[#FDFBF7] relative overflow-hidden">
+      <section className="py-24 bg-[#FFFFFF] relative overflow-hidden">
         <div className="container mx-auto px-6 md:px-12">
           <motion.div 
             variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
           >
-            {/* Left Image */}
             <motion.div variants={slideInLeftVariant} className="lg:col-span-4 relative aspect-[3/4] rounded-sm overflow-hidden shadow-2xl">
               <Image 
                 src={PlaceHolderImages.find(img => img.id === 'contact-intro')?.imageUrl || ''} 
@@ -403,26 +371,24 @@ export default function ExperiencesPage() {
               />
             </motion.div>
 
-            {/* Center Content */}
             <motion.div variants={fadeUpVariant} className="lg:col-span-4 text-center px-4">
               <div className="flex justify-center gap-2 mb-8 text-[#B08C45]">
                 <Sparkles className="w-4 h-4" />
                 <Sparkles className="w-5 h-5 -mt-2" />
                 <Sparkles className="w-4 h-4" />
               </div>
-              <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl mb-8 leading-tight text-primary">
+              <h2 className="font-headline text-4xl md:text-4xl lg:text-4xl mb-8 leading-tight text-primary">
                 Let's Plan Your Sri Lankan Journey
               </h2>
               <div className="w-12 h-px bg-[#B08C45] mx-auto mb-8" />
               <p className="text-muted-foreground text-sm leading-relaxed mb-10 max-w-xs mx-auto">
                 Tell us about your dream holiday, and our travel specialists will create a personalized itinerary designed exclusively for you.
               </p>
-              <Button className="bg-[#B08C45] hover:bg-[#967438] text-white rounded-md px-10 h-14 font-bold tracking-widest flex items-center gap-3 mx-auto shadow-lg transition-all hover:scale-105">
+              <Button className="bg-[#B08C45] hover:bg-[#967438] text-white rounded-md px-10 h-14 font-bold tracking-widest flex items-center gap-3 mx-auto shadow-lg transition-all">
                 <Mail className="w-5 h-5" /> SEND INQUIRY
               </Button>
             </motion.div>
 
-            {/* Right Form */}
             <motion.div variants={slideInRightVariant} className="lg:col-span-4">
               <Card className="border-none shadow-2xl bg-white rounded-xl overflow-hidden">
                 <CardContent className="p-8 space-y-4">
@@ -445,23 +411,4 @@ export default function ExperiencesPage() {
       <Footer/>
     </main>
   );
-}
-
-function Phone(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-    </svg>
-  )
 }

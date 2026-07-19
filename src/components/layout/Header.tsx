@@ -74,9 +74,10 @@ export function Header() {
 
         <div className="hidden md:block">
           <Button
+            asChild
             className="rounded-none px-8 font-bold tracking-[0.2em] text-[10px] h-10 transition-all duration-500 bg-accent text-white hover:bg-accent/90"
           >
-            BOOK NOW
+            <Link href="/contact">PLAN YOUR JOURNEY</Link>
           </Button>
         </div>
 
@@ -118,8 +119,8 @@ export function Header() {
             </Link>
           );
         })}
-        <Button className="mt-4 rounded-none px-12 py-6 bg-accent text-white hover:bg-accent/90 font-bold tracking-[0.2em] text-sm">
-          BOOK NOW
+        <Button asChild className="mt-4 rounded-none px-12 py-6 bg-accent text-white hover:bg-accent/90 font-bold tracking-[0.2em] text-sm">
+          <Link href="/contact">PLAN YOUR JOURNEY</Link>
         </Button>
       </div>
     </header>
