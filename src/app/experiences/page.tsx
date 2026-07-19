@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -22,7 +21,8 @@ import {
   CalendarDays,
   Gem,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Headphones
 } from 'lucide-react';
 import {
   Carousel,
@@ -88,6 +88,8 @@ export default function ExperiencesPage() {
       images: ['exp-galle', 'insta-6', 'insta-3']
     },
   ];
+
+  const gallery = ['insta-1', 'insta-2', 'insta-3', 'insta-4', 'insta-5'];
 
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
@@ -177,13 +179,13 @@ export default function ExperiencesPage() {
                       </div>
                       
                       {/* Icon Div - Placed Fixed Between Divs */}
-                      <div className="relative z-20 -mt-6 mx-auto w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border border-border/50 text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                      <div className="relative z-20 -mt-6 mx-auto w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border border-border/50 text-accent transition-all duration-500">
                         <CatIcon className="w-6 h-6" />
                       </div>
 
                       {/* Text Div */}
                       <div className="relative flex flex-col flex-grow items-center text-center p-6 pt-4">
-                        <h4 className="font-headline text-lg mb-2 group-hover:text-accent transition-colors">{cat.title}</h4>
+                        <h4 className="font-headline text-lg mb-2 text-primary">{cat.title}</h4>
                         <p className="text-[10px] text-muted-foreground leading-relaxed px-2">
                           {cat.desc}
                         </p>
@@ -311,8 +313,8 @@ export default function ExperiencesPage() {
                                 )
                               })}
                             </CarouselContent>
-                            <CarouselPrevious className="left-2 opacity-0 group-hover/inner:opacity-100 h-8 w-8 bg-white/40 hover:bg-white/60 border-none text-white transition-opacity" />
-                            <CarouselNext className="right-2 opacity-0 group-hover/inner:opacity-100 h-8 w-8 bg-white/40 hover:bg-white/60 border-none text-white transition-opacity" />
+                            <CarouselPrevious className="left-2 opacity-100 h-8 w-8 bg-white/40 hover:bg-white/60 border-none text-white transition-opacity" />
+                            <CarouselNext className="right-2 opacity-100 h-8 w-8 bg-white/40 hover:bg-white/60 border-none text-white transition-opacity" />
                           </Carousel>
                         </div>
 
@@ -342,6 +344,71 @@ export default function ExperiencesPage() {
           <Button asChild variant="outline" className="rounded-none border-[#1F5145] text-[#1F5145] hover:bg-[#1F5145] hover:text-white px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105">
             <Link href="/experiences/all">VIEW ALL EXPERIENCES</Link>
           </Button>
+        </div>
+      </section>
+
+      {/* Value Props */}
+      <section className="py-24 bg-[#F8F5EF]">
+        <div className="container mx-auto px-6 text-center mb-16">
+          <span className="text-accent font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
+            THE CEYLON VELO WAY
+          </span>
+          <h2 className="font-headline text-4xl md:text-5xl mb-6 text-foreground">
+            Travel Designed Around You
+          </h2>
+          <p className="text-muted-foreground text-sm italic max-w-2xl mx-auto">
+            Every journey is a bespoke masterpiece, crafted with local expertise, personalized service, and attention to every detail.
+          </p>
+        </div>
+        <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+          {[
+            { icon: Sparkles, title: 'Personalized Itineraries', desc: 'Every journey is bespoke to match your unique travel style.' },
+            { icon: Gem, title: 'Handpicked Luxury Stays', desc: 'Access exclusive villas and hand-selected heritage stays.' },
+            { icon: Users, title: 'Local Expertise', desc: 'Insightful experiences guided by true local connoisseurs.' },
+            { icon: Headphones, title: '24/7 Concierge Support', desc: 'Seamless assistance before, during, and after your journey.' },
+          ].map((item, i) => (
+            <div key={i} className="bg-white p-8 rounded-xl shadow-md border border-border/50 text-center hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+              <div className="w-12 h-12 bg-[#B08C45]/10 rounded-full flex items-center justify-center mx-auto mb-6 text-[#B08C45]">
+                <item.icon className="w-6 h-6" />
+              </div>
+              <h4 className="font-bold tracking-widest uppercase text-[10px] mb-4 text-foreground">{item.title}</h4>
+              <p className="text-[11px] text-muted-foreground leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Instagram Journey */}
+      <section className="py-24 md:py-32 container mx-auto px-6 md:px-12 text-center">
+        <span className="text-[#B08C45] font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">
+          FOLLOW OUR JOURNEY
+        </span>
+        <h2 className="font-headline text-4xl md:text-5xl mb-6 text-foreground">
+          Journey Through Sri Lanka
+        </h2>
+        <p className="text-muted-foreground text-sm italic max-w-2xl mx-auto mb-12">
+          Discover breathtaking scenery, authentic experiences, and unforgettable moments from across the island.
+        </p>
+        <div className="flex justify-center mb-16">
+          <Button className="rounded-none bg-[#1F5145] text-white hover:bg-accent px-8 h-12 text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-2">
+            <Camera className="w-4 h-4" /> FOLLOW ON INSTAGRAM
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          {gallery.map((id, index) => (
+            <div key={index} className="relative aspect-square rounded-lg overflow-hidden group shadow-md transition-all duration-500">
+              <Image 
+                src={PlaceHolderImages.find(img => img.id === id)?.imageUrl || ''} 
+                alt={`Gallery ${index}`} 
+                fill 
+                className="object-cover transition-transform duration-700 group-hover:scale-110" 
+              />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                <Compass className="text-white w-8 h-8" />
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
