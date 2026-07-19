@@ -11,6 +11,7 @@ import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { allExperiencesData } from '@/lib/experience-data';
 import { 
   ArrowRight, 
   ChevronLeft, 
@@ -30,17 +31,6 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-const allExperiences = [
-  { id: 'exp-whale', category: 'Beaches & Sunset', slug: '#', title: 'Mirissa Whale Watching', desc: 'Encounter these gentle giants in the deep blue waters of the south.' },
-  { id: 'exp-highlands', category: 'Tea Country Retreats', slug: '#', title: 'Ella Highlands', desc: 'Trek through misty peaks and lush tea estates for breathtaking views.' },
-  { id: 'exp-sigiriya', category: 'Heritage & Culture', slug: 'sigiriya-lion-rock', title: 'Sigiriya Rock Fortress', desc: 'Climb the ancient Lion Rock and witness a palace above the clouds.' },
-  { id: 'exp-yala', category: 'Wildlife & Safari', slug: 'yala-leopard-safari', title: 'Yala Safari', desc: 'An adrenaline-fueled journey into leopard country and wild wilderness.' },
-  { id: 'exp-bentota', category: 'Beaches & Sunset', slug: '#', title: 'Bentota Beach Massage', desc: 'Indulge in ancient Ayurveda practices right by the ocean waves.' },
-  { id: 'exp-galle', category: 'Heritage & Culture', slug: '#', title: 'Galle Fort Experience', desc: 'Walk through history in this colonial gem at the island\'s edge.' },
-  { id: 'exp-train', category: 'Scenic Train Journeys', slug: '#', title: 'Highland Odyssey', desc: 'The iconic blue train journey through the heart of tea country.' },
-  { id: 'exp-food', category: 'Fine Dining & Culinary', slug: '#', title: 'Gourmet Colombo', desc: 'Experience the modern taste of Sri Lanka in its vibrant capital.' },
-];
-
 const categoryIcons: Record<string, any> = {
   'Beaches & Sunset': Sparkles,
   'Wildlife & Safari': Gem,
@@ -55,10 +45,10 @@ export default function AllExperiencesPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
-  const categories = ['All', ...Array.from(new Set(allExperiences.map(e => e.category)))];
+  const categories = ['All', ...Array.from(new Set(allExperiencesData.map(e => e.category)))];
 
   const filteredExperiences = useMemo(() => {
-    return allExperiences.filter(exp => 
+    return allExperiencesData.filter(exp => 
       categoryFilter === 'All' || exp.category === categoryFilter
     );
   }, [categoryFilter]);
@@ -149,7 +139,7 @@ export default function AllExperiencesPage() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
         >
           {currentItems.map((exp, idx) => {
-            const img = PlaceHolderImages.find(i => i.id === exp.id);
+            const img = PlaceHolderImages.find(i => i.id === exp.heroImageId);
             const CatIcon = categoryIcons[exp.category] || Compass;
             return (
               <motion.div key={idx} variants={fadeUpVariant} className="h-full">
@@ -164,9 +154,9 @@ export default function AllExperiencesPage() {
                   </div>
                   <div className="p-8 flex-grow flex flex-col">
                     <h3 className="font-headline text-xl mb-4 text-primary group-hover:text-accent transition-colors leading-tight">{exp.title}</h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed flex-grow">{exp.desc}</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed flex-grow">{exp.shortDesc}</p>
                     <Link 
-                      href={exp.slug !== '#' ? `/experiences/${exp.slug}` : '#'} 
+                      href={`/experiences/${exp.slug}`} 
                       className="mt-6 text-[10px] font-bold tracking-widest uppercase text-accent flex items-center gap-2 group/btn"
                     >
                       Explore <ArrowRight className="w-3 h-3 transition-transform group-hover/btn:translate-x-1" />
@@ -214,4 +204,3 @@ export default function AllExperiencesPage() {
     </main>
   );
 }
-

@@ -13,6 +13,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { allExperiencesData } from '@/lib/experience-data';
 import { 
   Compass, 
   Map, 
@@ -28,7 +29,6 @@ import {
   Headphones,
   Mail,
   Send,
-  MapPin,
   Instagram,
 } from 'lucide-react';
 import {
@@ -50,38 +50,7 @@ export default function ExperiencesPage() {
     { id: 'exp-tea', title: 'Tea Country Retreats', desc: 'Wake up to misty mountains and endless green estates.', icon: Hotel },
   ];
 
-  const featured = [
-    { 
-      id: 'exp-whale', 
-      slug: '#', 
-      title: 'Mirissa Whale Watching', 
-      desc: 'Encounter these gentle giants in the deep blue waters of the south.',
-      images: ['exp-whale', 'insta-4', 'insta-5'] 
-    },
-    { 
-      id: 'exp-highlands', 
-      slug: '#', 
-      title: 'Ella Highlands', 
-      desc: 'Trek through misty peaks and lush tea estates for breathtaking views.',
-      images: ['exp-highlands', 'insta-2', 'insta-1']
-    },
-    { 
-      id: 'exp-sigiriya', 
-      slug: 'sigiriya-lion-rock', 
-      title: 'Sigiriya Rock Fortress', 
-      desc: 'Climb the ancient Lion Rock and witness a palace above the clouds.',
-      images: ['exp-sigiriya', 'gallery-1', 'gallery-2']
-    },
-    { 
-      id: 'exp-yala', 
-      slug: 'yala-leopard-safari', 
-      title: 'Yala Safari', 
-      desc: 'An adrenaline-fueled journey into leopard country and wild wilderness.',
-      images: ['exp-yala', 'insta-1', 'insta-2']
-    },
-  ];
-
-  const gallery = ['insta-1', 'insta-2', 'insta-3', 'insta-4', 'insta-5', 'insta-3', 'insta-2', 'insta-5', 'insta-4', 'insta-1'];
+  const gallery = ['insta-1', 'insta-2', 'insta-3', 'insta-4', 'insta-5', 'insta-6', 'insta-2', 'insta-5', 'insta-4', 'insta-1'];
 
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
@@ -269,7 +238,7 @@ export default function ExperiencesPage() {
         <div className="relative px-6 md:px-12 mb-16">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-6 items-stretch">
-              {featured.map((feat, index) => {
+              {allExperiencesData.slice(0, 4).map((feat, index) => {
                 return (
                   <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <motion.div variants={fadeUpVariant} className="h-full">
@@ -277,7 +246,7 @@ export default function ExperiencesPage() {
                         <div className="relative aspect-[4/3] overflow-hidden shrink-0">
                           <Carousel opts={{ loop: true }} className="w-full h-full group/inner">
                             <CarouselContent className="m-0 h-full">
-                              {feat.images.map((imgId, imgIdx) => {
+                              {feat.galleryImageIds.map((imgId, imgIdx) => {
                                 const img = PlaceHolderImages.find(i => i.id === imgId);
                                 return (
                                   <CarouselItem key={imgIdx} className="p-0 h-full relative">
@@ -298,10 +267,10 @@ export default function ExperiencesPage() {
                         <div className="p-6 flex-grow flex flex-col">
                           <h4 className="font-headline text-xl mb-3 leading-tight group-hover:text-accent transition-colors">{feat.title}</h4>
                           <p className="text-[10px] text-muted-foreground leading-relaxed line-clamp-3 mb-6">
-                            {feat.desc}
+                            {feat.shortDesc}
                           </p>
                           <Link 
-                            href={feat.slug !== '#' ? `/experiences/${feat.slug}` : '#'} 
+                            href={`/experiences/${feat.slug}`} 
                             className="mt-auto text-[9px] font-bold tracking-widest uppercase text-accent flex items-center gap-2 group/link"
                           >
                             Discover More <ArrowRight className="w-3 h-3 transition-transform group-hover/link:translate-x-1" />
@@ -394,7 +363,6 @@ export default function ExperiencesPage() {
             variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
           >
-            {/* Left Image */}
             <motion.div variants={slideInLeftVariant} className="lg:col-span-4 relative aspect-[3/4] rounded-sm overflow-hidden shadow-2xl">
               <Image 
                 src={PlaceHolderImages.find(img => img.id === 'contact-intro')?.imageUrl || ''} 
@@ -404,7 +372,6 @@ export default function ExperiencesPage() {
               />
             </motion.div>
 
-            {/* Center Content */}
             <motion.div variants={fadeUpVariant} className="lg:col-span-4 text-center px-4">
               <div className="flex justify-center gap-2 mb-8 text-[#B08C45]">
                 <Sparkles className="w-4 h-4" />
@@ -423,7 +390,6 @@ export default function ExperiencesPage() {
               </Button>
             </motion.div>
 
-            {/* Right Form */}
             <motion.div variants={slideInRightVariant} className="lg:col-span-4">
               <Card className="border-none shadow-2xl bg-white rounded-xl overflow-hidden">
                 <CardContent className="p-8 space-y-4">
@@ -446,23 +412,4 @@ export default function ExperiencesPage() {
       <Footer/>
     </main>
   );
-}
-
-function Phone(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-    </svg>
-  )
 }
