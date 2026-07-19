@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 import { Quote, Star } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
@@ -68,16 +70,28 @@ export function Testimonials() {
       </div>
       
       <div className="container relative z-10 mx-auto px-6 md:px-12">
-        <div className="text-center mb-12  animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-both">
-          <span className="text-accent font-bold tracking-[0.4em] uppercase text-1xl mb-4 block">
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="text-center mb-12"
+        >
+          <motion.span variants={fadeUpVariant} className="text-accent font-bold tracking-[0.4em] uppercase text-1xl mb-4 block">
             GUEST EXPERIENCES
-          </span>
-          <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-black font-bold ">
+          </motion.span>
+          <motion.h2 variants={fadeUpVariant} className="font-headline text-4xl md:text-5xl lg:text-6xl text-black font-bold ">
             Stories from our travellers
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
         
-        <div className="px-12 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 fill-mode-both">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={fadeUpVariant}
+          className="px-12"
+        >
           <Carousel
             opts={{
               align: "start",
@@ -120,7 +134,7 @@ export function Testimonials() {
             <CarouselPrevious className="hidden md:flex -left-12 bg-white/10 border-white/20 text-white hover:bg-white/20 hover:text-white" />
             <CarouselNext className="hidden md:flex -right-12 bg-white/10 border-white/20 text-white hover:bg-white/20 hover:text-white" />
           </Carousel>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

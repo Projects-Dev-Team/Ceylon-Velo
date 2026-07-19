@@ -1,14 +1,27 @@
+
 'use client';
 
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { fadeUpVariant, staggerContainer } from '@/lib/animations';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ChevronLeft, ChevronRight, Compass } from 'lucide-react';
+import { 
+  ArrowRight, 
+  ChevronLeft, 
+  ChevronRight,
+  Sparkles,
+  Gem,
+  Map,
+  Compass,
+  Hotel,
+  Users
+} from 'lucide-react';
 import {
   Select,
   SelectContent,
@@ -18,29 +31,31 @@ import {
 } from '@/components/ui/select';
 
 const allExperiences = [
-  { id: 'exp-beach', category: 'Beaches', title: 'Sunset at Mirissa', desc: 'Experience the magic of the southern coast at dusk.' },
-  { id: 'exp-wildlife', category: 'Wildlife', title: 'Yala Leopard Safari', desc: 'Track the elusive Sri Lankan leopard in its natural habitat.' },
-  { id: 'exp-heritage', category: 'Heritage', title: 'Anuradhapura Ruins', desc: 'Walk through the ancient capital of Sri Lanka.' },
-  { id: 'exp-train', category: 'Scenic', title: 'Kandy to Ella Rail', desc: 'The world\'s most beautiful train ride through tea estates.' },
-  { id: 'exp-tea', category: 'Nature', title: 'Tea Plucking in Nuwara Eliya', desc: 'Learn the art of tea plucking from local experts.' },
-  { id: 'exp-food', category: 'Culinary', title: 'Colombo Food Walk', desc: 'Sample the diverse flavors of the island\'s capital.' },
-  { id: 'exp-whale', category: 'Wildlife', title: 'Blue Whale Watching', desc: 'Observe the ocean\'s giants off the coast of Mirissa.' },
-  { id: 'exp-highlands', category: 'Nature', title: 'Horton Plains Trek', desc: 'Hike to the World\'s End for breathtaking vistas.' },
-  { id: 'exp-sigiriya', category: 'Heritage', title: 'Sigiriya Lion Rock', desc: 'Ascend the ancient fortress in the sky.' },
-  { id: 'exp-yala', category: 'Wildlife', title: 'Elephant Gathering', desc: 'Witness hundreds of elephants in Minneriya.' },
-  { id: 'exp-bentota', category: 'Beaches', title: 'Bentota Water Sports', desc: 'Adrenaline and fun on the pristine western shore.' },
-  { id: 'exp-galle', category: 'Heritage', title: 'Galle Fort Heritage Walk', desc: 'Explore the colonial charm of the Dutch Fort.' },
-  { id: 'exp-beach', category: 'Beaches', title: 'Weligama Surf Session', desc: 'Catch the perfect waves in the heart of the surf coast.' },
-  { id: 'exp-food', category: 'Culinary', title: 'Ayurvedic Cooking Class', desc: 'Discover the health benefits of Sri Lankan spices.' },
-  { id: 'exp-tea', category: 'Nature', title: 'Mist-Covered Tea Trails', desc: 'Quiet walks through century-old tea bungalows.' },
+  { id: 'exp-whale', category: 'Beaches & Sunset', slug: '#', title: 'Mirissa Whale Watching', desc: 'Encounter these gentle giants in the deep blue waters of the south.' },
+  { id: 'exp-highlands', category: 'Tea Country Retreats', slug: '#', title: 'Ella Highlands', desc: 'Trek through misty peaks and lush tea estates for breathtaking views.' },
+  { id: 'exp-sigiriya', category: 'Heritage & Culture', slug: 'sigiriya-lion-rock', title: 'Sigiriya Rock Fortress', desc: 'Climb the ancient Lion Rock and witness a palace above the clouds.' },
+  { id: 'exp-yala', category: 'Wildlife & Safari', slug: 'yala-leopard-safari', title: 'Yala Safari', desc: 'An adrenaline-fueled journey into leopard country and wild wilderness.' },
+  { id: 'exp-bentota', category: 'Beaches & Sunset', slug: '#', title: 'Bentota Beach Massage', desc: 'Indulge in ancient Ayurveda practices right by the ocean waves.' },
+  { id: 'exp-galle', category: 'Heritage & Culture', slug: '#', title: 'Galle Fort Experience', desc: 'Walk through history in this colonial gem at the island\'s edge.' },
+  { id: 'exp-train', category: 'Scenic Train Journeys', slug: '#', title: 'Highland Odyssey', desc: 'The iconic blue train journey through the heart of tea country.' },
+  { id: 'exp-food', category: 'Fine Dining & Culinary', slug: '#', title: 'Gourmet Colombo', desc: 'Experience the modern taste of Sri Lanka in its vibrant capital.' },
 ];
 
-const categories = ['All', 'Beaches', 'Wildlife', 'Heritage', 'Scenic', 'Nature', 'Culinary'];
+const categoryIcons: Record<string, any> = {
+  'Beaches & Sunset': Sparkles,
+  'Wildlife & Safari': Gem,
+  'Heritage & Culture': Map,
+  'Scenic Train Journeys': Compass,
+  'Tea Country Retreats': Hotel,
+  'Fine Dining & Culinary': Users,
+};
 
 export default function AllExperiencesPage() {
-  const [currentPage, setCurrentPage] = useState(1);
   const [categoryFilter, setCategoryFilter] = useState('All');
+  const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
+
+  const categories = ['All', ...Array.from(new Set(allExperiences.map(e => e.category)))];
 
   const filteredExperiences = useMemo(() => {
     return allExperiences.filter(exp => 
@@ -55,7 +70,7 @@ export default function AllExperiencesPage() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'exp-hero');
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden">
       <Header />
 
       {/* Hero */}
@@ -69,8 +84,21 @@ export default function AllExperiencesPage() {
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-headline text-4xl md:text-6xl mb-4 tracking-wider uppercase">ALL EXPERIENCES</h1>
-          <p className="text-sm tracking-[0.4em] uppercase font-bold opacity-80">Every Story Sri Lanka Has To Tell</p>
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="font-headline text-4xl md:text-6xl mb-4 tracking-wider uppercase"
+          >
+            ALL EXPERIENCES
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-sm tracking-[0.4em] uppercase font-bold opacity-80"
+          >
+            Every Story Sri Lanka Has To Tell
+          </motion.p>
         </div>
       </section>
 
@@ -86,9 +114,14 @@ export default function AllExperiencesPage() {
         </div>
 
         {/* Filter Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-16 border-b border-border pb-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row items-center justify-between gap-8 mb-16 border-b border-border pb-8"
+        >
           <div>
-            <h2 className="font-headline text-3xl mb-2">Explore Your Passion</h2>
+            <h2 className="font-headline text-3xl mb-2 text-primary">Explore Your Passion</h2>
             <p className="text-xs text-muted-foreground uppercase tracking-widest font-bold">Curated journeys by theme</p>
           </div>
           
@@ -105,33 +138,45 @@ export default function AllExperiencesPage() {
                 </SelectContent>
              </Select>
           </div>
-        </div>
+        </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
+        >
           {currentItems.map((exp, idx) => {
             const img = PlaceHolderImages.find(i => i.id === exp.id);
+            const CatIcon = categoryIcons[exp.category] || Compass;
             return (
-              <Card key={idx} className="bg-white border-none shadow-md overflow-hidden group hover:shadow-xl transition-all duration-500 h-full flex flex-col">
-                <div className="relative aspect-[4/5] overflow-hidden shrink-0">
-                  <Image src={img?.imageUrl || ''} alt={exp.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-accent text-white text-[9px] font-bold tracking-[0.2em] px-3 py-1 rounded-full uppercase shadow-lg">
-                      {exp.category}
-                    </span>
+              <motion.div key={idx} variants={fadeUpVariant} className="h-full">
+                <Card className="bg-white border-none shadow-md overflow-hidden group hover:shadow-xl transition-all duration-500 h-full flex flex-col">
+                  <div className="relative aspect-[4/5] overflow-hidden shrink-0">
+                    <Image src={img?.imageUrl || ''} alt={exp.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-white/90 backdrop-blur-md px-3 py-1.5 text-[8px] font-bold tracking-widest uppercase text-accent rounded-full flex items-center gap-2 shadow-sm">
+                        <CatIcon className="w-3 h-3" /> {exp.category}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <div className="p-8 flex-grow flex flex-col">
-                  <h3 className="font-headline text-xl mb-4 text-primary group-hover:text-accent transition-colors">{exp.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed flex-grow">{exp.desc}</p>
-                  <Button variant="link" className="p-0 h-auto text-[10px] font-bold tracking-widest uppercase text-accent mt-6 self-start group/btn">
-                    Details <ChevronRight className="w-3 h-3 ml-1 transition-transform group-hover/btn:translate-x-1" />
-                  </Button>
-                </div>
-              </Card>
+                  <div className="p-8 flex-grow flex flex-col">
+                    <h3 className="font-headline text-xl mb-4 text-primary group-hover:text-accent transition-colors leading-tight">{exp.title}</h3>
+                    <p className="text-xs text-muted-foreground leading-relaxed flex-grow">{exp.desc}</p>
+                    <Link 
+                      href={exp.slug !== '#' ? `/experiences/${exp.slug}` : '#'} 
+                      className="mt-6 text-[10px] font-bold tracking-widest uppercase text-accent flex items-center gap-2 group/btn"
+                    >
+                      Explore <ArrowRight className="w-3 h-3 transition-transform group-hover/btn:translate-x-1" />
+                    </Link>
+                  </div>
+                </Card>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Empty State */}
         {currentItems.length === 0 && (

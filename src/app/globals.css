@@ -48,3 +48,7 @@
   backdrop-filter: blur(12px);
   background-color: rgba(255, 255, 255, 0.1);
 }
+
+.card-bg{
+  background-color: #FFE7D3;
+}
