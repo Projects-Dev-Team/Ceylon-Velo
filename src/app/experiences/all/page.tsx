@@ -154,7 +154,7 @@ export default function AllExperiencesPage() {
             return (
               <motion.div key={idx} variants={fadeUpVariant} className="h-full">
                 <Card className="bg-white border-none shadow-md overflow-hidden group hover:shadow-xl transition-all duration-500 h-full flex flex-col">
-                  <div className="relative aspect-[4/5] overflow-hidden shrink-0">
+                  <div className="relative aspect-[4/3] overflow-hidden shrink-0">
                     <Image src={img?.imageUrl || ''} alt={exp.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div className="absolute top-4 left-4">
                       <span className="bg-white/90 backdrop-blur-md px-3 py-1.5 text-[8px] font-bold tracking-widest uppercase text-accent rounded-full flex items-center gap-2 shadow-sm">
@@ -214,3 +214,4 @@ export default function AllExperiencesPage() {
     </main>
   );
 }
+
