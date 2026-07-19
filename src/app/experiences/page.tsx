@@ -27,7 +27,8 @@ import {
   ChevronRight,
   Headphones,
   Mail,
-  Send
+  Send,
+  MapPin
 } from 'lucide-react';
 import {
   Carousel,
@@ -441,112 +442,7 @@ export default function ExperiencesPage() {
         </div>
       </section>
 
-      {/* Experience CTA Section */}
-      <section className="relative min-h-[60vh] flex flex-col justify-center overflow-hidden">
-        <Image 
-          src={PlaceHolderImages.find(img => img.id === 'vision-mission-bg')?.imageUrl || ''} 
-          alt="CTA Background" 
-          fill 
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/30" />
-        
-        <div className="container relative z-10 mx-auto px-6 md:px-12 py-24">
-          <motion.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
-            className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12"
-          >
-            <div className="text-white max-w-xl">
-              <motion.span variants={fadeUpVariant} className="text-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-4 block">
-                READY TO BEGIN?
-              </motion.span>
-              <motion.h2 variants={fadeUpVariant} className="font-headline text-5xl md:text-7xl leading-tight mb-4">
-                Your Sri Lankan story <br />
-                <span className="font-brand italic text-accent normal-case text-6xl md:text-8xl">starts here.</span>
-              </motion.h2>
-              <motion.p variants={fadeUpVariant} className="text-white/80 text-sm max-w-md italic mt-4">
-                Speak to our concierge and we'll craft a private itinerary tailored to your dates, dreams and pace.
-              </motion.p>
-            </div>
-            <motion.div variants={fadeUpVariant} className="flex lg:justify-end">
-              <Button className="bg-accent hover:bg-accent/90 text-white rounded-full px-12 h-16 text-sm font-bold tracking-[0.2em] shadow-2xl transition-all hover:scale-110">
-                BOOK NOW
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Floating Footer Overlay */}
-        <div className="container relative z-20 mx-auto px-4 md:px-8 -mb-24 mt-12">
-          <div className="bg-black/60 backdrop-blur-xl rounded-3xl p-10 md:p-12 border border-white/10 shadow-2xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-white/90">
-              <div>
-                <h3 className="font-brand text-4xl text-accent mb-6">Ceylon Velo</h3>
-                <p className="text-xs leading-relaxed text-white/60 font-light mb-8">
-                  Boutique villas and signature journeys across Sri Lanka, designed by islanders for the world.
-                </p>
-                <div className="flex gap-4">
-                  {['instagram', 'facebook', 'twitter'].map((social) => (
-                    <Link key={social} href="#" className="p-2.5 rounded-full border border-white/10 hover:border-accent hover:text-accent transition-all duration-300">
-                      <Camera className="w-4 h-4" />
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white/40 mb-6">EXPLORE</h4>
-                <nav className="flex flex-col space-y-3 text-xs">
-                  <Link href="/" className="hover:text-accent transition-colors">Home</Link>
-                  <Link href="/villas" className="hover:text-accent transition-colors">Villas</Link>
-                  <Link href="/tours" className="hover:text-accent transition-colors">Tours</Link>
-                  <Link href="/experiences" className="hover:text-accent transition-colors">Destinations</Link>
-                  <Link href="/about" className="hover:text-accent transition-colors">Reviews</Link>
-                </nav>
-              </div>
-
-              <div>
-                <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white/40 mb-6">REGIONS</h4>
-                <nav className="flex flex-col space-y-3 text-xs">
-                  <Link href="#" className="hover:text-accent transition-colors">Mirissa Beach</Link>
-                  <Link href="#" className="hover:text-accent transition-colors">Ella Mountains</Link>
-                  <Link href="#" className="hover:text-accent transition-colors">Sigiriya Rock</Link>
-                  <Link href="#" className="hover:text-accent transition-colors">Yala Safari</Link>
-                  <Link href="#" className="hover:text-accent transition-colors">Galle Fort</Link>
-                </nav>
-              </div>
-
-              <div>
-                <h4 className="font-bold tracking-[0.2em] text-[10px] uppercase text-white/40 mb-6">CONTACT</h4>
-                <div className="space-y-4 text-xs">
-                  <div className="flex gap-3 items-start">
-                    <MapPin className="w-4 h-4 text-accent" />
-                    <span className="text-white/70">23 Galle Face Terrace,<br />Colombo 03, Sri Lanka</span>
-                  </div>
-                  <div className="flex gap-3 items-center">
-                    <Phone className="w-4 h-4 text-accent" />
-                    <span className="text-white/70">+94 11 234 5678</span>
-                  </div>
-                  <div className="flex gap-3 items-center">
-                    <Mail className="w-4 h-4 text-accent" />
-                    <span className="text-white/70">hello@ceylonvelo.lk</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] font-bold tracking-[0.2em] uppercase text-white/40 mt-4">
-            <span>© 2026 Ceylon Velo. Crafted with ♡ In Sri Lanka.</span>
-            <div className="flex gap-8">
-              <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
-              <Link href="#" className="hover:text-white transition-colors">Terms</Link>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Spacer for floating footer */}
-      <div className="h-48 md:h-24 bg-primary/10" />
+      <Footer/>
     </main>
   );
 }
