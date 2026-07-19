@@ -31,15 +31,16 @@ export function Footer() {
               READY TO BEGIN?
             </span>
             <h2 className="font-headline text-2xl md:text-4xl mb-0 leading-tight text-black">
-              Your Sri Lankan <br className="hidden md:block" /> 
-              story starts here.
+              Your unforgettable Sri Lankan <br className="hidden md:block" /> 
+              journey starts here.
             </h2>
           </div>
           <div className="flex-shrink-0">
             <Button 
               className="rounded-none bg-accent text-white hover:bg-accent/90 px-10 h-12 text-sm font-bold tracking-[0.2em] transition-all duration-500 hover:scale-105 active:scale-95 shadow-xl"
+              asChild
             >
-              BOOK YOUR STAY
+              <Link href="/contact">PLAN YOUR JOURNEY</Link>
             </Button>
           </div>
         </div>
@@ -56,7 +57,7 @@ export function Footer() {
                 Ceylon Velo
               </Link>
               <p className="text-xs leading-relaxed max-w-xs mb-6 text-white/70 font-light">
-                Boutique villas and signature journeys across the pearl of the Indian Ocean. Curating the essence of Sri Lankan luxury.
+                Ceylon Velo creates tailor-made luxury journeys across Sri Lanka, combining authentic experiences, exceptional hospitality, and unforgettable memories.
               </p>
               <div className="flex gap-4">
                 <Link href="#" className="p-2 rounded-full border border-white/10 hover:border-accent hover:text-accent transition-all duration-300 hover:-translate-y-1"><Instagram className="w-4 h-4" /></Link>
@@ -69,11 +70,11 @@ export function Footer() {
             <div className="flex flex-col">
               <h4 className="font-bold tracking-[0.2em] text-[9px] uppercase text-white mb-4 border-b border-white/10 pb-2">EXPLORE</h4>
               <nav className="flex flex-col space-y-1.5 text-xs font-medium">
-                <Link href="#" className="hover:text-accent hover:translate-x-1 transition-all duration-300">Home</Link>
-                <Link href="#villas" className="hover:text-accent hover:translate-x-1 transition-all duration-300">Boutique Villas</Link>
-                <Link href="#tours" className="hover:text-accent hover:translate-x-1 transition-all duration-300">Signature Tours</Link>
-                <Link href="#about" className="hover:text-accent hover:translate-x-1 transition-all duration-300">The Experience</Link>
-                <Link href="#" className="hover:text-accent hover:translate-x-1 transition-all duration-300">Guest Reviews</Link>
+                <Link href="/" className="hover:text-accent hover:translate-x-1 transition-all duration-300">Home</Link>
+                <Link href="/experiences" className="hover:text-accent hover:translate-x-1 transition-all duration-300">Experiences</Link>
+                <Link href="/villas" className="hover:text-accent hover:translate-x-1 transition-all duration-300">Luxury Stays</Link>
+                <Link href="/about" className="hover:text-accent hover:translate-x-1 transition-all duration-300">About</Link>
+                <Link href="/contact" className="hover:text-accent hover:translate-x-1 transition-all duration-300">Contact</Link>
               </nav>
             </div>
 
