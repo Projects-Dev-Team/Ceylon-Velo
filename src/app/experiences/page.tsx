@@ -28,7 +28,8 @@ import {
   Headphones,
   Mail,
   Send,
-  MapPin
+  MapPin,
+  Instagram,
 } from 'lucide-react';
 import {
   Carousel,
@@ -80,7 +81,7 @@ export default function ExperiencesPage() {
     },
   ];
 
-  const gallery = ['insta-1', 'insta-2', 'insta-3', 'insta-4', 'insta-5'];
+  const gallery = ['insta-1', 'insta-2', 'insta-3', 'insta-4', 'insta-5', 'insta-3', 'insta-2', 'insta-5', 'insta-4', 'insta-1'];
 
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
@@ -171,7 +172,7 @@ export default function ExperiencesPage() {
                       </div>
                       <div className="relative flex flex-col flex-grow items-center text-center p-6 pt-4">
                         <h4 className="font-headline text-lg mb-2 text-primary">{cat.title}</h4>
-                        <p className="text-[10px] text-muted-foreground leading-relaxed px-2">
+                        <p className="text-[15px] text-muted-foreground leading-relaxed px-2">
                           {cat.desc}
                         </p>
                       </div>
@@ -315,8 +316,8 @@ export default function ExperiencesPage() {
           </Carousel>
         </div>
         <div className="flex justify-center">
-          <Button asChild variant="outline" className="rounded-none border-primary text-primary hover:bg-primary hover:text-white px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105">
-            <Link href="/experiences/all">VIEW ALL EXPERIENCES</Link>
+          <Button asChild className="rounded-none bg-primary text-white hover:bg-primary/90 px-10 h-12 text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-105">
+            <Link href="/experiences/all">EXPLORE ALL EXPERIENCES</Link>
           </Button>
         </div>
       </section>
@@ -365,13 +366,13 @@ export default function ExperiencesPage() {
         </p>
         <div className="flex justify-center mb-16">
           <Button className="rounded-none bg-primary text-white hover:bg-accent px-8 h-12 text-[10px] font-bold tracking-[0.2em] uppercase flex items-center gap-2">
-            <Camera className="w-4 h-4" /> FOLLOW ON INSTAGRAM
+            <Instagram className="w-4 h-4" /> FOLLOW ON INSTAGRAM
           </Button>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-1">
           {gallery.map((id, index) => (
-            <div key={index} className="relative aspect-square rounded-lg overflow-hidden group shadow-md transition-all duration-500">
+            <div key={index} className="relative aspect-square overflow-hidden group shadow-md transition-all duration-500">
               <Image 
                 src={PlaceHolderImages.find(img => img.id === id)?.imageUrl || ''} 
                 alt={`Gallery ${index}`} 
@@ -379,7 +380,7 @@ export default function ExperiencesPage() {
                 className="object-cover transition-transform duration-700 group-hover:scale-110" 
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                <Compass className="text-white w-8 h-8" />
+                <Instagram className="text-white w-8 h-8" />
               </div>
             </div>
           ))}
@@ -387,7 +388,7 @@ export default function ExperiencesPage() {
       </section>
 
       {/* Let's Plan Your Journey Section */}
-      <section className="py-24 bg-[#FDFBF7] relative overflow-hidden">
+      <section className="py-24 bg-[#FFFFFF] relative overflow-hidden">
         <div className="container mx-auto px-6 md:px-12">
           <motion.div 
             variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true }}
@@ -410,7 +411,7 @@ export default function ExperiencesPage() {
                 <Sparkles className="w-5 h-5 -mt-2" />
                 <Sparkles className="w-4 h-4" />
               </div>
-              <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl mb-8 leading-tight text-primary">
+              <h2 className="font-headline text-4xl md:text-4xl lg:text-4xl mb-8 leading-tight text-primary">
                 Let's Plan Your Sri Lankan Journey
               </h2>
               <div className="w-12 h-px bg-[#B08C45] mx-auto mb-8" />
