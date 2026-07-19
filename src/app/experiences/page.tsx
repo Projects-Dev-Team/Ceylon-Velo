@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -141,7 +140,7 @@ export default function ExperiencesPage() {
                       </div>
                       <div className="relative flex flex-col flex-grow items-center text-center p-6 pt-4">
                         <h4 className="font-headline text-lg mb-2 text-primary">{cat.title}</h4>
-                        <p className="text-[15px] text-muted-foreground leading-relaxed px-2">
+                        <p className="text-[10px] text-muted-foreground leading-relaxed px-2">
                           {cat.desc}
                         </p>
                       </div>
@@ -260,8 +259,8 @@ export default function ExperiencesPage() {
                                 )
                               })}
                             </CarouselContent>
-                            <CarouselPrevious className="left-2 opacity-100 h-8 w-8 bg-white/40 hover:bg-white/60 border-none text-white" />
-                            <CarouselNext className="right-2 opacity-100 h-8 w-8 bg-white/40 hover:bg-white/60 border-none text-white" />
+                            <CarouselPrevious className="left-2 opacity-100 h-8 w-8 bg-black/40 hover:bg-accent border-none text-white z-20" />
+                            <CarouselNext className="right-2 opacity-100 h-8 w-8 bg-black/40 hover:bg-accent border-none text-white z-20" />
                           </Carousel>
                         </div>
                         <div className="p-6 flex-grow flex flex-col">
@@ -282,6 +281,8 @@ export default function ExperiencesPage() {
                 );
               })}
             </CarouselContent>
+            <CarouselPrevious className="left-0 -translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
+            <CarouselNext className="right-0 translate-x-full border-none bg-secondary/50 hover:bg-accent hover:text-white" />
           </Carousel>
         </div>
         <div className="flex justify-center">
