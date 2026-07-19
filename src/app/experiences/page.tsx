@@ -259,8 +259,6 @@ export default function ExperiencesPage() {
                                 )
                               })}
                             </CarouselContent>
-                            <CarouselPrevious className="left-2 opacity-100 h-8 w-8 bg-black/40 hover:bg-accent border-none text-white z-20" />
-                            <CarouselNext className="right-2 opacity-100 h-8 w-8 bg-black/40 hover:bg-accent border-none text-white z-20" />
                           </Carousel>
                         </div>
                         <div className="p-6 flex-grow flex flex-col">
