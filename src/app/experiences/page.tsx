@@ -124,7 +124,7 @@ export default function ExperiencesPage() {
           className="relative px-12"
         >
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
-            <CarouselContent className="-ml-4 items-stretch">
+            <CarouselContent className="-ml-4 pl-10 pr-10 pb-8 items-stretch">
               {categories.map((cat, index) => {
                 const img = PlaceHolderImages.find(i => i.id === cat.id);
                 const CatIcon = cat.icon;
@@ -234,9 +234,9 @@ export default function ExperiencesPage() {
           </motion.p>
         </motion.div>
 
-        <div className="relative px-6 md:px-12 mb-16">
+        <div className="relative px-6 md:px-12 mb-10">
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
-            <CarouselContent className="-ml-6 items-stretch">
+            <CarouselContent className="-ml-6 pr-10 pl-10 pb-8 items-stretch">
               {allExperiencesData.slice(0, 4).map((feat, index) => {
                 return (
                   <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
@@ -384,7 +384,7 @@ export default function ExperiencesPage() {
               <p className="text-muted-foreground text-sm leading-relaxed mb-10 max-w-xs mx-auto">
                 Tell us about your dream holiday, and our travel specialists will create a personalized itinerary designed exclusively for you.
               </p>
-              <Button className="bg-[#B08C45] hover:bg-[#967438] text-white rounded-md px-10 h-14 font-bold tracking-widest flex items-center gap-3 mx-auto shadow-lg transition-all hover:scale-105">
+              <Button className="bg-[#B08C45] hover:bg-[#967438] text-white rounded-md px-10 h-14 font-bold tracking-widest flex items-center gap-3 mx-auto shadow-lg transition-all">
                 <Mail className="w-5 h-5" /> SEND INQUIRY
               </Button>
             </motion.div>
