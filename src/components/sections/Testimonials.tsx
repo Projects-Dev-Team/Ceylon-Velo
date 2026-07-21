@@ -78,10 +78,10 @@ export function Testimonials() {
           className="text-center mb-12"
         >
           <motion.span variants={fadeUpVariant} className="text-accent font-bold tracking-[0.4em] uppercase text-1xl mb-4 block">
-            GUEST EXPERIENCES
+            TRAVELLER EXPERIENCES
           </motion.span>
           <motion.h2 variants={fadeUpVariant} className="font-headline text-4xl md:text-5xl lg:text-6xl text-black font-bold ">
-            Stories from our travellers
+            Guest Stories 
           </motion.h2>
         </motion.div>
         

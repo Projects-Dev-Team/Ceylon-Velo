@@ -41,15 +41,16 @@ export default function VillaDetailPage({ params }: { params: Promise<{ slug: st
 
       {/* Hero Section */}
       <section className="relative h-[90vh] w-full flex items-center justify-center overflow-hidden">
-        {heroImageUrl && (
+        {heroImageUrl ? (
           <Image
             src={heroImageUrl}
             alt={villa.title}
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
-        )}
+        ) : null}
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white px-6">
           <motion.h1 
@@ -95,20 +96,23 @@ export default function VillaDetailPage({ params }: { params: Promise<{ slug: st
           {/* Custom Gallery Collage */}
           <motion.div variants={fadeUpVariant} className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-16">
             {/* Main Large Image */}
-            <div className="relative aspect-[4/5] lg:aspect-auto lg:h-full rounded-lg overflow-hidden shadow-xl">
-               <Image src={g1?.imageUrl || ''} alt="Villa Gallery 1" fill className="object-cover transition-transform duration-700 hover:scale-105" />
+            <div className="relative aspect-[4/5] lg:aspect-auto lg:h-full rounded-lg overflow-hidden shadow-xl bg-muted">
+               {g1?.imageUrl && <Image src={g1.imageUrl} alt="Villa Gallery 1" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 hover:scale-105" />}
             </div>
             
             {/* Right Grid of 6 */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                {[g2, g3, g4, g5, g6, g2].map((img, i) => (
-                 <div key={i} className="relative aspect-square rounded-lg overflow-hidden shadow-md group">
-                   <Image 
-                      src={img?.imageUrl || ''} 
-                      alt={`Gallery ${i + 2}`} 
-                      fill 
-                      className="object-cover transition-transform duration-500 group-hover:scale-110" 
-                    />
+                 <div key={i} className="relative aspect-square rounded-lg overflow-hidden shadow-md group bg-muted">
+                   {img?.imageUrl && (
+                     <Image 
+                        src={img.imageUrl} 
+                        alt={`Gallery ${i + 2}`} 
+                        fill 
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110" 
+                      />
+                   )}
                  </div>
                ))}
             </div>
