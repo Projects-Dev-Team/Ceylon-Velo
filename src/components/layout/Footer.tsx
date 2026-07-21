@@ -31,8 +31,8 @@ export function Footer() {
               READY TO BEGIN?
             </span>
             <h2 className="font-headline text-2xl md:text-4xl mb-0 leading-tight text-black">
-              Your unforgettable Sri Lankan <br className="hidden md:block" /> 
-              journey starts here.
+              Let's Plan Your  <br className="hidden md:block" /> 
+              Sri Lankan Journey
             </h2>
           </div>
           <div className="flex-shrink-0">

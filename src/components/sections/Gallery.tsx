@@ -28,10 +28,10 @@ export function Gallery() {
           className="flex flex-col items-center text-center mb-16"
         >
           <motion.div variants={fadeUpVariant} className="flex items-center gap-2 text-primary mb-4">
-            <Instagram className="w-5 h-5" />
-            <span className="text-xs font-bold tracking-widest uppercase text-muted-foreground">@ceylonvelo</span>
+           
+            <span className="text-xs font-bold tracking-widest uppercase text-accent uppercase">FOLLOW OUR JOURNEY</span>
           </motion.div>
-          <motion.h2 variants={fadeUpVariant} className="font-headline text-4xl md:text-5xl text-foreground">Follow our island diary</motion.h2>
+          <motion.h2 variants={fadeUpVariant} className="font-headline text-4xl md:text-5xl text-foreground">Journey Through Sri Lanka</motion.h2>
         </motion.div>
 
         <motion.div 
@@ -48,12 +48,15 @@ export function Gallery() {
                 variants={fadeUpVariant}
                 className="group relative aspect-square overflow-hidden bg-muted"
               >
-                <Image
-                  src={img || ''}
-                  alt="Gallery image"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+                {img && (
+                  <Image
+                    src={img}
+                    alt="Gallery image"
+                    fill
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                )}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                    <Instagram className="text-white w-6 h-6 transform scale-0 group-hover:scale-100 transition-transform duration-300" />
                 </div>
