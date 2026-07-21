@@ -67,14 +67,16 @@ export default function VillasPage() {
 
       {/* Hero Section */}
       <section className="relative h-[60vh] md:h-[100vh] w-full flex items-center justify-center overflow-hidden">
-        <Image
-          src={heroImage || ''}
-          alt="Villas Hero"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
+        {heroImage && (
+          <Image
+            src={heroImage}
+            alt="Villas Hero"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        )}
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center text-white px-6">
           <motion.h1 
@@ -159,13 +161,16 @@ export default function VillasPage() {
                     href={`/villas/${villa.slug}`}
                     className="group flex flex-col bg-white rounded-2xl shadow-sm border border-black/5 overflow-hidden transition-all duration-500 hover:shadow-xl h-full"
                   >
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={imgData?.imageUrl || ''}
-                      alt={villa.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
+                  <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+                    {imgData?.imageUrl && (
+                      <Image
+                        src={imgData.imageUrl}
+                        alt={villa.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    )}
                   </div>
                   <div className="p-8 flex flex-col items-start flex-grow">
                     <h4 className="font-headline text-2xl text-foreground mb-4 tracking-wide group-hover:text-accent transition-colors">

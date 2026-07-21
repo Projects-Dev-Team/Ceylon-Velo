@@ -50,10 +50,16 @@ export default function AboutPage() {
         <div className="relative z-10 text-center text-white px-6">
           <motion.h1 
             initial="hidden" animate="visible" variants={fadeUpVariant}
-            className="font-headline text-4xl md:text-7xl tracking-widest uppercase"
+            className="font-headline text-4xl md:text-7xl mb-4 tracking-widest uppercase"
           >
-            ABOUT US
+            Our Story
           </motion.h1>
+          <motion.p 
+            initial="hidden" animate="visible" variants={fadeUpVariant} transition={{ delay: 0.2 }}
+            className="text-xs md:text-sm tracking-[0.5em] uppercase font-bold opacity-80"
+          >
+            Crafting Unforgettable Journeys
+          </motion.p>
         </div>
       </section>
 

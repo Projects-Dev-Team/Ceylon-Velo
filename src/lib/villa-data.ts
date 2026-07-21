@@ -192,7 +192,7 @@ export const villaList: Villa[] = [
     subtitleTop: "Stunning Oceanfront Estate",
     description1: "Step directly onto the sand from this stunning contemporary beachfront estate. Features expansive glass walls that blur the line between indoor and outdoor living.",
     description2: "Enjoy private chef services, a dedicated butler, and exclusive access to a pristine stretch of beach where you can relax in total seclusion.",
-    heroImageId: "dest-mirissa",
+    heroImageId: "hero-image",
     galleryImages: ["villa-g1", "villa-g2", "villa-g3", "villa-g4", "villa-g5", "villa-g6"]
   }
 ];

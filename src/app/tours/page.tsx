@@ -12,20 +12,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import heroImage from '@/assets/images/tours/tourHeroImage1.jpg'
 
-const tourItems = [
-  { id: 'tour-1', slug: 'tour-one', title: 'TOUR ONE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-2', slug: '#', title: 'TOUR TWO', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-3', slug: '#', title: 'TOUR THREE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-1', slug: 'tour-one', title: 'TOUR FOUR', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-2', slug: '#', title: 'TOUR FIVE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-3', slug: '#', title: 'TOUR SIX', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-1', slug: 'tour-one', title: 'TOUR SEVEN', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-2', slug: '#', title: 'TOUR EIGHT', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-3', slug: '#', title: 'TOUR NINE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-1', slug: 'tour-one', title: 'TOUR TEN', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-2', slug: '#', title: 'TOUR ELEVEN', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-  { id: 'tour-3', slug: '#', title: 'TOUR TWELVE', desc: 'Enjoy A Quick Snapshot Of Sri Lanka From Wildlife To Holy Temples...' },
-];
+import { tourList } from '@/lib/tour-data';
 
 export default function ToursPage() {
 
@@ -33,10 +20,10 @@ export default function ToursPage() {
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
-  const totalPages = Math.ceil(tourItems.length / itemsPerPage);
+  const totalPages = Math.ceil(tourList.length / itemsPerPage);
   
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const displayedTours = tourItems.slice(startIndex, startIndex + itemsPerPage);
+  const displayedTours = tourList.slice(startIndex, startIndex + itemsPerPage);
 
   const handlePageChange = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -113,7 +100,7 @@ export default function ToursPage() {
             return (
               <motion.div key={`${tour.title}-${index}`} variants={fadeUpVariant} className="h-full">
                 <Link 
-                  href={tour.slug === 'tour-one' ? `/tours/${tour.slug}` : '#'}
+                  href={`/tours/${tour.slug}`}
                   className="group flex flex-col bg-white rounded-lg shadow-sm border border-border/50 overflow-hidden transition-all duration-500 hover:shadow-xl h-full"
                 >
                 <div className="relative aspect-[4/3] overflow-hidden">
