@@ -15,6 +15,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import reviewImage from '@/assets/images/home/review_bg_new.png';
+import guestStories from '@/assets/images/home/guestStories.jpg';
 
 const testimonials = [
   {
@@ -57,16 +58,16 @@ export function Testimonials() {
       {/* Background Decoration */}
       <div className="absolute inset-0 -z-0 pointer-events-none">
         <Image
-          src={reviewImage || bgImage?.imageUrl || ''}
+          src={guestStories || bgImage?.imageUrl || ''}
           alt="Testimonial Background"
           fill
           quality={100}
-          className="object-cover object-center opacity-70"
+          className="object-cover object-center opacity-100"
           data-ai-hint="lush jungle"
         />
         {/* Gradients to smoothly blend the image into the white background above and below */}
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white via-white/80 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white via-white/80 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white via-white/80 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-white via-white/80 to-transparent" />
       </div>
       
       <div className="container relative z-10 mx-auto px-6 md:px-12">
@@ -103,7 +104,7 @@ export function Testimonials() {
               {testimonials.map((t, index) => (
                 <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <Card 
-                    className="group bg-black/60 backdrop-blur-xl border-white/10 text-white hover:bg-accent/20 hover:border-accent/50 transition-all duration-500 rounded-none shadow-2xl h-full"
+                    className="group bg-black/60 backdrop-blur-xl border-white/10 text-white hover:bg-blue-200/20 hover:border-accent/50 transition-all duration-500 rounded-none shadow-2xl h-full"
                   >
                     <CardContent className="p-10 flex flex-col items-start h-full">
                       <Quote className="w-10 h-10 text-accent mb-8 opacity-80" />
