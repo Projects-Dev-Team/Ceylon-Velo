@@ -20,7 +20,7 @@ export function About() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={slideInLeftVariant}
-            className="relative max-w-sm mx-auto lg:mx-0"
+            className="relative w-full max-w-sm mx-auto lg:mx-0"
           >
             <div className="relative aspect-[4/5] rounded-sm overflow-hidden group">
               <Image
