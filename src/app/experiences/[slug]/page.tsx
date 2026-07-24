@@ -59,7 +59,7 @@ export default function ExperienceDetailPage({ params }: { params: Promise<{ slu
       {/* Hero Section */}
       <section className="relative h-[60vh] md:h-screen w-full flex items-center justify-center overflow-hidden">
         <Image
-          src={heroImage?.imageUrl || ''}
+          src={experience?.img || ''}
           alt={experience.title}
           fill
           className="object-cover"
@@ -71,7 +71,7 @@ export default function ExperienceDetailPage({ params }: { params: Promise<{ slu
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="font-headline text-4xl md:text-8xl mb-6 tracking-wider uppercase"
+            className="font-headline text-4xl md:text-6xl mb-6 tracking-wider uppercase"
           >
             {experience.title}
           </motion.h1>
@@ -93,6 +93,8 @@ export default function ExperienceDetailPage({ params }: { params: Promise<{ slu
           <Link href="/" className="hover:text-accent transition-colors">HOME</Link>
           <span>/</span>
           <Link href="/experiences" className="hover:text-accent transition-colors">EXPERIENCES</Link>
+          <span>/</span>
+          <Link href="/experiences/all" className="hover:text-accent transition-colors">ALL</Link>
           <span>/</span>
           <span className="text-foreground">{experience.title}</span>
         </div>
