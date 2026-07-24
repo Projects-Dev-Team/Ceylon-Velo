@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, {useState, useMemo, useEffect} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -30,6 +30,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useSearchParams } from 'next/navigation';
+import heroImage from '@/assets/images/experience/allHero.jpg';
 
 const categoryIcons: Record<string, any> = {
   'Beaches & Sunset': Sparkles,
@@ -41,7 +43,9 @@ const categoryIcons: Record<string, any> = {
 };
 
 export default function AllExperiencesPage() {
-  const [categoryFilter, setCategoryFilter] = useState('All');
+  const searchParams = useSearchParams();
+  const categoryFromUrl = searchParams.get('category') || 'All';
+  const [categoryFilter, setCategoryFilter] = useState(categoryFromUrl);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
@@ -57,16 +61,19 @@ export default function AllExperiencesPage() {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentItems = filteredExperiences.slice(startIndex, startIndex + itemsPerPage);
 
-  const heroImage = PlaceHolderImages.find(img => img.id === 'exp-hero');
+  useEffect(() => {
+    setCategoryFilter(categoryFromUrl);
+    setCurrentPage(1);
+  }, [categoryFromUrl]);
 
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
       <Header />
 
       {/* Hero */}
-      <section className="relative h-[40vh] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[80vh] w-full flex items-center justify-center overflow-hidden">
         <Image
-          src={heroImage?.imageUrl || ''}
+          src={heroImage || ''}
           alt="All Experiences"
           fill
           className="object-cover"
@@ -139,13 +146,12 @@ export default function AllExperiencesPage() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
         >
           {currentItems.map((exp, idx) => {
-            const img = PlaceHolderImages.find(i => i.id === exp.heroImageId);
             const CatIcon = categoryIcons[exp.category] || Compass;
             return (
               <motion.div key={idx} variants={fadeUpVariant} className="h-full">
                 <Card className="bg-white border-none shadow-md overflow-hidden group hover:shadow-xl transition-all duration-500 h-full flex flex-col">
                   <div className="relative aspect-[4/3] overflow-hidden shrink-0">
-                    <Image src={img?.imageUrl || ''} alt={exp.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <Image src={exp?.img || ''} alt={exp.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div className="absolute top-4 left-4">
                       <span className="bg-white/90 backdrop-blur-md px-3 py-1.5 text-[8px] font-bold tracking-widest uppercase text-accent rounded-full flex items-center gap-2 shadow-sm">
                         <CatIcon className="w-3 h-3" /> {exp.category}

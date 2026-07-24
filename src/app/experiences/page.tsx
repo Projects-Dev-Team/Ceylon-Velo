@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -37,16 +37,21 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import heroImage from '@/assets/images/experience/hero2.jpg';
+import ch1Image from '@/assets/images/experience/chCard1.jpg';
+import ch2Image from '@/assets/images/experience/chCard2.jpg';
+import ch3Image from '@/assets/images/experience/chCard3.jpg';
+import ch4Image from '@/assets/images/experience/chCard4.jpg';
+import ch5Image from '@/assets/images/experience/chCard5.jpg';
 
 export default function ExperiencesPage() {
-  const heroImage = PlaceHolderImages.find(img => img.id === 'exp-hero');
   
   const categories = [
-    { id: 'exp-beach', title: 'Beaches & Sunset', desc: 'Relax on golden shores and watch the magic unfold.', icon: Sparkles },
-    { id: 'exp-wildlife', title: 'Wildlife & Safari', desc: 'Encounter majestic leopards and elephants in their habitat.', icon: Gem },
-    { id: 'exp-heritage', title: 'Heritage & Culture', desc: 'Explore ancient temples and UNESCO heritage sites.', icon: Map },
-    { id: 'exp-train', title: 'Scenic Train Journeys', desc: 'Traverse lush highlands on the world\'s most beautiful trains.', icon: Compass },
-    { id: 'exp-tea', title: 'Tea Country Retreats', desc: 'Wake up to misty mountains and endless green estates.', icon: Hotel },
+    { id: 'exp-beach', title: 'Beaches & Sunset', desc: 'Relax on golden shores and watch the magic unfold.', img: ch1Image, icon: Sparkles },
+    { id: 'exp-wildlife', title: 'Wildlife & Safari', desc: 'Encounter majestic leopards and elephants in their habitat.', img: ch2Image, icon: Gem },
+    { id: 'exp-heritage', title: 'Heritage & Culture', desc: 'Explore ancient temples and UNESCO heritage sites.', img: ch3Image, icon: Map },
+    { id: 'exp-train', title: 'Scenic Train Journeys', desc: 'Traverse lush highlands on the world\'s most beautiful trains.', img: ch4Image, icon: Compass },
+    { id: 'exp-tea', title: 'Tea Country Retreats', desc: 'Wake up to misty mountains and endless green estates.', img: ch5Image, icon: Hotel },
   ];
 
   const gallery = ['insta-1', 'insta-2', 'insta-3', 'insta-4', 'insta-5', 'insta-6', 'insta-2', 'insta-5', 'insta-4', 'insta-1'];
@@ -58,7 +63,7 @@ export default function ExperiencesPage() {
       {/* Hero Section */}
       <section className="relative h-[70vh] md:h-screen w-full flex items-center justify-center overflow-hidden">
         <Image
-          src={heroImage?.imageUrl || ''}
+          src={heroImage || ''}
           alt="Experiences Hero"
           fill
           className="object-cover"
@@ -126,13 +131,16 @@ export default function ExperiencesPage() {
           <Carousel opts={{ align: "start", loop: true }} className="w-full">
             <CarouselContent className="-ml-4 pl-10 pr-10 pb-8 items-stretch">
               {categories.map((cat, index) => {
-                const img = PlaceHolderImages.find(i => i.id === cat.id);
                 const CatIcon = cat.icon;
                 return (
                   <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <Link
+                        href={`/experiences/all?category=${encodeURIComponent(cat.title)}`}
+                        className="block h-full"
+                    >
                     <div className="group relative bg-white rounded-2xl shadow-md border border-border/50 hover:shadow-xl transition-all duration-500 h-full flex flex-col overflow-hidden">
                       <div className="relative aspect-square overflow-hidden shrink-0">
-                        <Image src={img?.imageUrl || ''} alt={cat.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <Image src={cat?.img || ''} alt={cat.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors" />
                       </div>
                       <div className="relative z-20 -mt-6 mx-auto w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border border-border/50 text-accent transition-all duration-500">
@@ -145,6 +153,7 @@ export default function ExperiencesPage() {
                         </p>
                       </div>
                     </div>
+                    </Link>
                   </CarouselItem>
                 );
               })}
@@ -240,26 +249,19 @@ export default function ExperiencesPage() {
               {allExperiencesData.slice(0, 4).map((feat, index) => {
                 return (
                   <CarouselItem key={index} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                    <motion.div variants={fadeUpVariant} className="h-full">
+                    <Link
+                        href={`/experiences/all?category=${encodeURIComponent(feat.title)}`}
+                        className="block h-full"
+                    >
+                      <motion.div variants={fadeUpVariant} className="h-full">
                       <Card className="bg-white border-none shadow-md overflow-hidden group h-full flex flex-col hover:shadow-xl transition-all duration-500">
                         <div className="relative aspect-[4/3] overflow-hidden shrink-0">
-                          <Carousel opts={{ loop: true }} className="w-full h-full group/inner">
-                            <CarouselContent className="m-0 h-full">
-                              {feat.galleryImageIds.map((imgId, imgIdx) => {
-                                const img = PlaceHolderImages.find(i => i.id === imgId);
-                                return (
-                                  <CarouselItem key={imgIdx} className="p-0 h-full relative">
-                                    <Image 
-                                      src={img?.imageUrl || ''} 
-                                      alt={`${feat.title} ${imgIdx + 1}`} 
-                                      fill 
-                                      className="object-cover transition-transform duration-700 group-hover:scale-105" 
-                                    />
-                                  </CarouselItem>
-                                )
-                              })}
-                            </CarouselContent>
-                          </Carousel>
+                          <Image
+                              src={feat.img}
+                              alt={feat.title}
+                              fill
+                              className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
                         </div>
                         <div className="p-6 flex-grow flex flex-col">
                           <h4 className="font-headline text-xl mb-3 leading-tight group-hover:text-accent transition-colors">{feat.title}</h4>
@@ -275,6 +277,7 @@ export default function ExperiencesPage() {
                         </div>
                       </Card>
                     </motion.div>
+                    </Link>
                   </CarouselItem>
                 );
               })}

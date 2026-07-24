@@ -1,3 +1,4 @@
+import {StaticImageData} from "next/image";
 
 export type ExperienceHighlight = {
   icon: string;
@@ -14,6 +15,7 @@ export type Experience = {
   duration: string;
   shortDesc: string;
   narrativeTitle: string;
+  img: StaticImageData;
   description: string[];
   heroImageId: string;
   galleryImageIds: string[];
@@ -26,6 +28,11 @@ export type Experience = {
   };
 };
 
+import mirissa from '@/assets/images/experience/mirissa.jpg';
+import sigiriya from '@/assets/images/experience/sigiriya.jpg';
+import yala from '@/assets/images/experience/yala.jpg';
+import ella from '@/assets/images/experience/elle.jpg';
+
 export const allExperiencesData: Experience[] = [
   {
     id: 'exp-sigiriya',
@@ -36,6 +43,7 @@ export const allExperiencesData: Experience[] = [
     duration: 'Full Day',
     shortDesc: 'Climb the ancient Lion Rock and witness a palace above the clouds.',
     narrativeTitle: 'A Palace Above the Clouds',
+    img: sigiriya,
     description: [
       "Rising 200 meters from the central plains, the Sigiriya Rock Fortress is a testament to the architectural and engineering brilliance of ancient Sri Lanka. Built by King Kashyapa in the 5th century, this UNESCO World Heritage site is a masterpiece of urban planning, water engineering, and artistic expression.",
       "As you ascend the 1,200 steps, you'll encounter the famous 'Mirror Wall' and the world-renowned Sigiriya frescoes—vibrant depictions of celestial maidens that have survived for over 1,500 years. The journey culminates at the summit, where the ruins of a sprawling royal palace offer breathtaking 360-degree views of the surrounding jungle."
@@ -70,6 +78,7 @@ export const allExperiencesData: Experience[] = [
     duration: 'Dawn & Dusk',
     shortDesc: 'An adrenaline-fueled journey into leopard country and wild wilderness.',
     narrativeTitle: 'Deep into the Wild',
+    img: yala,
     description: [
       "Yala National Park, a sprawling sanctuary of dry woodlands, open plains, and coastal lagoons, is world-renowned for its high density of Sri Lankan leopards. Here, the raw power of nature is on full display as majestic predators roam their ancestral hunting grounds.",
       "Our bespoke safaris are designed to take you beyond the ordinary. Led by expert trackers and naturalists who know the heartbeat of the park, you'll venture deep into the wilderness in premium open-top jeeps. Beyond the leopards, expect to encounter elephants, sloth bears, crocodiles, and a vibrant array of tropical birds."
@@ -104,6 +113,7 @@ export const allExperiencesData: Experience[] = [
     duration: 'Early Morning',
     shortDesc: 'Encounter these gentle giants in the deep blue waters of the south.',
     narrativeTitle: 'Giants of the Deep',
+    img: mirissa,
     description: [
       "The warm waters of the Indian Ocean off Mirissa are one of the best places in the world to witness Blue Whales in their natural habitat. This journey takes you on a private charter, away from the crowds, for an intimate encounter with the largest animals on earth.",
       "Guided by marine experts, you will learn about the behavior and conservation of these majestic mammals while enjoying the serene horizon of the southern coast."
@@ -138,6 +148,7 @@ export const allExperiencesData: Experience[] = [
     duration: 'Full Day',
     shortDesc: 'Trek through misty peaks and lush tea estates for breathtaking views.',
     narrativeTitle: 'Mist-Covered Peaks',
+    img: ella,
     description: [
       "Ella is a mountain town that feels like a world away. Famous for its tea estates and the iconic Nine Arch Bridge, it offers some of the most scenic hiking trails in the country.",
       "Our trek takes you through private tea trails and up to Little Adam's Peak, where you can witness the clouds rolling over the valley before enjoying a traditional tea tasting at a heritage factory."
