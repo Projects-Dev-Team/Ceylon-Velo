@@ -5,11 +5,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Instagram, Facebook, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import footerImage from '@/assets/images/footer/footer.png';
+import footerImage from '@/assets/images/footer/footer2.jpg';
 
 export function Footer() {
   return (
     <footer className="relative min-h-[480px] flex flex-col justify-end overflow-hidden pb-6 pt-6">
+      <div className="absolute inset-x-0 z-10 -top-5 h-40 bg-gradient-to-b from-white via-white/80 to-transparent" />
       {/* Background Image - Adjusted width by 1px for perfect edge coverage */}
       <div className="absolute inset-y-0 -left-[0.5px] w-[calc(100%+1px)] z-0">
         <Image
@@ -113,10 +114,10 @@ export function Footer() {
 
         {/* Bottom bar - Outside the black container */}
         <div className="mt-4 pb-4 px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] font-bold tracking-[0.2em] uppercase text-white/70 animate-in fade-in duration-1000 delay-700 fill-mode-both">
-          <span>© 2026 Ceylon Velo Luxe. ALL RIGHTS RESERVED.</span>
+          <span className={"text-white font-semibold"}>© 2026 Ceylon Velo Luxe. ALL RIGHTS RESERVED.</span>
           <div className="flex gap-8">
-            <Link href="#" className="hover:text-white hover:underline transition-all underline-offset-4">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white hover:underline transition-all underline-offset-4">Terms of Service</Link>
+            <Link href="#" className="hover:text-white text-white font-semibold hover:underline transition-all underline-offset-4">Privacy Policy</Link>
+            <Link href="#" className="hover:text-white text-white font-semibold hover:underline transition-all underline-offset-4">Terms of Service</Link>
           </div>
         </div>
       </div>
